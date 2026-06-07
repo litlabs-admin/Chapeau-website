@@ -108,7 +108,7 @@ export function RotatingHeadline({
   const shownB = reduce ? current.b : current.b.slice(0, bLen);
 
   return (
-    <h1 className="font-sans font-semibold leading-[1.0] tracking-[-0.03em] text-[clamp(2.75rem,6.2vw,5rem)]">
+    <h1 className="font-sans font-semibold leading-[1.15] tracking-[-0.03em] text-[clamp(2.75rem,6.2vw,5rem)]">
       <span className="text-charcoal">Your </span>
       <Slot ch={widthA}>
         <span className="bg-teal-primary bg-clip-text text-transparent">
@@ -116,6 +116,7 @@ export function RotatingHeadline({
         </span>
         {caretOn === "a" && <Caret />}
       </Slot>
+      <br className="block md:hidden" />
       <span className="text-charcoal"> for </span>
       <Slot ch={widthB}>
         <span className="text-charcoal">{shownB}</span>
@@ -126,11 +127,10 @@ export function RotatingHeadline({
 }
 
 function Slot({ ch, children }: { ch: number; children: React.ReactNode }) {
-  // Reserve width from the longest word so the line never jumps as it types.
   return (
     <span
-      className="relative inline-flex items-baseline whitespace-nowrap align-baseline"
-      style={{ minWidth: `${ch}ch` }}
+      className="relative inline-flex items-baseline whitespace-nowrap align-baseline md:[min-width:var(--slot-w)]"
+      style={{ '--slot-w': `${ch}ch` } as React.CSSProperties}
     >
       {children}
     </span>
