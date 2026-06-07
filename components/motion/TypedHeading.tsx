@@ -1,15 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useReducedMotion } from "framer-motion";
-
-const SPEED = 36; // ms per character
+import { motion, useReducedMotion } from "framer-motion";
 
 /**
- * One-shot typewriter for page headings. Types character-by-character on mount,
- * shows a teal caret while in progress. Words listed in `highlight` are wrapped
- * in the brand teal gradient once they are fully typed. Settles to static text
- * when the user prefers reduced motion.
+ * Fade-in heading for inner pages. Renders all text immediately and fades in
+ * on mount. Words listed in `highlight` are wrapped in the brand teal gradient.
+ * Settles to static text when the user prefers reduced motion.
  */
 export function TypedHeading({
   text,
@@ -21,30 +17,24 @@ export function TypedHeading({
   className?: string;
 }) {
   const reduce = useReducedMotion();
-  const [len, setLen] = useState(reduce ? text.length : 0);
-
-  useEffect(() => {
-    if (reduce || len >= text.length) return;
-    const t = setTimeout(() => setLen((l) => l + 1), SPEED);
-    return () => clearTimeout(t);
-  }, [len, text.length, reduce]);
-
-  const done = len >= text.length;
-  const shown = text.slice(0, len);
 
   return (
-    <span className={className}>
-      {renderSegments(shown, highlight)}
-      {!done && <Caret />}
-    </span>
+    <motion.span
+      className={className}
+      initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      {renderSegments(text, highlight)}
+    </motion.span>
   );
 }
 
-function renderSegments(shown: string, highlight: string[]): React.ReactNode {
-  if (!highlight.length) return shown;
+function renderSegments(text: string, highlight: string[]): React.ReactNode {
+  if (!highlight.length) return text;
 
   const segments: React.ReactNode[] = [];
-  let remaining = shown;
+  let remaining = text;
   let key = 0;
 
   while (remaining.length > 0) {
@@ -81,13 +71,4 @@ function renderSegments(shown: string, highlight: string[]): React.ReactNode {
   }
 
   return segments;
-}
-
-function Caret() {
-  return (
-    <span
-      aria-hidden="true"
-      className="ml-[0.06em] inline-block h-[0.82em] w-[2px] translate-y-[0.06em] rounded-full bg-teal-500 align-baseline motion-safe:animate-[caret_1.05s_steps(1)_infinite]"
-    />
-  );
 }

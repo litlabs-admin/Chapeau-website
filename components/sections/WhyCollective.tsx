@@ -10,10 +10,10 @@ import { Reveal } from "@/components/motion/Reveal";
 export function WhyCollective() {
   return (
     <section className="py-20 md:py-28" aria-label={whyCollective.eyebrow}>
-      <div className="shell grid items-stretch gap-10 md:grid-cols-12 md:gap-12">
-        <Reveal className="flex flex-col justify-center text-center md:col-span-5">
+      <div className="shell flex flex-col gap-10 md:gap-12">
+        <Reveal className="flex flex-col items-center text-center">
           <Label>{whyCollective.eyebrow}</Label>
-          <div className="mt-5 space-y-4">
+          <div className="mt-5 max-w-2xl space-y-4">
             {whyCollective.lead.map((p) => (
               <p
                 key={p}
@@ -25,7 +25,7 @@ export function WhyCollective() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1} className="rounded-2xl bg-charcoal p-8 text-white md:col-span-7 md:p-10">
+        <Reveal delay={0.1} className="rounded-2xl bg-charcoal p-8 text-white md:p-10">
           <ul className="divide-y divide-white/10 border-y border-white/10">
             {whyCollective.examples.map((ex) => (
               <li
