@@ -19,8 +19,8 @@ export function WorkPrinciples() {
           </h2>
           <div className="mt-5 space-y-4">
             <p className="text-[1.05rem] leading-relaxed text-slate md:text-[1.15rem]">
-              {principles.lead.intro}{" "}
-              <span className="font-medium text-gold">
+              {principles.lead.intro}
+              <span className="mt-1 block font-medium text-gold">
                 {principles.lead.question}
               </span>
             </p>
