@@ -1,7 +1,7 @@
 import { offers, type Offer } from "@/lib/content/home";
 import { Button } from "@/components/ui/Button";
-import { Label } from "@/components/ui/Label";
 import { Reveal } from "@/components/motion/Reveal";
+import { cn } from "@/lib/cn";
 
 /**
  * Offer boxes — the service range lives here, not on a separate services page.
@@ -17,11 +17,11 @@ export function OfferBoxes() {
             Need more than advice?
           </h2>
           <p className="mt-4 text-xl leading-relaxed text-white/70 md:text-2xl">
-            Tell us what you want to talk about.
+            Pick your starting point and talk to us.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:mt-16 lg:grid-cols-3">
+        <div className="mt-14 grid gap-4 md:mt-16 md:gap-6 lg:grid-cols-3">
           {offers.map((offer, i) => (
             <OfferCard key={offer.id} offer={offer} delay={i * 0.08} />
           ))}
@@ -32,46 +32,55 @@ export function OfferBoxes() {
 }
 
 function OfferCard({ offer, delay }: { offer: Offer; delay: number }) {
+  // Growth Retainer lifts to gold on hover; the other cards stay teal.
+  const hoverBorder =
+    offer.id === "growth-retainer"
+      ? "hover:border-gold/50"
+      : "hover:border-teal-400/50";
+
   return (
     <Reveal
       delay={delay}
-      className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition-all duration-300 ease-calm hover:border-teal-400/50 hover:bg-white/[0.05] md:p-8"
+      className={cn(
+        "card-glow group relative flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-300 ease-calm hover:bg-white/[0.05] sm:p-6 md:p-8",
+        hoverBorder,
+      )}
     >
-      <div className="flex items-baseline justify-between">
-        <h3 className="font-condensed text-[1.7rem] font-semibold uppercase tracking-[0.01em] text-white">
-          {offer.name}
-        </h3>
-        <span className="h-2 w-2 rounded-full bg-teal-500 transition-colors duration-300 group-hover:bg-teal-400" />
-      </div>
+      <h3 className="text-center font-condensed text-[1.3rem] font-semibold uppercase tracking-[0.01em] text-white md:text-[1.7rem]">
+        {offer.name}
+      </h3>
 
-      {/* min-h keeps the row below aligned across cards despite different lengths */}
-      <p className="mt-3 min-h-[3.25rem] leading-relaxed text-white/70">
+      {/* min-h keeps the "Best for" row below aligned across cards despite different lengths */}
+      <p className="mt-3 min-h-[4.875rem] text-center leading-relaxed text-white/70">
         {offer.line}
       </p>
 
-      <div className="mt-5">
-        <p className="label text-[0.66rem] text-teal-400">Best for</p>
-        <p className="mt-2 min-h-[4.5rem] text-[0.92rem] leading-relaxed text-white/55">
+      <div className="mt-5 text-center">
+        <p className="label text-[0.75rem] text-teal-400 md:text-[0.66rem]">Best for</p>
+        <p className="mt-2 min-h-[6.5rem] text-sm leading-relaxed text-white/55 md:text-[0.92rem]">
           {offer.bestFor}
         </p>
       </div>
 
       <ul className="mt-5 space-y-2.5">
         {offer.checklist.map((item) => (
-          <li key={item} className="flex items-start gap-3 text-[0.95rem] text-white/85">
+          <li
+            key={item}
+            className="flex items-start justify-center gap-3 text-[0.95rem] text-white/85"
+          >
             <Check />
             {item}
           </li>
         ))}
       </ul>
 
-      <div className="mt-6 border-t border-white/10 pt-5">
-        <p className="label text-[0.62rem] text-white/40">Also covers</p>
-        <div className="mt-3 flex flex-wrap gap-2">
+      <div className="mt-6 border-t border-white/10 pt-5 text-center">
+        <p className="label text-[0.72rem] text-white/40 md:text-[0.62rem]">Also covers</p>
+        <div className="mt-3 flex flex-wrap justify-center gap-2">
           {offer.alsoCovers.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/10 px-2.5 py-1 text-[0.72rem] text-white/50"
+              className="rounded-full border border-white/10 px-2.5 py-1 text-[0.75rem] text-white/50 md:text-[0.72rem]"
             >
               {tag}
             </span>

@@ -33,20 +33,16 @@ export type Offer = {
 };
 
 export const hero = {
-  // "Your [word] for [word]" — "Your" and "for" stay fixed; pairs rotate in fixed slots.
-  rotation: [
-    { a: "Partner", b: "AI" },
-    { a: "Team", b: "Marketing" },
-    { a: "Leadership", b: "Strategy" },
-    { a: "Collective", b: "Growth" },
-  ],
+  // "Your Collective for [word]" — the lead stays fixed; the trailing word rotates in a fixed slot.
+  lead: "Your Collective for",
+  words: ["AI", "Marketing", "Strategy", "Growth"],
   support: [
     "When you need more than advice, but are not ready to hire a full marketing department.",
-    "Chapeau gives your business access to senior marketing expertise and practical AI support.",
-    "We set the direction, build the tools and deliver the campaigns that enable your business to grow with more clarity.",
+    "Chapeau gives your business access to senior leadership, strategy and marketing expertise along with practical AI support.",
+    "Our team of engineers, designers and marketing experts will enable your business to grow with clarity.",
   ],
   ctas: [
-    { label: "Start a conversation", href: "/contact", variant: "primary" as const },
+    { label: "Let's talk", href: "/contact", variant: "primary" as const },
     { label: "View example", href: "/examples", variant: "ghost" as const },
   ],
   image: "/media/hero-glass.jpg",
@@ -64,16 +60,17 @@ export const valueStrip = {
   ],
 };
 
-export const logoStrip = [
-  "Roswell IT",
-  "RACAM",
-  "Openbook Analytics",
-  "We Are Pawprint",
-  "BiP Solutions",
-  "FAP",
-  "Connect Three",
-  "GR23 Marketing",
-  "LitLabs",
+/**
+ * Trust strip — real client logos. Placeholder brand marks for now; drop more
+ * files into /public/media/logos and add an entry here. width/height are the
+ * asset's intrinsic pixels (used for aspect ratio; rendered height is fixed in CSS).
+ */
+export const logoStrip: { src: string; alt: string; width: number; height: number }[] = [
+  { src: "/media/logos/nexus.svg", alt: "Nexus", width: 380, height: 114 },
+  { src: "/media/logos/logo-stripe2.svg", alt: "Client logo", width: 252, height: 154 },
+  { src: "/media/logos/logo-stripe4.webp", alt: "Client logo", width: 349, height: 111 },
+  { src: "/media/logos/logo-stripe3.svg", alt: "Client logo", width: 139, height: 152 },
+  { src: "/media/logos/logo-stripe5.webp", alt: "Client logo", width: 224, height: 79 },
 ];
 
 export const caseStudies: CaseStudy[] = [
@@ -81,49 +78,49 @@ export const caseStudies: CaseStudy[] = [
     id: "roswell-it",
     business: "Roswell IT",
     type: "Managed IT provider / MSP",
-    headline: "Modernising a 30-year-old IT MSP.",
+    headline: "Making IT less alien.",
     context:
-      "Roswell had decades of trust, technical expertise and loyal clients. There was a gap in telling this story, bringing the brand to life, showcasing the trust and turning it into new growth. Chapeau is supporting Roswell in launching new service, website and SEO direction, GTM strategy, AI-enabled service agents, recruitment support and done-for-you commercial activity.",
+      "Roswell has been supporting businesses with trusted IT services for over 30 years. The relationships were strong, the technical knowledge was there and the service had earned its reputation. The next step was making that strength easier to see, easier to understand and easier for new clients to choose. Chapeau is supporting Roswell with a new website and SEO direction, GTM strategy, new service offers, AI-enabled service agents, recruitment support and done-for-you commercial activity.",
     enabled:
       "GTM strategy, Web & SEO, AI service development, new service offers, hiring support and campaign delivery.",
     workDelivered:
       "GTM strategy, web and SEO direction, AI-enabled service agents, new service offers, hiring support and done-for-you commercial activity.",
     outcome: "[Outcome copy — to be supplied by client]",
-    cta: { label: "View example", href: "/examples" },
-    image: "/media/case-network.jpg",
-    imageAlt: "Technical infrastructure detail",
+    cta: { label: "View case study", href: "/examples" },
+    image: "/media/roswell-case.jpeg",
+    imageAlt: "The Roswell IT team",
     overlay: "teal",
   },
   {
     id: "racam",
     business: "RACAM",
     type: "Security systems and communications provider",
-    headline: "Bringing digital marketing to a company with no marketing team.",
+    headline: "Opening the door to commercial growth.",
     context:
-      "RACAM had strong technical knowledge, trusted supplier relationships and a clear service offering, and have transitioned from residential to more commercial clientele. Chapeau is supporting RACAM with done-for-you marketing services, social content, CRM installation, automation, Meta ads management and campaign activity.",
+      "RACAM provides security systems and communications support for homes, businesses and commercial sites. The technical knowledge was strong, the supplier relationships were trusted and the service offering was clear. As the business moved further into commercial work, the next step was building the marketing activity to support that shift. Chapeau is supporting RACAM with done-for-you marketing services, social content, CRM setup, automation, Meta ads management and campaign delivery.",
     enabled:
       "Digital marketing, CRM setup, automation, Meta ads, social content and campaign delivery.",
     workDelivered:
       "Done-for-you marketing services, social content, CRM installation, automation, Meta ads management and campaign activity.",
     outcome: "[Outcome copy — to be supplied by client]",
-    cta: { label: "View example", href: "/examples" },
-    image: "/media/case-city.jpg",
-    imageAlt: "City architecture and glass texture at dusk",
+    cta: { label: "View case study", href: "/examples" },
+    image: "/media/racam-case.jpeg",
+    imageAlt: "RACAM Security & Communications branded van",
     overlay: "charcoal",
   },
   {
     id: "openbook-analytics",
     business: "Openbook Analytics",
     type: "Stock analytics platform",
-    headline: "Supporting user acquisition with sharper go-to-market execution.",
+    headline: "Helping investors read the market.",
     context:
-      "Openbook had a strong product, great story and early traction with a clear market opportunity. The next stage was about shipping product, clarifying the route to users, improving visibility and building repeatable acquisition activity. Chapeau is supporting Openbook with user acquisition, PR, GTM strategy, campaign planning and automation support.",
+      "Openbook Analytics helps users understand stocks, portfolios and investment opportunities with clearer insight. The product had a strong story, early traction and a clear market opportunity. The next step was making the route to users easier to define, easier to test and easier to grow. Chapeau is supporting Openbook with user acquisition, PR, GTM strategy, campaign planning and automation support.",
     enabled:
       "User acquisition, PR, GTM strategy, automation, campaign planning and growth support.",
     workDelivered:
       "User acquisition, PR, GTM strategy, campaign planning and automation support.",
     outcome: "[Outcome copy — to be supplied by client]",
-    cta: { label: "View example", href: "/examples" },
+    cta: { label: "View case study", href: "/examples" },
     image: "/media/case-data.jpg",
     imageAlt: "Reflective product and data surface detail",
     overlay: "gold",
@@ -133,8 +130,8 @@ export const caseStudies: CaseStudy[] = [
 export const offers: Offer[] = [
   {
     id: "build-sprint",
-    name: "Build Sprint",
-    line: "For one clear piece of work that needs shaped, built and delivered properly.",
+    name: "Marketing Sprint",
+    line: "For one clear piece of work that needs shaped, built and delivered properly with a deadline.",
     bestFor:
       "Businesses that know something needs fixed, launched or sharpened, and want the work moving without committing to a long engagement.",
     checklist: [

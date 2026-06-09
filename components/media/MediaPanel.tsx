@@ -19,10 +19,19 @@ const overlays: Record<Overlay, string> = {
   gold: "from-copper-dark/85 via-copper/45 to-stone/20",
 };
 
+// Lighter treatment for real photography — tints only the top corners (so the
+// badge + index stay legible) and fades clear, keeping the image bright.
+const photoOverlays: Record<Overlay, string> = {
+  teal: "from-teal-950/45 via-teal-900/10 to-transparent",
+  charcoal: "from-ink/55 via-navy/15 to-transparent",
+  gold: "from-copper-dark/45 via-copper/10 to-transparent",
+};
+
 export function MediaPanel({
   src,
   alt,
   overlay = "teal",
+  photo = false,
   className,
   priority = false,
   rounded = "rounded-2xl",
@@ -31,6 +40,8 @@ export function MediaPanel({
   src?: string;
   alt: string;
   overlay?: Overlay;
+  /** Use the lighter overlay tuned for real photos instead of placeholder textures. */
+  photo?: boolean;
   className?: string;
   priority?: boolean;
   rounded?: string;
@@ -57,12 +68,12 @@ export function MediaPanel({
       {/* colour overlay — lets the image carry teal/charcoal/gold into the section */}
       <div
         className={cn(
-          "absolute inset-0 bg-gradient-to-br mix-blend-multiply",
-          overlays[overlay],
+          "absolute inset-0 bg-gradient-to-br",
+          photo ? photoOverlays[overlay] : cn("mix-blend-multiply", overlays[overlay]),
         )}
       />
       {/* craft detail */}
-      <Pattern opacity={0.16} />
+      <Pattern opacity={photo ? 0.07 : 0.16} />
       {/* foil hairline along the top edge — the glint */}
       <div className="foil-line absolute inset-x-0 top-0 h-px opacity-60" />
       {children && <div className="relative z-10 h-full">{children}</div>}

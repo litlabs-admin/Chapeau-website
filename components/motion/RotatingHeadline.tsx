@@ -3,46 +3,39 @@
 import { useEffect, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 
-type Pair = { a: string; b: string };
-type Phase =
-  | "idle"
-  | "typingA"
-  | "betweenAB"
-  | "typingB"
-  | "hold"
-  | "deletingB"
-  | "deletingA";
+type Phase = "idle" | "typing" | "hold" | "deleting";
 
 const SPEED = {
   type: 58, // ms per character typed
   del: 30, // ms per character deleted
-  between: 220, // beat after word A before word B
-  hold: 1700, // pause on the full phrase
+  hold: 1700, // pause on the full word
 };
 
 /**
- * Hero word rotation — a smooth, subtle typewriter. "Your" and "for" stay fixed;
- * the two rotating words type in, hold, then backspace before the next pair. The
- * words sit in fixed-width slots reserved from the longest word, so the line never
- * reflows horizontally and the headline height stays constant. A thin teal caret
- * marks the slot currently typing. Reduced motion shows the first pair, static.
+ * Hero word rotation — a smooth, subtle typewriter. The lead ("Your Collective
+ * for") stays fixed; a single trailing word types in, holds, then backspaces
+ * before the next. The word sits in a fixed-width slot reserved from the longest
+ * word, so the line never reflows horizontally and the headline height stays
+ * constant. A thin teal caret marks the slot while typing. On mobile the lead
+ * stays locked on its own line and the rotating word drops below. Reduced motion
+ * shows the first word, static.
  */
 export function RotatingHeadline({
-  pairs,
+  lead,
+  words,
   startDelay = 350,
 }: {
-  pairs: Pair[];
+  lead: string;
+  words: string[];
   startDelay?: number;
 }) {
   const reduce = useReducedMotion();
   const [i, setI] = useState(0);
   const [phase, setPhase] = useState<Phase>("idle");
-  const [aLen, setALen] = useState(0);
-  const [bLen, setBLen] = useState(0);
+  const [len, setLen] = useState(0);
 
-  const widthA = Math.max(...pairs.map((p) => p.a.length));
-  const widthB = Math.max(...pairs.map((p) => p.b.length));
-  const current = pairs[i];
+  const width = Math.max(...words.map((w) => w.length));
+  const current = words[i];
 
   useEffect(() => {
     if (reduce) return;
@@ -51,76 +44,44 @@ export function RotatingHeadline({
     switch (phase) {
       // Gentle initial beat so the caret reads before the first keystroke.
       case "idle":
-        t = setTimeout(() => setPhase("typingA"), startDelay);
+        t = setTimeout(() => setPhase("typing"), startDelay);
         break;
-      case "typingA":
-        if (aLen < current.a.length) {
-          t = setTimeout(() => setALen((n) => n + 1), SPEED.type);
-        } else {
-          t = setTimeout(() => setPhase("betweenAB"), SPEED.between);
-        }
-        break;
-      case "betweenAB":
-        t = setTimeout(() => setPhase("typingB"), 0);
-        break;
-      case "typingB":
-        if (bLen < current.b.length) {
-          t = setTimeout(() => setBLen((n) => n + 1), SPEED.type);
+      case "typing":
+        if (len < current.length) {
+          t = setTimeout(() => setLen((n) => n + 1), SPEED.type);
         } else {
           t = setTimeout(() => setPhase("hold"), SPEED.hold);
         }
         break;
       case "hold":
-        t = setTimeout(() => setPhase("deletingB"), 0);
+        t = setTimeout(() => setPhase("deleting"), 0);
         break;
-      case "deletingB":
-        if (bLen > 0) {
-          t = setTimeout(() => setBLen((n) => n - 1), SPEED.del);
-        } else {
-          t = setTimeout(() => setPhase("deletingA"), SPEED.between * 0.6);
-        }
-        break;
-      case "deletingA":
-        if (aLen > 0) {
-          t = setTimeout(() => setALen((n) => n - 1), SPEED.del);
+      case "deleting":
+        if (len > 0) {
+          t = setTimeout(() => setLen((n) => n - 1), SPEED.del);
         } else {
           t = setTimeout(() => {
-            setI((n) => (n + 1) % pairs.length);
-            setPhase("typingA");
-          }, SPEED.between * 0.6);
+            setI((n) => (n + 1) % words.length);
+            setPhase("typing");
+          }, SPEED.type);
         }
         break;
     }
     return () => clearTimeout(t);
-  }, [phase, aLen, bLen, current.a, current.b, pairs.length, reduce, startDelay]);
+  }, [phase, len, current.length, words.length, reduce, startDelay]);
 
-  // Which slot owns the caret right now.
-  const caretOn = reduce
-    ? "none"
-    : phase === "idle" ||
-        phase === "typingA" ||
-        phase === "deletingA" ||
-        phase === "betweenAB"
-      ? "a"
-      : "b";
-
-  const shownA = reduce ? current.a : current.a.slice(0, aLen);
-  const shownB = reduce ? current.b : current.b.slice(0, bLen);
+  const shown = reduce ? current : current.slice(0, len);
 
   return (
     <h1 className="font-sans font-semibold leading-[1.15] tracking-[-0.03em] text-[clamp(2.75rem,6.2vw,5rem)]">
-      <span className="text-charcoal">Your </span>
-      <Slot ch={widthA}>
-        <span className="bg-teal-primary bg-clip-text text-transparent">
-          {shownA}
-        </span>
-        {caretOn === "a" && <Caret />}
-      </Slot>
+      <span className="text-charcoal">{lead}</span>
       <br className="block md:hidden" />
-      <span className="text-charcoal"> for </span>
-      <Slot ch={widthB}>
-        <span className="text-charcoal">{shownB}</span>
-        {caretOn === "b" && <Caret />}
+      <span className="hidden md:inline"> </span>
+      <Slot ch={width}>
+        <span className="bg-teal-primary bg-clip-text text-transparent">
+          {shown}
+        </span>
+        {!reduce && <Caret />}
       </Slot>
     </h1>
   );
@@ -130,7 +91,7 @@ function Slot({ ch, children }: { ch: number; children: React.ReactNode }) {
   return (
     <span
       className="relative inline-flex items-baseline whitespace-nowrap align-baseline md:[min-width:var(--slot-w)]"
-      style={{ '--slot-w': `${ch}ch` } as React.CSSProperties}
+      style={{ "--slot-w": `${ch}ch` } as React.CSSProperties}
     >
       {children}
     </span>

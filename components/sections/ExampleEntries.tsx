@@ -27,7 +27,7 @@ function Entry({ cs, index }: { cs: CaseStudy; index: number }) {
       {/* Numbered hairline header — business name leads as a condensed wordmark */}
       <div className="border-t border-charcoal/15 pt-6">
         <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-          <span className="font-condensed text-[1.9rem] font-semibold leading-none text-charcoal/20">
+          <span className="font-condensed text-[1.4rem] font-semibold leading-none text-charcoal/20 md:text-[1.9rem]">
             0{index + 1}
           </span>
           <h3 className="font-condensed text-[clamp(1.6rem,2.6vw,2.2rem)] font-semibold uppercase leading-none tracking-[0.01em] text-charcoal">
@@ -37,7 +37,7 @@ function Entry({ cs, index }: { cs: CaseStudy; index: number }) {
             className="hidden h-1.5 w-1.5 rounded-full bg-teal-500 sm:block"
             aria-hidden="true"
           />
-          <span className="label text-[0.74rem] text-slate">{cs.type}</span>
+          <span className="label text-[0.75rem] text-slate md:text-[0.74rem]">{cs.type}</span>
         </div>
       </div>
 
@@ -53,10 +53,11 @@ function Entry({ cs, index }: { cs: CaseStudy; index: number }) {
             src={cs.image}
             alt={cs.imageAlt}
             overlay={cs.overlay}
+            photo
             className="aspect-[16/10] w-full"
           >
             <div className="flex h-full items-end p-6 md:p-8">
-              <span className="label rounded-full border border-white/25 px-3 py-1 text-[0.66rem] text-white/85 backdrop-blur-sm">
+              <span className="label rounded-full border border-white/25 px-3 py-1 text-[0.75rem] text-white/85 backdrop-blur-sm md:text-[0.66rem]">
                 {cs.type}
               </span>
             </div>
@@ -64,15 +65,15 @@ function Entry({ cs, index }: { cs: CaseStudy; index: number }) {
         </div>
 
         <div className="flex flex-col md:col-span-5">
-          <p className="leading-relaxed text-slate">{cs.context}</p>
+          <p className="text-center leading-relaxed text-slate md:text-left">{cs.context}</p>
           <div className="mt-7 border-l-2 border-teal-600 pl-5">
-            <p className="label text-[0.68rem] text-slate">Work delivered</p>
+            <p className="label text-[0.75rem] text-slate md:text-[0.68rem]">Work delivered</p>
             <p className="mt-2 font-medium leading-relaxed text-charcoal">
               {cs.workDelivered}
             </p>
           </div>
           <div className="mt-5 border-l-2 border-charcoal/15 pl-5">
-            <p className="label text-[0.68rem] text-slate">Outcome</p>
+            <p className="label text-[0.75rem] text-slate md:text-[0.68rem]">Outcome</p>
             <p className="mt-2 leading-relaxed text-charcoal">
               {cs.outcome}
             </p>

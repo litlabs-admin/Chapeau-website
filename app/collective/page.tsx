@@ -8,7 +8,7 @@ import { FinalCTA } from "@/components/sections/FinalCTA";
 
 export const metadata: Metadata = {
   title: "The Collective",
-  description: collectiveHero.intro,
+  description: collectiveHero.intro[0],
 };
 
 export default function CollectivePage() {
@@ -18,7 +18,7 @@ export default function CollectivePage() {
         eyebrow={collectiveHero.eyebrow}
         title={collectiveHero.title}
         intro={collectiveHero.intro}
-        highlight={["Senior", "practical"]}
+        highlight={["Collective"]}
       />
       <WhyCollective />
       <People />

@@ -17,9 +17,10 @@ export function PageIntro({
 }: {
   eyebrow: string;
   title: string;
-  intro?: string;
+  intro?: string | string[];
   highlight?: string[];
 }) {
+  const paragraphs = Array.isArray(intro) ? intro : intro ? [intro] : [];
   return (
     <section className="pt-16 md:pt-24">
       <Container>
@@ -31,11 +32,13 @@ export function PageIntro({
             <TypedHeading text={title} highlight={highlight} />
           </h1>
         </Reveal>
-        {intro && (
+        {paragraphs.length > 0 && (
           <Reveal trigger="mount" delay={0.24} y={18}>
-            <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-slate md:text-xl">
-              {intro}
-            </p>
+            <div className="mx-auto mt-6 max-w-2xl space-y-4 text-center text-lg leading-relaxed text-slate md:text-xl">
+              {paragraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
+            </div>
           </Reveal>
         )}
       </Container>

@@ -10,6 +10,7 @@ import { cn } from "@/lib/cn";
 export function Reveal({
   children,
   className,
+  style,
   delay = 0,
   y = 28,
   as = "div",
@@ -17,6 +18,7 @@ export function Reveal({
 }: {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   delay?: number;
   y?: number;
   as?: "div" | "section" | "li" | "article" | "span";
@@ -35,6 +37,7 @@ export function Reveal({
     return (
       <MotionTag
         className={cn(className)}
+        style={style}
         initial={reduce ? false : { opacity: 0, y }}
         animate={{ opacity: 1, y: 0 }}
         transition={transition}
@@ -47,6 +50,7 @@ export function Reveal({
   return (
     <MotionTag
       className={cn(className)}
+      style={style}
       initial={reduce ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       // Trigger once the block is ~14% into the viewport, so the fade-in is

@@ -1,3 +1,4 @@
+import React from "react";
 import { workJoins } from "@/lib/content/collective";
 import { Label } from "@/components/ui/Label";
 import { Reveal } from "@/components/motion/Reveal";
@@ -22,15 +23,16 @@ export function WorkJoins() {
             <Reveal
               key={item.title}
               delay={(i % 4) * 0.06}
-              className="flex flex-col bg-white p-7 md:p-8"
+              className="card-glow relative flex flex-col border border-transparent bg-white p-5 transition-all duration-300 ease-calm hover:border-teal-600/20 hover:bg-teal-50/30 sm:p-6 md:p-8"
+              style={{ "--card-glow-bg": "#ffffff", "--card-glow-radius": "0px" } as React.CSSProperties}
             >
-              <span className="font-condensed text-[1.1rem] font-semibold text-teal-600">
+              <span className="block text-center font-condensed text-[1.1rem] font-semibold text-teal-600 md:text-left">
                 0{i + 1}
               </span>
-              <h3 className="mt-4 text-[1.3rem] font-semibold tracking-[-0.02em]">
+              <h3 className="mt-4 text-center text-[1.15rem] font-semibold tracking-[-0.02em] md:text-left md:text-[1.3rem]">
                 {item.title}
               </h3>
-              <p className="mt-3 leading-relaxed text-slate">{item.body}</p>
+              <p className="mt-3 text-center leading-relaxed text-slate md:text-left">{item.body}</p>
             </Reveal>
           ))}
         </div>

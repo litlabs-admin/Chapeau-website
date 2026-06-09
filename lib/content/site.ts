@@ -6,17 +6,17 @@ export const site = {
   name: "Chapeau",
   positioning:
     "Senior marketing expertise and practical AI support for growing businesses.",
-  email: "hello@chapeau.co",
+  email: "litlabs@chapeaucollective.com",
   social: {
     linkedin: "https://www.linkedin.com/",
   },
   primaryCta: {
-    label: "Start a conversation",
+    label: "Let's talk",
     href: "/contact",
   },
   finalCta: {
     heading: "Need more than advice?",
     line: "Tell us what you want to talk about.",
-    cta: { label: "Start a conversation", href: "/contact" },
+    cta: { label: "Let's talk", href: "/contact" },
   },
 } as const;

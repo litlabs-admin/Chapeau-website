@@ -41,7 +41,7 @@ function PersonCard({ person, delay }: { person: Person; delay: number }) {
   return (
     <Reveal
       delay={delay}
-      className="grid grid-rows-[auto_1fr_auto] rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition-colors duration-300 ease-calm hover:border-teal-400/40 lg:min-h-[500px] md:p-8"
+      className="grid grid-rows-[auto_1fr_auto] rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-colors duration-300 ease-calm hover:border-teal-400/40 sm:p-6 md:p-8 lg:min-h-[500px]"
     >
       <div className="flex items-center gap-5">
         {/* Monogram avatar — swappable for a real portrait */}
@@ -53,10 +53,10 @@ function PersonCard({ person, delay }: { person: Person; delay: number }) {
           </span>
         </div>
         <div>
-          <h3 className="text-[1.4rem] font-semibold tracking-[-0.02em] text-white">
+          <h3 className="text-[1.2rem] font-semibold tracking-[-0.02em] text-white md:text-[1.4rem]">
             {person.name}
           </h3>
-          <p className="label mt-1 text-[0.68rem] text-teal-400">{person.role}</p>
+          <p className="label mt-1 text-[0.75rem] text-teal-400 md:text-[0.68rem]">{person.role}</p>
         </div>
       </div>
 
@@ -67,12 +67,14 @@ function PersonCard({ person, delay }: { person: Person; delay: number }) {
       </div>
 
       <div className="border-t border-white/10 pt-5 mt-6">
-        <p className="label text-[0.62rem] text-white/40">Brings</p>
-        <div className="mt-3 flex flex-wrap gap-2">
+        <p className="label text-[0.72rem] text-white/40 md:text-[0.62rem]">Brings</p>
+        {/* min-h reserves space for up to two tag rows so the "Brings" block is
+            the same height across cards and the labels line up. */}
+        <div className="mt-3 flex min-h-[3.75rem] flex-wrap content-start gap-2">
           {person.brings.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-white/10 px-2.5 py-1 text-[0.72rem] text-white/55"
+              className="rounded-full border border-white/10 px-2.5 py-1 text-[0.75rem] text-white/55 md:text-[0.72rem]"
             >
               {tag}
             </span>

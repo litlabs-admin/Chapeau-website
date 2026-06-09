@@ -14,8 +14,8 @@ export function Ticker() {
   return (
     <section className="bg-charcoal py-14 md:py-16" aria-label="Capabilities">
       <Reveal>
-        <p className="shell label mb-9 text-[0.72rem] text-white/45">
-          The full range — strategy, marketing and AI under one roof
+        <p className="shell label mb-9 text-center text-[0.82rem] text-white/80">
+          What we can do
         </p>
       </Reveal>
 
@@ -39,7 +39,7 @@ function Lane({ terms, dot }: { terms: string[]; dot: string }) {
     <div className="flex flex-nowrap items-center">
       {terms.map((term) => (
         <span key={term} className="flex items-center">
-          <span className="label whitespace-nowrap px-6 text-[1rem] text-white/80 md:text-[1.15rem]">
+          <span className="label whitespace-nowrap px-3 text-[1rem] text-white/80 md:px-6 md:text-[1.15rem]">
             {term}
           </span>
           <span className={`${dot} text-lg leading-none`} aria-hidden="true">

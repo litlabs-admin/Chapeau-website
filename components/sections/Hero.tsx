@@ -19,7 +19,7 @@ export function Hero() {
           <Label>The Chapeau Collective</Label>
 
           <div className="mt-5">
-            <RotatingHeadline pairs={hero.rotation} />
+            <RotatingHeadline lead={hero.lead} words={hero.words} />
           </div>
 
           <div className="mx-auto mt-6 max-w-xl space-y-3.5 md:mx-0">
@@ -50,10 +50,10 @@ export function Hero() {
             className="aspect-[5/6] w-full sm:aspect-[16/11] md:aspect-auto md:h-full md:min-h-[420px]"
           >
             <div className="flex h-full flex-col justify-end p-7 md:p-9">
-              <p className="label text-[0.72rem] text-white/70">
+              <p className="label text-xs text-white/70 md:text-[0.72rem]">
                 Senior direction · Practical delivery
               </p>
-              <p className="mt-2 max-w-[15rem] text-[1.35rem] font-medium leading-snug text-white">
+              <p className="mt-2 max-w-[15rem] text-base font-medium leading-snug text-white md:text-[1.35rem]">
                 One joined-up view of growth.
               </p>
             </div>
@@ -63,21 +63,21 @@ export function Hero() {
 
       {/* Value strip */}
       <div className="border-y border-charcoal/10">
-        <div className="shell flex flex-col gap-4 py-5 md:flex-row md:items-center md:gap-8 md:py-6">
-          <p className="label shrink-0 text-[0.74rem] text-slate">
+        <div className="shell flex flex-col items-center gap-4 py-6 text-center md:py-8">
+          <p className="label text-[0.74rem] text-slate">
             {valueStrip.lead}
           </p>
-          <ul className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <ul className="flex flex-wrap justify-center items-center gap-x-6 gap-y-3">
             {valueStrip.items.map((item, i) => (
               <Reveal as="li" key={item} delay={i * 0.06} y={8}>
                 <span className="flex items-center gap-6">
                   {i > 0 && (
                     <span
-                      className="hidden h-1 w-1 rounded-full bg-gold md:block"
+                      className="h-1 w-1 rounded-full bg-gold"
                       aria-hidden="true"
                     />
                   )}
-                  <span className="text-[0.95rem] font-medium text-charcoal">
+                  <span className="text-sm font-medium text-charcoal md:text-[0.95rem]">
                     {item}
                   </span>
                 </span>

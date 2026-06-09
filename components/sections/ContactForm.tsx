@@ -124,7 +124,7 @@ export function ContactForm() {
             id="option"
             name="option"
             defaultValue={optionChoices[3]}
-            className={cn(fieldBase, "mt-2 border-charcoal/15")}
+            className={cn(fieldBase, "field-select mt-2 border-charcoal/15 hover:border-charcoal/30")}
           >
             {optionChoices.map((o) => (
               <option key={o}>{o}</option>
@@ -137,7 +137,7 @@ export function ContactForm() {
             id="contactMethod"
             name="contactMethod"
             defaultValue={contactMethods[0]}
-            className={cn(fieldBase, "mt-2 border-charcoal/15")}
+            className={cn(fieldBase, "field-select mt-2 border-charcoal/15 hover:border-charcoal/30")}
           >
             {contactMethods.map((m) => (
               <option key={m}>{m}</option>
@@ -146,13 +146,13 @@ export function ContactForm() {
         </div>
       </div>
 
-      <div className="mt-7 flex flex-wrap items-center gap-4">
+      <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
         <button
           type="submit"
           disabled={status === "submitting"}
           className="label inline-flex min-h-[48px] items-center justify-center rounded-full bg-charcoal px-8 text-[0.82rem] text-white transition-all duration-300 ease-calm hover:bg-teal-800 disabled:opacity-60"
         >
-          {status === "submitting" ? "Sending…" : "Start a conversation"}
+          {status === "submitting" ? "Sending…" : "Let's talk"}
         </button>
         {status === "error" && !Object.keys(errors).length && (
           <p className="text-[0.9rem] text-red-600">
@@ -174,7 +174,7 @@ function FieldLabel({
   required?: boolean;
 }) {
   return (
-    <label htmlFor={htmlFor} className="label text-[0.66rem] text-slate">
+    <label htmlFor={htmlFor} className="label text-[0.75rem] text-slate md:text-[0.66rem]">
       {children}
       {required && <span className="ml-1 text-teal-600">*</span>}
     </label>

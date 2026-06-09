@@ -23,14 +23,14 @@ export default function ContactPage() {
 
       <section className="pb-24 pt-12 md:pb-32 md:pt-16">
         <Container>
-          {/* Steps — horizontal 3-column strip */}
-          <Reveal>
+          {/* Steps — horizontal 3-column strip, centered */}
+          <Reveal className="text-center">
             <Label>{whatNext.eyebrow}</Label>
             <ol className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3">
               {whatNext.steps.map((step, i) => (
                 <li
                   key={step}
-                  className="flex flex-col gap-3 rounded-xl border border-charcoal/10 bg-charcoal/[0.02] p-6"
+                  className="flex flex-col items-center gap-3 rounded-xl border border-charcoal/10 bg-charcoal/[0.02] p-6 text-center"
                 >
                   <span className="label text-[0.9rem] text-teal-600">
                     0{i + 1}

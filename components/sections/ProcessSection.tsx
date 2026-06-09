@@ -55,16 +55,16 @@ export function ProcessSection({
               >
                 {/* Index + title */}
                 <div className="md:col-span-5">
-                  <div className="flex items-start gap-4">
+                  <div className="flex items-start justify-center gap-4 md:justify-start">
                     <span
                       className={cn(
-                        "font-condensed text-[1.5rem] font-semibold leading-none",
+                        "font-condensed text-[1.3rem] font-semibold leading-none md:text-[1.5rem]",
                         dark ? "text-teal-400" : "text-teal-600",
                       )}
                     >
                       {String(startIndex + i).padStart(2, "0")}
                     </span>
-                    <h3 className="text-[1.4rem] font-semibold leading-tight tracking-[-0.02em] md:text-[1.6rem]">
+                    <h3 className="text-center text-[1.2rem] font-semibold leading-tight tracking-[-0.02em] md:text-left md:text-[1.6rem]">
                       {step.title}
                     </h3>
                   </div>
@@ -74,7 +74,7 @@ export function ProcessSection({
                 <div className="md:col-span-7">
                   <div
                     className={cn(
-                      "space-y-3.5 leading-relaxed",
+                      "space-y-3.5 text-center leading-relaxed md:text-left",
                       dark ? "text-white/70" : "text-slate",
                     )}
                   >
@@ -97,7 +97,7 @@ export function ProcessSection({
                         >
                           <p
                             className={cn(
-                              "label text-[0.66rem]",
+                              "label text-[0.75rem] md:text-[0.66rem]",
                               dark ? "text-teal-400" : "text-teal-700",
                             )}
                           >
@@ -105,7 +105,7 @@ export function ProcessSection({
                           </p>
                           <p
                             className={cn(
-                              "mt-2 text-[0.92rem] leading-relaxed",
+                              "mt-2 text-sm leading-relaxed md:text-[0.92rem]",
                               dark ? "text-white/65" : "text-slate",
                             )}
                           >

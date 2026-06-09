@@ -13,27 +13,27 @@ export type Person = {
 
 export const collectiveHero = {
   eyebrow: "The Collective",
-  title: "Senior people and practical builders around the same table.",
-  intro:
-    "Chapeau is a tip of the hat to the people who have already taken the risk. You have built the business, earned the trust and created the foundation.",
+  title: "A Collective in the room when growth needs more than one skill.",
+  intro: [
+    "Chapeau is a tip of the hat to the people who have already taken the risk.",
+    "You have built the business, earned trust and created something with value. The next stage usually asks for more than one kind of support.",
+    "Sharper direction. Better marketing. Stronger systems. Practical AI. Clearer campaigns. Useful tools. People who can turn decisions into progress.",
+    "That is why Chapeau works as a collective.",
+  ],
 };
 
 export const whyCollective = {
   eyebrow: "Why the collective exists",
-  lead: [
-    "The next stage often needs more than reputation, referrals and word of mouth. It needs sharper direction, better marketing, practical AI support and people who can help move the work.",
-    "Growth rarely depends on one isolated thing.",
-    "That is why Chapeau works as a collective.",
-  ],
+  lead: ["Growth rarely depends on one isolated thing."],
   examples: [
-    "A website might need clearer positioning.",
-    "A campaign might need better follow-up.",
-    "An AI idea might need workflow design.",
-    "A marketing plan might need stronger commercial logic.",
-    "A product launch might need user education, content, CRM and automation working together.",
+    "A website might need clearer positioning behind it.",
+    "A campaign might need better data.",
+    "A CRM might need a cleaner sales process.",
+    "An AI workflow might need sharper thinking before it gets built.",
+    "A good idea might need strategy, copy, design, automation and delivery all moving together.",
   ],
   close:
-    "Chapeau brings the right people into the work early, so strategy, marketing, AI and delivery are not treated as separate conversations. The aim is simple: set the direction, build what is needed and keep the work moving.",
+    "Chapeau brings the right mix of people around the problem. You get senior thinking, practical delivery and joined-up support without having to hire a whole team or manage a pile of disconnected suppliers. The point is simple — when the problem crosses strategy, marketing, sales, systems or AI, the people solving it should be connected too.",
   signature: "Senior direction. Practical delivery. One joined-up view of growth.",
 };
 

@@ -1,11 +1,13 @@
+import Image from "next/image";
 import { logoStrip } from "@/lib/content/home";
 import { Marquee } from "@/components/motion/Marquee";
 import { Reveal } from "@/components/motion/Reveal";
 
 /**
- * Trust strip — client names as a slow, wrapping marquee. Set as confident
- * wordmarks (no fake logo lockups) in charcoal on white. Real client logos can
- * drop in later; the marquee handles any count and wraps neatly on mobile.
+ * Trust strip — real client logos as a slow, wrapping marquee. Rendered muted
+ * (grey + low opacity) on white, lifting to full colour on hover. The marquee
+ * handles any count and wraps neatly on mobile, so more logos drop in via the
+ * logoStrip data without touching this component.
  */
 export function LogoMarquee() {
   return (
@@ -14,19 +16,29 @@ export function LogoMarquee() {
       className="border-b border-charcoal/10 bg-white py-9 md:py-11"
     >
       <Reveal>
-        <p className="shell label mb-7 text-center text-[0.72rem] text-slate">
+        <p className="shell label mb-7 text-center text-xs text-slate md:text-[0.72rem]">
           Trusted by growing businesses and service-led teams
         </p>
       </Reveal>
-      <Marquee speed={48} itemClassName="items-center">
-        {logoStrip.map((name) => (
-          <span
-            key={name}
-            className="mx-7 whitespace-nowrap text-[1.35rem] font-medium tracking-[-0.02em] text-charcoal/35 transition-colors duration-300 hover:text-charcoal md:mx-10 md:text-[1.6rem]"
-          >
-            {name}
-          </span>
-        ))}
+      <Marquee speed={90} itemClassName="items-center">
+        {/*
+         * Repeat the set so one marquee track is wider than the viewport — with
+         * only a handful of logos a single track wouldn't fill the screen and the
+         * loop would show a gap instead of running seamlessly.
+         */}
+        {Array.from({ length: 4 }).flatMap((_, rep) =>
+          logoStrip.map((logo) => (
+            <Image
+              key={`${logo.src}-${rep}`}
+              src={logo.src}
+              alt={rep === 0 ? logo.alt : ""}
+              aria-hidden={rep === 0 ? undefined : true}
+              width={logo.width}
+              height={logo.height}
+              className="mx-7 h-7 w-auto opacity-50 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 md:mx-10 md:h-9"
+            />
+          )),
+        )}
       </Marquee>
     </section>
   );

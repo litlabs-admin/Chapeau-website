@@ -1,3 +1,4 @@
+import React from "react";
 import { quoteProof, type QuoteProof as Quote } from "@/lib/content/examples";
 import { Label } from "@/components/ui/Label";
 import { Reveal } from "@/components/motion/Reveal";
@@ -20,7 +21,7 @@ export function QuoteProof() {
 
         <div className="mt-14 grid gap-6 md:mt-16 lg:grid-cols-3">
           {quoteProof.map((q, i) => (
-            <QuoteCard key={q.id} quote={q} delay={i * 0.08} />
+            <QuoteCard key={q.id} quote={q} delay={i * 0.08} index={i} />
           ))}
         </div>
       </div>
@@ -28,14 +29,16 @@ export function QuoteProof() {
   );
 }
 
-function QuoteCard({ quote, delay }: { quote: Quote; delay: number }) {
+function QuoteCard({ quote, delay, index }: { quote: Quote; delay: number; index: number }) {
+  const isMiddle = index === 1;
   return (
     <Reveal
       delay={delay}
-      className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition-colors duration-300 ease-calm hover:border-teal-400/40 md:p-8"
+      className={`card-glow relative flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-300 ease-calm hover:border-white/30 hover:bg-white/[0.07] sm:p-6 md:p-8${isMiddle ? " card-glow-gold" : ""}`}
+      style={{ "--card-glow-bg": "#111820" } as React.CSSProperties}
     >
       <span
-        className="font-condensed text-5xl leading-[0.6] text-gold"
+        className="font-condensed text-4xl leading-[0.6] text-gold md:text-5xl"
         aria-hidden="true"
       >
         &ldquo;

@@ -20,7 +20,7 @@ export function FinalCTA() {
             <h2 className="text-[clamp(2.1rem,4.6vw,3.6rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-white">
               {site.finalCta.heading}
             </h2>
-            <p className="mt-4 text-xl text-white/70 md:text-2xl">
+            <p className="mt-4 text-lg text-white/70 md:text-2xl">
               {site.finalCta.line}
             </p>
             <div className="mt-9 flex flex-wrap items-center justify-center gap-x-7 gap-y-4">
@@ -29,7 +29,7 @@ export function FinalCTA() {
               </Button>
               <a
                 href={`mailto:${site.email}`}
-                className="label text-[0.8rem] text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline"
+                className="label text-sm text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline md:text-[0.8rem]"
               >
                 {site.email}
               </a>

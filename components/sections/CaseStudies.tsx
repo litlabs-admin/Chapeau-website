@@ -21,8 +21,7 @@ export function CaseStudies() {
             Work shaped by the problem, measured by the outcome.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate">
-            From MSPs and security providers to analytics platforms, the work
-            changes depending on what needs to move.
+            Selected Case Studies
           </p>
         </Reveal>
 
@@ -61,13 +60,14 @@ function CaseRow({
           src={cs.image}
           alt={cs.imageAlt}
           overlay={cs.overlay}
+          photo
           className="aspect-[16/11] w-full"
         >
-          <div className="flex h-full items-start justify-between p-6 md:p-8">
-            <span className="label rounded-full border border-white/25 px-3 py-1 text-[0.66rem] text-white/85 backdrop-blur-sm">
+          <div className="flex h-full items-start justify-between p-5 sm:p-6 md:p-8">
+            <span className="label rounded-full border border-white/25 px-3 py-1 text-[0.75rem] text-white/85 backdrop-blur-sm md:text-[0.66rem]">
               {cs.type}
             </span>
-            <span className="label text-[2.6rem] font-semibold leading-none text-white/15">
+            <span className="label text-[1.8rem] font-semibold leading-none text-white/15 md:text-[2.6rem]">
               0{index + 1}
             </span>
           </div>
@@ -82,8 +82,8 @@ function CaseRow({
         </h3>
         <p className="mt-5 text-center leading-relaxed text-slate md:text-left">{cs.context}</p>
 
-        <div className="mt-7 border-l-2 border-teal-600 pl-5">
-          <p className="label text-[0.68rem] text-slate">What Chapeau enabled</p>
+        <div className="mt-7 border-l-2 border-teal-600 pl-4 md:pl-5">
+          <p className="label text-[0.75rem] text-slate md:text-[0.68rem]">What Chapeau enabled</p>
           <p className="mt-2 font-medium leading-relaxed text-charcoal">
             {cs.enabled}
           </p>

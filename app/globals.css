@@ -56,6 +56,20 @@
     @apply font-condensed uppercase tracking-label;
     font-weight: 500;
   }
+
+  /* Custom select — native arrow removed, replaced with a calm teal chevron so
+     dropdowns match the rest of the form rather than each browser's default. */
+  .field-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2305737d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.85rem center;
+    background-size: 1.1rem;
+    padding-right: 2.6rem;
+    cursor: pointer;
+  }
 }
 
 @layer utilities {
@@ -109,6 +123,75 @@
       transparent
     );
   }
+}
+
+/* Traveling border glow — a spinning conic-gradient arc orbits the card edge.
+   Add `.card-glow` to a `relative` element and set:
+     --card-glow-bg     background colour that fills the interior (hides the arc centre)
+     --card-glow-radius inner border-radius of the ::after cover (card-radius minus 1px)
+   Defaults: navy bg, rounded-2xl radius. For a gold arc also add .card-glow-gold. */
+@keyframes glow-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.card-glow {
+  overflow: hidden;
+}
+
+/* Spinning arc — centred, 2× the card size so corners always stay inside */
+.card-glow::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  aspect-ratio: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    from 0deg,
+    transparent 325deg,
+    rgba(5, 195, 195, 0.95) 348deg,
+    rgba(5, 195, 195, 0.6) 360deg,
+    transparent 35deg
+  );
+  animation: glow-spin 4s linear infinite;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Gold arc variant */
+.card-glow-gold::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent 325deg,
+    rgba(165, 135, 105, 1.0) 348deg,
+    rgba(165, 135, 105, 0.65) 360deg,
+    transparent 35deg
+  );
+}
+
+/* Interior cover — clips the arc to the 1px ring at the card edge.
+   Override --card-glow-bg and --card-glow-radius to match each card surface. */
+.card-glow::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: var(--card-glow-radius, calc(1rem - 1px));
+  background: var(--card-glow-bg, #0D1520);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card-glow > * {
+  position: relative;
+  z-index: 1;
+}
+
+.card-glow:hover::before {
+  opacity: 1;
 }
 
 /* Typewriter caret blink — calm, two-step (no fade) so it reads as a cursor. */

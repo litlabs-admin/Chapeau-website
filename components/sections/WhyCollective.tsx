@@ -41,7 +41,7 @@ export function WhyCollective() {
             ))}
           </ul>
           <p className="mt-7 leading-relaxed text-white/65">{whyCollective.close}</p>
-          <p className="mt-6 font-condensed text-[1.25rem] font-semibold uppercase leading-snug tracking-[0.01em] text-teal-400">
+          <p className="mt-6 font-condensed text-[1.1rem] font-semibold uppercase leading-snug tracking-[0.01em] text-teal-400 md:text-[1.25rem]">
             {whyCollective.signature}
           </p>
         </Reveal>

@@ -21,7 +21,7 @@ export default function HowWeWorkPage() {
         eyebrow={howWeWorkHero.eyebrow}
         title={howWeWorkHero.title}
         intro={howWeWorkHero.intro}
-        highlight={["AI"]}
+        highlight={["Sales"]}
       />
       <ProcessSection
         eyebrow={beforeWork.eyebrow}
