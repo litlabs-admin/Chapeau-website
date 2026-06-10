@@ -4,10 +4,10 @@ import { Marquee } from "@/components/motion/Marquee";
 import { Reveal } from "@/components/motion/Reveal";
 
 /**
- * Trust strip — real client logos as a slow, wrapping marquee. Rendered muted
- * (grey + low opacity) on white, lifting to full colour on hover. The marquee
- * handles any count and wraps neatly on mobile, so more logos drop in via the
- * logoStrip data without touching this component.
+ * Trust strip — real client logos as a slow, wrapping marquee. Rendered in full
+ * colour on white. The marquee handles any count and wraps neatly on mobile, so
+ * more logos drop in via the logoStrip data without touching this component, and
+ * it keeps scrolling under the cursor (no pause on hover).
  */
 export function LogoMarquee() {
   return (
@@ -20,7 +20,7 @@ export function LogoMarquee() {
           Trusted by growing businesses and service-led teams
         </p>
       </Reveal>
-      <Marquee speed={90} itemClassName="items-center">
+      <Marquee speed={90} itemClassName="items-center" pauseOnHover={false}>
         {/*
          * Repeat the set so one marquee track is wider than the viewport — with
          * only a handful of logos a single track wouldn't fill the screen and the
@@ -35,7 +35,7 @@ export function LogoMarquee() {
               aria-hidden={rep === 0 ? undefined : true}
               width={logo.width}
               height={logo.height}
-              className="mx-7 h-7 w-auto opacity-50 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 md:mx-10 md:h-9"
+              className="mx-7 h-7 w-auto md:mx-10 md:h-9"
             />
           )),
         )}
