@@ -10,9 +10,9 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 
 /**
- * Header — clean, calm, premium. White background, logo left, nav right, CTA
- * right, thin divider. Sticky with a subtle shadow only after scroll. No
- * dropdowns, no busy animation.
+ * Header.
+ * Real white background, charcoal navigation, subtle teal active state.
+ * Sticky with a light divider and a small shadow after scroll.
  */
 export function Header() {
   const pathname = usePathname();
@@ -26,13 +26,12 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the mobile menu on route change.
   useEffect(() => setOpen(false), [pathname]);
 
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 bg-white/90 backdrop-blur-md transition-all duration-300 ease-calm",
+        "sticky top-0 z-50 bg-[#FFFFFF]/95 backdrop-blur-md transition-all duration-300 ease-calm",
         scrolled
           ? "border-b border-charcoal/10 shadow-[0_1px_24px_-12px_rgba(17,24,32,0.4)]"
           : "border-b border-charcoal/5",
@@ -49,6 +48,7 @@ export function Header() {
               item.href === "/"
                 ? pathname === "/"
                 : pathname.startsWith(item.href);
+
             return (
               <Link
                 key={item.href}
@@ -59,9 +59,10 @@ export function Header() {
                 )}
               >
                 {item.label}
+
                 <span
                   className={cn(
-                    "absolute -bottom-1.5 left-0 h-px bg-teal-600 transition-all duration-300 ease-calm",
+                    "absolute -bottom-1.5 left-0 h-px bg-teal-500 transition-all duration-300 ease-calm",
                     active ? "w-full" : "w-0",
                   )}
                 />
@@ -78,7 +79,7 @@ export function Header() {
 
         <button
           type="button"
-          className="flex h-11 w-11 items-center justify-center md:hidden"
+          className="flex h-11 w-11 items-center justify-center text-charcoal md:hidden"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
@@ -106,26 +107,40 @@ export function Header() {
         </button>
       </div>
 
-      {/* Mobile panel */}
       <div
         className={cn(
-          "overflow-hidden border-t border-charcoal/5 bg-white md:hidden",
+          "overflow-hidden border-t border-charcoal/5 bg-[#FFFFFF] md:hidden",
           "transition-[max-height,opacity] duration-300 ease-calm",
           open ? "max-h-96 opacity-100" : "max-h-0 opacity-0",
         )}
       >
         <nav className="shell flex flex-col gap-1 py-4" aria-label="Mobile">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="py-2.5 text-lg text-charcoal"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {nav.map((item) => {
+            const active =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname.startsWith(item.href);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "py-2.5 text-lg transition-colors duration-200",
+                  active ? "text-charcoal" : "text-slate hover:text-charcoal",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
+
           <div className="pt-3">
-            <Button href={site.primaryCta.href} variant="primary" className="w-full">
+            <Button
+              href={site.primaryCta.href}
+              variant="primary"
+              className="w-full"
+            >
               {site.primaryCta.label}
             </Button>
           </div>
