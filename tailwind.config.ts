@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 /**
  * Chapeau design tokens.
- * Teal carries the brand. Charcoal holds the weight. Gold/copper is the glint.
+ * Teal carries the brand. Charcoal holds the weight. Magenta is the accent glint.
  * Digital lavender gives the whitespace a softer canvas.
  * Colour appears in controlled flashes, never as a loud gradient brand.
  */
@@ -31,8 +31,8 @@ const config: Config = {
           400: "#2DFFFF", // light cyan highlight
         },
 
-        // Gold / copper: accents only.
-        gold: "#A58769", // whisky gold
+        // Accent system: the gold token now carries magenta.
+        gold: "#FF00FF", // magenta accent
         copper: "#B97D4B", // antique copper
         "copper-dark": "#55370F",
 
@@ -58,7 +58,7 @@ const config: Config = {
         "teal-dark":
           "linear-gradient(140deg, #040404 0%, #0D1520 45%, #005A5A 80%, #00C3C3 130%)",
         "gold-premium":
-          "linear-gradient(120deg, #A58769 0%, #B97D4B 55%, #E1CDC3 100%)",
+          "linear-gradient(120deg, #B000B0 0%, #FF00FF 55%, #E6E6FA 100%)",
       },
       keyframes: {
         "marquee-left": {
