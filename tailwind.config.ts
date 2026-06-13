@@ -3,7 +3,8 @@ import type { Config } from "tailwindcss";
 /**
  * Chapeau design tokens.
  * Teal carries the brand. Charcoal holds the weight. Gold/copper is the glint.
- * White space gives confidence. Colour appears in controlled flashes, never as a loud gradient brand.
+ * Digital lavender gives the whitespace a softer canvas.
+ * Colour appears in controlled flashes, never as a loud gradient brand.
  */
 const config: Config = {
   content: [
@@ -14,8 +15,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Neutrals: white means white, charcoal over black.
-        white: "#FFFFFF",
+        // Neutrals: digital lavender replaces pure white as the main canvas.
+        white: "#E6E6FA",
         charcoal: "#111820",
         navy: "#0D1520", // deep navy charcoal
         ink: "#040404", // near-black
