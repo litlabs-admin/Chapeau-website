@@ -2,10 +2,9 @@ import type { Config } from "tailwindcss";
 
 /**
  * Chapeau design tokens.
- * Boutique jade carries the brand.
- * Charcoal carries structure and readability.
- * Digital lavender gives the site a softer canvas.
- * Gold is used for fine detailing.
+ * Teal now drives the base visual system.
+ * Charcoal protects readability.
+ * Gold is used for fine boutique detail.
  * Magenta is used as a controlled accent spark.
  */
 const config: Config = {
@@ -18,20 +17,20 @@ const config: Config = {
     extend: {
       colors: {
         // Canvas and structure.
-        white: "#E6E6FA", // digital lavender canvas
+        white: "#DFFFFB", // strong pale teal canvas
         charcoal: "#111820", // main text and structure
         navy: "#0D1520", // deep midnight surface
         ink: "#040404", // near-black
 
-        // Boutique jade / teal scale.
-        // Built around #01C8C4, with #00FFFF kept as the brighter digital highlight.
+        // Teal system.
+        // Built around a boutique jade teal, with cyan held as the brightest highlight.
         teal: {
           900: "#003B3A", // deepest jade
-          800: "#006B68", // dark jade teal
-          700: "#009996", // strong jade teal
-          600: "#01B8B3", // bright boutique teal
-          500: "#01C8C4", // main brand jade
-          400: "#00FFFF", // digital cyan highlight
+          800: "#005A58", // dark jade teal
+          700: "#007F7B", // strong jade teal
+          600: "#00AFA8", // bold boutique teal
+          500: "#01C8C4", // main brand teal
+          400: "#00FFFF", // bright cyan highlight
         },
 
         // Accent system.
@@ -42,9 +41,9 @@ const config: Config = {
         fuchsia: "#FF00FF", // bright accent, use rarely
 
         // Neutral support.
-        slate: "#374B55", // muted blue-grey body support
-        glass: "#877D73", // soft grey support
-        stone: "#E1CDC3", // warm stone support
+        slate: "#374B55",
+        glass: "#877D73",
+        stone: "#BDEDEA", // soft teal stone support
         paper: "#FFFFFF", // true white, available when needed
       },
       fontFamily: {
@@ -58,17 +57,17 @@ const config: Config = {
         shell: "1280px",
       },
       backgroundImage: {
-        // Controlled gradients for media panels, overlays, ticker and CTA sections.
+        // Stronger gradients for media panels, overlays, ticker and CTA sections.
         "teal-primary":
-          "linear-gradient(135deg, #003B3A 0%, #006B68 34%, #01B8B3 72%, #00FFFF 100%)",
+          "linear-gradient(135deg, #003B3A 0%, #005A58 30%, #00AFA8 70%, #01C8C4 100%)",
         "teal-dark":
-          "linear-gradient(140deg, #040404 0%, #0D1520 42%, #003B3A 78%, #01C8C4 130%)",
+          "linear-gradient(140deg, #040404 0%, #0D1520 36%, #003B3A 72%, #01C8C4 128%)",
         "gold-premium":
           "linear-gradient(120deg, #8A6B24 0%, #C8A24A 55%, #F1DFA7 100%)",
         "boutique-glow":
-          "linear-gradient(135deg, #E6E6FA 0%, #D9FFFF 38%, #01C8C4 72%, #C01872 130%)",
+          "linear-gradient(135deg, #DFFFFB 0%, #A8FFF8 36%, #01C8C4 72%, #C01872 130%)",
         "magenta-teal":
-          "linear-gradient(135deg, #C01872 0%, #6D2F68 38%, #006B68 72%, #01C8C4 100%)",
+          "linear-gradient(135deg, #C01872 0%, #6D2F68 34%, #005A58 72%, #01C8C4 100%)",
       },
       keyframes: {
         "marquee-left": {
