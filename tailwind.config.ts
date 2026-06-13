@@ -2,8 +2,9 @@ import type { Config } from "tailwindcss";
 
 /**
  * Chapeau design tokens.
- * Cyan teal now drives the visual system at full strength.
- * Charcoal protects structure and readability.
+ * White is now white again.
+ * Teal stays vivid and deliberate.
+ * Charcoal protects readability.
  * Gold is used for boutique detailing.
  * Magenta is used as the bold counterpoint.
  */
@@ -16,35 +17,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Base and structure.
-        white: "#00FFFF", // full-strength cyan teal canvas
-        charcoal: "#111820", // main text and structure
-        navy: "#071115", // deep midnight surface
-        ink: "#040404", // near-black
+        white: "#FFFFFF",
+        paper: "#FFFFFF",
 
-        // Cyan teal system.
-        // Built around #00FFFF as the true base colour.
+        charcoal: "#111820",
+        navy: "#071115",
+        ink: "#040404",
+
         teal: {
-          900: "#003333", // deepest teal
-          800: "#005C5C", // dark teal
-          700: "#008A8A", // strong teal
-          600: "#00C7C7", // vivid teal
-          500: "#00FFFF", // base cyan teal
-          400: "#4DFFFF", // bright cyan highlight
+          900: "#003333",
+          800: "#005C5C",
+          700: "#008A8A",
+          600: "#00C7C7",
+          500: "#00FFFF",
+          400: "#4DFFFF",
         },
 
-        // Accent system.
-        gold: "#D4AF37", // boutique gold detail
-        copper: "#B97D4B", // warm copper support
+        gold: "#D4AF37",
+        copper: "#B97D4B",
         "copper-dark": "#55370F",
-        magenta: "#C01872", // rich magenta accent
-        fuchsia: "#FF00FF", // full-strength magenta, use for punch
+        magenta: "#C01872",
+        fuchsia: "#FF00FF",
 
-        // Support colours.
-        slate: "#203943", // dark blue-grey support
-        glass: "#006F6F", // teal glass support
-        stone: "#00C7C7", // vivid teal support
-        paper: "#FFFFFF", // true white, available when needed
+        slate: "#203943",
+        glass: "#006F6F",
+        stone: "#00C7C7",
       },
       fontFamily: {
         sans: ["var(--font-hanken)", "system-ui", "sans-serif"],
@@ -57,7 +54,6 @@ const config: Config = {
         shell: "1280px",
       },
       backgroundImage: {
-        // Strong gradients for media panels, overlays, ticker and CTA sections.
         "teal-primary":
           "linear-gradient(135deg, #003333 0%, #005C5C 28%, #00C7C7 68%, #00FFFF 100%)",
         "teal-dark":
@@ -84,7 +80,6 @@ const config: Config = {
         "marquee-right": "marquee-right linear infinite",
       },
       transitionTimingFunction: {
-        // Calm, premium easing. Nothing bouncy.
         calm: "cubic-bezier(0.22, 1, 0.36, 1)",
       },
     },
