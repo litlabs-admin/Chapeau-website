@@ -2,10 +2,10 @@ import type { Config } from "tailwindcss";
 
 /**
  * Chapeau design tokens.
- * Teal now drives the base visual system.
- * Charcoal protects readability.
- * Gold is used for fine boutique detail.
- * Magenta is used as a controlled accent spark.
+ * Cyan teal now drives the visual system at full strength.
+ * Charcoal protects structure and readability.
+ * Gold is used for boutique detailing.
+ * Magenta is used as the bold counterpoint.
  */
 const config: Config = {
   content: [
@@ -16,34 +16,34 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Canvas and structure.
-        white: "#DFFFFB", // strong pale teal canvas
+        // Base and structure.
+        white: "#00FFFF", // full-strength cyan teal canvas
         charcoal: "#111820", // main text and structure
-        navy: "#0D1520", // deep midnight surface
+        navy: "#071115", // deep midnight surface
         ink: "#040404", // near-black
 
-        // Teal system.
-        // Built around a boutique jade teal, with cyan held as the brightest highlight.
+        // Cyan teal system.
+        // Built around #00FFFF as the true base colour.
         teal: {
-          900: "#003B3A", // deepest jade
-          800: "#005A58", // dark jade teal
-          700: "#007F7B", // strong jade teal
-          600: "#00AFA8", // bold boutique teal
-          500: "#01C8C4", // main brand teal
-          400: "#00FFFF", // bright cyan highlight
+          900: "#003333", // deepest teal
+          800: "#005C5C", // dark teal
+          700: "#008A8A", // strong teal
+          600: "#00C7C7", // vivid teal
+          500: "#00FFFF", // base cyan teal
+          400: "#4DFFFF", // bright cyan highlight
         },
 
         // Accent system.
-        gold: "#C8A24A", // boutique gold detail
+        gold: "#D4AF37", // boutique gold detail
         copper: "#B97D4B", // warm copper support
         "copper-dark": "#55370F",
-        magenta: "#C01872", // controlled magenta accent
-        fuchsia: "#FF00FF", // bright accent, use rarely
+        magenta: "#C01872", // rich magenta accent
+        fuchsia: "#FF00FF", // full-strength magenta, use for punch
 
-        // Neutral support.
-        slate: "#374B55",
-        glass: "#877D73",
-        stone: "#BDEDEA", // soft teal stone support
+        // Support colours.
+        slate: "#203943", // dark blue-grey support
+        glass: "#006F6F", // teal glass support
+        stone: "#00C7C7", // vivid teal support
         paper: "#FFFFFF", // true white, available when needed
       },
       fontFamily: {
@@ -57,17 +57,17 @@ const config: Config = {
         shell: "1280px",
       },
       backgroundImage: {
-        // Stronger gradients for media panels, overlays, ticker and CTA sections.
+        // Strong gradients for media panels, overlays, ticker and CTA sections.
         "teal-primary":
-          "linear-gradient(135deg, #003B3A 0%, #005A58 30%, #00AFA8 70%, #01C8C4 100%)",
+          "linear-gradient(135deg, #003333 0%, #005C5C 28%, #00C7C7 68%, #00FFFF 100%)",
         "teal-dark":
-          "linear-gradient(140deg, #040404 0%, #0D1520 36%, #003B3A 72%, #01C8C4 128%)",
+          "linear-gradient(140deg, #040404 0%, #071115 36%, #003333 70%, #00FFFF 128%)",
         "gold-premium":
-          "linear-gradient(120deg, #8A6B24 0%, #C8A24A 55%, #F1DFA7 100%)",
+          "linear-gradient(120deg, #8A6B24 0%, #D4AF37 55%, #FFE28A 100%)",
         "boutique-glow":
-          "linear-gradient(135deg, #DFFFFB 0%, #A8FFF8 36%, #01C8C4 72%, #C01872 130%)",
+          "linear-gradient(135deg, #00FFFF 0%, #00C7C7 34%, #D4AF37 68%, #FF00FF 128%)",
         "magenta-teal":
-          "linear-gradient(135deg, #C01872 0%, #6D2F68 34%, #005A58 72%, #01C8C4 100%)",
+          "linear-gradient(135deg, #FF00FF 0%, #C01872 32%, #005C5C 70%, #00FFFF 100%)",
       },
       keyframes: {
         "marquee-left": {
