@@ -2,9 +2,11 @@ import type { Config } from "tailwindcss";
 
 /**
  * Chapeau design tokens.
- * Teal carries the brand. Magenta now carries the weight. Charcoal moves into the accent token.
- * Digital lavender gives the whitespace a softer canvas.
- * Colour appears in controlled flashes, never as a loud gradient brand.
+ * Digital lavender gives the site a distinct canvas.
+ * Charcoal carries authority and structure.
+ * Cyan carries digital energy.
+ * Magenta is used as a controlled accent spark.
+ * Colour should feel bold, but still disciplined.
  */
 const config: Config = {
   content: [
@@ -15,31 +17,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Neutrals: digital lavender replaces pure white as the main canvas.
+        // Canvas and structure.
         white: "#E6E6FA",
-        charcoal: "#FF00FF",
-        navy: "#B000B0", // deep magenta
-        ink: "#5A005A", // near-black magenta
+        charcoal: "#111820",
+        navy: "#0D1520",
+        ink: "#040404",
 
-        // Teal scale: brand colour system built from #00FFFF as the base.
+        // Cyan teal scale: built from #00FFFF as the base.
         teal: {
-          900: "#005A5A", // deepest cyan teal
-          800: "#007878", // dark cyan teal
-          700: "#00C3C3", // strong cyan teal
-          600: "#00E1E1", // bright cyan teal
+          900: "#003333", // deepest cyan teal
+          800: "#005A5A", // dark cyan teal
+          700: "#008C8C", // strong teal
+          600: "#00C3C3", // bright teal
           500: "#00FFFF", // base cyan
-          400: "#2DFFFF", // light cyan highlight
+          400: "#66FFFF", // light cyan highlight
         },
 
-        // Accent system: the gold token now carries the old charcoal.
-        gold: "#111820", // charcoal accent
-        copper: "#B97D4B", // antique copper
+        // Accent system.
+        gold: "#FF00FF", // magenta accent
+        copper: "#B97D4B",
         "copper-dark": "#55370F",
 
         // Neutral support.
-        slate: "#374B55", // muted blue-grey
-        glass: "#877D73", // glass grey
-        stone: "#E1CDC3", // warm stone
+        slate: "#374B55",
+        glass: "#877D73",
+        stone: "#E1CDC3",
       },
       fontFamily: {
         sans: ["var(--font-hanken)", "system-ui", "sans-serif"],
@@ -52,13 +54,13 @@ const config: Config = {
         shell: "1280px",
       },
       backgroundImage: {
-        // Controlled, selective gradients for hero media, case overlays, ticker and CTA.
+        // Controlled gradients for media panels, overlays, ticker and CTA sections.
         "teal-primary":
-          "linear-gradient(135deg, #005A5A 0%, #007878 35%, #00C3C3 70%, #00FFFF 100%)",
+          "linear-gradient(135deg, #003333 0%, #005A5A 35%, #00C3C3 72%, #00FFFF 100%)",
         "teal-dark":
-          "linear-gradient(140deg, #5A005A 0%, #B000B0 45%, #FF00FF 80%, #00C3C3 130%)",
+          "linear-gradient(140deg, #040404 0%, #0D1520 42%, #003333 78%, #00C3C3 130%)",
         "gold-premium":
-          "linear-gradient(120deg, #040404 0%, #111820 55%, #E6E6FA 100%)",
+          "linear-gradient(120deg, #111820 0%, #FF00FF 58%, #E6E6FA 100%)",
       },
       keyframes: {
         "marquee-left": {
