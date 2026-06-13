@@ -12,19 +12,20 @@ import { Reveal } from "@/components/motion/Reveal";
 
 /**
  * Hero.
- * Teal background is forced with inline style to bypass Tailwind.
- * Value strip is forced to true white.
+ * Teal is forced with an absolute background layer inside the section.
+ * Content sits above it.
+ * Value strip remains true white.
  */
 export function Hero() {
   return (
-    <section
-      className="relative overflow-hidden pt-8 md:pt-12"
-      style={{ backgroundColor: "#00FFFF" }}
-    >
+    <section className="relative isolate overflow-hidden pt-8 md:pt-12">
       <div
-        className="shell grid items-stretch gap-9 pb-9 md:grid-cols-12 md:gap-12 md:pb-12"
+        className="absolute inset-0 z-0"
         style={{ backgroundColor: "#00FFFF" }}
-      >
+        aria-hidden="true"
+      />
+
+      <div className="shell relative z-10 grid items-stretch gap-9 pb-9 md:grid-cols-12 md:gap-12 md:pb-12">
         {/* Copy */}
         <Reveal className="flex flex-col items-center justify-center text-center md:col-span-6 md:items-start md:text-left">
           <Label>The Chapeau Collective</Label>
@@ -76,7 +77,7 @@ export function Hero() {
 
       {/* Value strip */}
       <div
-        className="border-y border-charcoal/10"
+        className="relative z-10 border-y border-charcoal/10"
         style={{ backgroundColor: "#FFFFFF" }}
       >
         <div className="shell flex flex-col items-center gap-4 py-6 text-center md:py-8">
