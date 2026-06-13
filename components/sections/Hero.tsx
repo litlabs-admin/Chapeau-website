@@ -1,8 +1,13 @@
 import { hero, valueStrip } from "@/lib/content/home";
+
 import { RotatingHeadline } from "@/components/motion/RotatingHeadline";
+
 import { MediaPanel } from "@/components/media/MediaPanel";
+
 import { Button } from "@/components/ui/Button";
+
 import { Label } from "@/components/ui/Label";
+
 import { Reveal } from "@/components/motion/Reveal";
 
 /**
@@ -12,7 +17,7 @@ import { Reveal } from "@/components/motion/Reveal";
  */
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-8 md:pt-12">
+    <section className="relative overflow-hidden bg-teal-500 pt-8 md:pt-12">
       <div className="shell grid items-stretch gap-9 pb-9 md:grid-cols-12 md:gap-12 md:pb-12">
         {/* Copy */}
         <Reveal className="flex flex-col items-center justify-center text-center md:col-span-6 md:items-start md:text-left">
@@ -26,7 +31,7 @@ export function Hero() {
             <p className="text-lg leading-relaxed text-charcoal/90 md:text-xl">
               {hero.support[0]}
             </p>
-            <p className="leading-relaxed text-slate">
+            <p className="leading-relaxed text-charcoal/80">
               {hero.support[1]} {hero.support[2]}
             </p>
           </div>
@@ -62,7 +67,7 @@ export function Hero() {
       </div>
 
       {/* Value strip */}
-      <div className="border-y border-charcoal/10">
+      <div className="border-y border-charcoal/10 bg-white">
         <div className="shell flex flex-col items-center gap-4 py-6 text-center md:py-8">
           <p className="label text-[0.74rem] text-slate">
             {valueStrip.lead}
