@@ -62,7 +62,7 @@ export function Header() {
 
                 <span
                   className={cn(
-                    "absolute -bottom-1.5 left-0 h-px bg-teal-500 transition-all duration-300 ease-calm",
+                    "absolute -bottom-2 left-0 h-0.5 rounded-full bg-teal-500 transition-all duration-300 ease-calm",
                     active ? "w-full" : "w-0",
                   )}
                 />

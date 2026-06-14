@@ -50,7 +50,7 @@ export const hero = {
 };
 
 export const valueStrip = {
-  lead: "Enabling small businesses with",
+  lead: "Enabling businesses with",
   items: [
     "GTM strategy",
     "AI agents and automations",

@@ -22,13 +22,13 @@
   }
 
   ::selection {
-    background-color: #05737d; /* museum teal */
+    background-color: #00ffff;
     color: #ffffff;
   }
 
   /* Calm focus ring — teal, never default blue. */
   :focus-visible {
-    outline: 2px solid #05737d;
+    outline: 2px solid #00ffff;
     outline-offset: 3px;
     border-radius: 2px;
   }
@@ -63,7 +63,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2305737d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2300ffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.85rem center;
     background-size: 1.1rem;
@@ -79,8 +79,8 @@
     background-image:
       radial-gradient(
         120% 120% at 75% 15%,
-        rgba(5, 195, 195, 0.16) 0%,
-        rgba(5, 115, 125, 0) 45%
+        rgba(0, 255, 255, 0.16) 0%,
+        rgba(0, 255, 255, 0) 45%
       ),
       linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
@@ -95,9 +95,9 @@
     background-image: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(165, 135, 105, 0.65) 25%,
-      rgba(225, 205, 195, 0.9) 50%,
-      rgba(165, 135, 105, 0.65) 75%,
+      rgba(255, 0, 255, 0.65) 25%,
+      rgba(230, 230, 250, 0.9) 50%,
+      rgba(255, 0, 255, 0.65) 75%,
       transparent 100%
     );
   }
@@ -152,13 +152,13 @@
   background: conic-gradient(
     from 0deg,
     transparent 325deg,
-    rgba(5, 195, 195, 0.95) 348deg,
-    rgba(5, 195, 195, 0.6) 360deg,
+    rgba(0, 255, 255, 0.95) 348deg,
+    rgba(0, 255, 255, 0.6) 360deg,
     transparent 35deg
   );
   animation: glow-spin 4s linear infinite;
   pointer-events: none;
-  opacity: 0;
+  opacity: 0.35;
   transition: opacity 0.3s ease;
 }
 
@@ -167,8 +167,31 @@
   background: conic-gradient(
     from 0deg,
     transparent 325deg,
-    rgba(165, 135, 105, 1.0) 348deg,
-    rgba(165, 135, 105, 0.65) 360deg,
+    rgba(255, 0, 255, 1.0) 348deg,
+    rgba(255, 0, 255, 0.65) 360deg,
+    transparent 35deg
+  );
+}
+
+
+/* Fuchsia arc variant */
+.card-glow-fuchsia::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent 325deg,
+    rgba(255, 0, 255, 1) 348deg,
+    rgba(255, 0, 255, 0.65) 360deg,
+    transparent 35deg
+  );
+}
+
+/* Teal arc variant */
+.card-glow-teal::before {
+  background: conic-gradient(
+    from 0deg,
+    transparent 325deg,
+    rgba(0, 255, 255, 0.95) 348deg,
+    rgba(0, 255, 255, 0.6) 360deg,
     transparent 35deg
   );
 }

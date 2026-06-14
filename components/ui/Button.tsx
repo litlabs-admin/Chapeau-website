@@ -3,25 +3,20 @@ import { cn } from "@/lib/cn";
 
 type Variant = "primary" | "inverse" | "ghost";
 
-/**
- * Button — charcoal-on-white (primary), white-on-charcoal (inverse), or a
- * link-style ghost with a teal underline. Teal hover/border state throughout.
- * Gold/copper is never used as a full button fill — glint only.
- */
 const base =
   "group inline-flex items-center justify-center gap-2 label text-[0.82rem] " +
   "min-h-[44px] transition-all duration-300 ease-calm select-none";
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-charcoal text-white px-7 rounded-full border border-charcoal " +
-    "hover:bg-teal-800 hover:border-teal-600",
+    "bg-charcoal text-teal-500 px-7 rounded-full border border-charcoal " +
+    "hover:bg-fuchsia hover:text-white hover:border-fuchsia",
   inverse:
     "bg-white text-charcoal px-7 rounded-full border border-white " +
-    "hover:bg-transparent hover:text-white hover:border-teal-400",
+    "hover:bg-charcoal hover:text-teal-500 hover:border-teal-500",
   ghost:
     "text-charcoal px-1 border-b border-charcoal/25 rounded-none pb-1 " +
-    "hover:border-teal-600 hover:text-teal-700",
+    "hover:border-fuchsia hover:text-fuchsia",
 };
 
 const Arrow = () => (

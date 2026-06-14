@@ -1,11 +1,27 @@
-import { chromium } from "playwright";
-const b = await chromium.launch();
-const p = await b.newPage({ viewport: { width: 1440, height: 600 }, deviceScaleFactor: 2 });
-// catch the hero mid-entrance (~280ms in)
-await p.goto("http://localhost:3100/examples", { waitUntil: "domcontentloaded" });
-await p.waitForTimeout(300);
-await p.screenshot({ path: "d:/tmp/ex2_hero_mid.png" });
-// settled state
-await p.waitForTimeout(1400);
-await p.screenshot({ path: "d:/tmp/ex2_hero_settled.png" });
-await b.close(); console.log("ok");
+{
+  "name": "chapeau",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "framer-motion": "^11.11.17",
+    "next": "15.5.19",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "playwright": "^1.60.0",
+    "postcss": "^8.5.10",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
+  }
+}
