@@ -2,7 +2,6 @@ import { site } from "@/lib/content/site";
 import { Button } from "@/components/ui/Button";
 import { Pattern } from "@/components/media/Pattern";
 import { Reveal } from "@/components/motion/Reveal";
-
 /**
  * Final CTA — a controlled teal/charcoal gradient panel with the craft pattern.
  * Approved copy only: "Need more than advice? / Tell us what you want to talk
