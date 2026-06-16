@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, useAnimationControls, useReducedMotion } from "framer-motion";
+import { cn } from "@/lib/cn";
 
 const CALM = [0.22, 1, 0.36, 1] as const;
 const HOLD = 2600; // ms the word rests before changing
@@ -19,9 +20,11 @@ const HIGHLIGHTS = ["#E1C1FF", "#8FCDFF", "#FFD9A8"];
 export function RotatingHeadline({
   lead,
   words,
+  headlineColor = "text-framer-ink",
 }: {
   lead: string;
   words: string[];
+  headlineColor?: string;
 }) {
   const reduce = useReducedMotion();
   const [i, setI] = useState(0);
@@ -81,7 +84,7 @@ export function RotatingHeadline({
   }, [reduce, words.length, hi, wc]);
 
   return (
-    <h1 className="text-center font-display text-[clamp(3.1rem,8.4vw,6.25rem)] font-extrabold uppercase leading-[0.9] tracking-display text-framer-ink">
+    <h1 className={cn("text-center font-display text-[clamp(3.1rem,8.4vw,6.25rem)] font-extrabold uppercase leading-[0.9] tracking-display", headlineColor)}>
       <span className="block">{first}</span>
       <span className="block">{rest}</span>
       <span className="mt-[0.12em] flex justify-center">
@@ -97,7 +100,7 @@ export function RotatingHeadline({
             animate={hi}
           />
           <motion.span
-            className="relative"
+            className="relative text-framer-ink"
             initial={{ opacity: 1 }}
             animate={wc}
           >
