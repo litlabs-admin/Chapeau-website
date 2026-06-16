@@ -1,0 +1,1 @@
+data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 xmlns:xlink=%22http://www.w3.org/1999/xlink%22 viewBox=%220 0 6 6%22 overflow=%22visible%22><path d=%22M 0 3 C 0 1.343 1.343 0 3 0 L 3 0 C 4.657 0 6 1.343 6 3 L 6 3 C 6 4.657 4.657 6 3 6 L 3 6 C 1.343 6 0 4.657 0 3 Z%22 fill=%22rgb(56, 56, 56)%22></path></svg>

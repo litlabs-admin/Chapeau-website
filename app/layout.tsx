@@ -1,21 +1,47 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, Oswald } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { site } from "@/lib/content/site";
 
-const hanken = Hanken_Grotesk({
-  subsets: ["latin"],
+/**
+ * Framer "Echo" type system, self-hosted.
+ * Stack Sans Text (body/UI), Stack Sans Headline (headings), Barlow Condensed
+ * (giant display), Fragment Mono (eyebrow labels). woff2 files live in app/fonts.
+ */
+const stackSansText = localFont({
+  variable: "--font-sans",
   display: "swap",
-  variable: "--font-hanken",
+  src: [
+    { path: "./fonts/StackSansText-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/StackSansText-Medium.woff2", weight: "500", style: "normal" },
+  ],
 });
 
-const oswald = Oswald({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+const stackSansHeadline = localFont({
+  variable: "--font-headline",
   display: "swap",
-  variable: "--font-oswald",
+  src: [
+    { path: "./fonts/StackSansHeadline-Regular.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/StackSansHeadline-Medium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/StackSansHeadline-SemiBold.woff2", weight: "600", style: "normal" },
+  ],
+});
+
+const barlowCondensed = localFont({
+  variable: "--font-display",
+  display: "swap",
+  src: [
+    { path: "./fonts/BarlowCondensed-Bold.woff2", weight: "700", style: "normal" },
+    { path: "./fonts/BarlowCondensed-ExtraBold.woff2", weight: "800", style: "normal" },
+  ],
+});
+
+const fragmentMono = localFont({
+  variable: "--font-mono",
+  display: "swap",
+  src: [{ path: "./fonts/FragmentMono-Regular.woff2", weight: "400", style: "normal" }],
 });
 
 export const metadata: Metadata = {
@@ -39,7 +65,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${hanken.variable} ${oswald.variable}`}>
+    <html
+      lang="en"
+      className={`${stackSansText.variable} ${stackSansHeadline.variable} ${barlowCondensed.variable} ${fragmentMono.variable}`}
+    >
       <body className="min-h-screen overflow-x-hidden bg-white">
         <a
           href="#main"

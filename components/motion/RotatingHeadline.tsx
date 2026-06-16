@@ -1,108 +1,110 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useReducedMotion } from "framer-motion";
+import { motion, useAnimationControls, useReducedMotion } from "framer-motion";
 
-type Phase = "idle" | "typing" | "hold" | "deleting";
-
-const SPEED = {
-  type: 58, // ms per character typed
-  del: 30, // ms per character deleted
-  hold: 1700, // pause on the full word
-};
+const CALM = [0.22, 1, 0.36, 1] as const;
+const HOLD = 2600; // ms the word rests before changing
+// Framer pastel family — the highlight cycles through these per word change.
+const HIGHLIGHTS = ["#E1C1FF", "#8FCDFF", "#FFD9A8"];
 
 /**
- * Hero word rotation — a smooth, subtle typewriter. The lead ("Your Collective
- * for") stays fixed; a single trailing word types in, holds, then backspaces
- * before the next. The word sits in a fixed-width slot reserved from the longest
- * word, so the line never reflows horizontally and the headline height stays
- * constant. A thin teal caret marks the slot while typing. On mobile the lead
- * stays locked on its own line and the rotating word drops below. Reduced motion
- * shows the first word, static.
+ * Hero headline — Framer "Echo" treatment, three lines.
+ * Line 1 = the first lead word ("Your"), line 2 = the remainder ("Collective
+ * for"), line 3 = a rotating word on a lavender highlight. On each change the
+ * highlight sweeps out then back in via scaleX, alternating left→right then
+ * right→left for a subtle, premium wipe (no typewriter). Reduced motion shows
+ * the first word, static.
  */
 export function RotatingHeadline({
   lead,
   words,
-  startDelay = 350,
 }: {
   lead: string;
   words: string[];
-  startDelay?: number;
 }) {
   const reduce = useReducedMotion();
   const [i, setI] = useState(0);
-  const [phase, setPhase] = useState<Phase>("idle");
-  const [len, setLen] = useState(0);
+  const [origin, setOrigin] = useState("left center");
+  const hi = useAnimationControls(); // highlight box
+  const wc = useAnimationControls(); // word text
 
-  const width = Math.max(...words.map((w) => w.length));
-  const current = words[i];
+  const parts = lead.trim().split(/\s+/);
+  const first = parts[0];
+  const rest = parts.slice(1).join(" ");
 
   useEffect(() => {
     if (reduce) return;
-    let t: ReturnType<typeof setTimeout>;
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout>;
+    const wait = (ms: number) =>
+      new Promise<void>((res) => {
+        timer = setTimeout(res, ms);
+      });
 
-    switch (phase) {
-      // Gentle initial beat so the caret reads before the first keystroke.
-      case "idle":
-        t = setTimeout(() => setPhase("typing"), startDelay);
-        break;
-      case "typing":
-        if (len < current.length) {
-          t = setTimeout(() => setLen((n) => n + 1), SPEED.type);
-        } else {
-          t = setTimeout(() => setPhase("hold"), SPEED.hold);
-        }
-        break;
-      case "hold":
-        t = setTimeout(() => setPhase("deleting"), 0);
-        break;
-      case "deleting":
-        if (len > 0) {
-          t = setTimeout(() => setLen((n) => n - 1), SPEED.del);
-        } else {
-          t = setTimeout(() => {
-            setI((n) => (n + 1) % words.length);
-            setPhase("typing");
-          }, SPEED.type);
-        }
-        break;
+    async function run() {
+      // left→right first, then alternate
+      let ltr = true;
+      while (!cancelled) {
+        await wait(HOLD);
+        if (cancelled) break;
+
+        // Clear the current highlight in the sweep direction, fade the word out.
+        setOrigin(ltr ? "right center" : "left center");
+        await Promise.all([
+          hi.start({ scaleX: 0, transition: { duration: 0.42, ease: CALM } }),
+          wc.start({ opacity: 0, transition: { duration: 0.28, ease: CALM } }),
+        ]);
+        if (cancelled) break;
+
+        // Swap the word while the highlight is collapsed, then fill it back in.
+        setI((n) => (n + 1) % words.length);
+        setOrigin(ltr ? "left center" : "right center");
+        hi.set({ scaleX: 0 });
+        await Promise.all([
+          hi.start({ scaleX: 1, transition: { duration: 0.55, ease: CALM } }),
+          wc.start({
+            opacity: 1,
+            transition: { duration: 0.4, ease: CALM, delay: 0.08 },
+          }),
+        ]);
+
+        ltr = !ltr;
+      }
     }
-    return () => clearTimeout(t);
-  }, [phase, len, current.length, words.length, reduce, startDelay]);
 
-  const shown = reduce ? current : current.slice(0, len);
+    run();
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [reduce, words.length, hi, wc]);
 
   return (
-    <h1 className="font-sans font-semibold leading-[1.15] tracking-[-0.03em] text-[clamp(2.75rem,6.2vw,5rem)]">
-      <span className="text-charcoal">{lead}</span>
-      <br className="block md:hidden" />
-      <span className="hidden md:inline"> </span>
-      <Slot ch={width}>
-        <span className="bg-teal-primary bg-clip-text text-transparent">
-          {shown}
+    <h1 className="text-center font-display text-[clamp(3.1rem,8.4vw,6.25rem)] font-extrabold uppercase leading-[0.9] tracking-display text-framer-ink">
+      <span className="block">{first}</span>
+      <span className="block">{rest}</span>
+      <span className="mt-[0.12em] flex justify-center">
+        <span className="relative inline-flex justify-center whitespace-nowrap px-[0.2em] py-[0.02em]">
+          <motion.span
+            aria-hidden="true"
+            className="absolute inset-0 rounded-[0.08em]"
+            style={{
+              transformOrigin: origin,
+              backgroundColor: HIGHLIGHTS[i % HIGHLIGHTS.length],
+            }}
+            initial={{ scaleX: 1 }}
+            animate={hi}
+          />
+          <motion.span
+            className="relative"
+            initial={{ opacity: 1 }}
+            animate={wc}
+          >
+            {words[i]}
+          </motion.span>
         </span>
-        {!reduce && <Caret />}
-      </Slot>
+      </span>
     </h1>
-  );
-}
-
-function Slot({ ch, children }: { ch: number; children: React.ReactNode }) {
-  return (
-    <span
-      className="relative inline-flex items-baseline whitespace-nowrap align-baseline md:[min-width:var(--slot-w)]"
-      style={{ "--slot-w": `${ch}ch` } as React.CSSProperties}
-    >
-      {children}
-    </span>
-  );
-}
-
-function Caret() {
-  return (
-    <span
-      aria-hidden="true"
-      className="ml-[0.06em] inline-block h-[0.82em] w-[2px] translate-y-[0.06em] rounded-full bg-teal-500 align-baseline motion-safe:animate-[caret_1.05s_steps(1)_infinite]"
-    />
   );
 }

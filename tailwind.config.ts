@@ -42,13 +42,33 @@ const config: Config = {
         slate: "#203943",
         glass: "#203943",
         stone: "#E6E6FA",
+
+        // Framer "Echo" palette — used by the redesigned sections.
+        framer: {
+          ink: "#181A1A", // hero headline, dark buttons
+          graphite: "#232323", // body text, Enterprise card
+          mute: "#666666", // subtitles
+          lavender: "#E1C1FF", // pastel accent panel / highlight
+          sky: "#8FCDFF", // pastel accent panel
+          card: "#F7F7F7", // light "Pro" card
+          wash: "#FAFAFA", // inner card surface
+          panel: "#EDECEB", // pricing section base
+          panel2: "#EDEDED", // pricing gradient stop
+          hair: "#A9A9A9", // texture lines
+          feat: "#383838", // feature list text
+        },
       },
       fontFamily: {
-        sans: ["var(--font-hanken)", "system-ui", "sans-serif"],
-        condensed: ["var(--font-oswald)", "var(--font-hanken)", "sans-serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        headline: ["var(--font-headline)", "var(--font-sans)", "sans-serif"],
+        display: ["var(--font-display)", "var(--font-headline)", "sans-serif"],
+        // `condensed` kept as an alias of display so existing usages keep working.
+        condensed: ["var(--font-display)", "var(--font-headline)", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       letterSpacing: {
-        label: "0.18em",
+        label: "0.1em",
+        display: "-0.018em",
       },
       maxWidth: {
         shell: "1280px",

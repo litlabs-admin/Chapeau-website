@@ -2,13 +2,16 @@ import { tickerLanes } from "@/lib/content/home";
 import { Marquee } from "@/components/motion/Marquee";
 import { Reveal } from "@/components/motion/Reveal";
 
-const dotColor = ["text-fuchsia", "text-white", "text-fuchsia"];
+const dotColor = ["text-framer-lavender", "text-framer-sky", "text-framer-lavender"];
 
 export function Ticker() {
   return (
-    <section className="bg-charcoal py-14 md:py-16" aria-label="Capabilities">
+    <section
+      className="border-y border-white/[0.08] bg-framer-ink py-14 md:py-16"
+      aria-label="Capabilities"
+    >
       <Reveal>
-        <p className="shell label mb-9 text-center text-[0.82rem] text-teal-500">
+        <p className="shell label mb-9 text-center text-[0.82rem] text-white/45">
           What we can do
         </p>
       </Reveal>
@@ -33,7 +36,7 @@ function Lane({ terms, dot }: { terms: string[]; dot: string }) {
     <div className="flex flex-nowrap items-center">
       {terms.map((term) => (
         <span key={term} className="flex items-center">
-          <span className="label whitespace-nowrap px-3 text-[1rem] text-teal-500 md:px-6 md:text-[1.15rem]">
+          <span className="label whitespace-nowrap px-3 text-[1rem] text-white/80 md:px-6 md:text-[1.15rem]">
             {term}
           </span>
           <span className={`${dot} text-3xl leading-none`} aria-hidden="true">

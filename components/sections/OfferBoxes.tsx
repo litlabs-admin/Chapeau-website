@@ -3,67 +3,89 @@ import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/cn";
 
-const cardStyles: Record<
-  string,
-  {
-    card: string;
-    glow: string;
-    bestFor: string;
-    check: string;
-    alsoLabel: string;
-    tag: string;
-  }
-> = {
-  "build-sprint": {
-    card:
-      "border-teal-500/50 bg-white/[0.035] hover:border-teal-500/80 [--card-glow-bg:#0B151A]",
-    glow: "card-glow-teal",
-    bestFor: "text-teal-500",
-    check: "text-teal-500",
-    alsoLabel: "text-fuchsia",
-    tag: "border-fuchsia/40 text-fuchsia",
-  },
-  "growth-retainer": {
-    card:
-      "border-fuchsia/50 bg-white/[0.055] hover:border-fuchsia/90 [--card-glow-bg:#10171D]",
-    glow: "card-glow-fuchsia",
-    bestFor: "text-fuchsia",
-    check: "text-fuchsia",
-    alsoLabel: "text-teal-500",
-    tag: "border-teal-500/40 text-teal-500",
-  },
-  "ai-build-lab": {
-    card:
-      "border-teal-400/50 bg-white/[0.025] hover:border-fuchsia/90 [--card-glow-bg:#071115]",
-    glow: "card-glow-fuchsia",
-    bestFor: "text-teal-500",
-    check: "text-teal-500",
-    alsoLabel: "text-fuchsia",
-    tag: "border-fuchsia/40 text-fuchsia",
-  },
+/**
+ * "Need more than advice?" — Framer "Pricing" treatment.
+ * A light panel with a faint triangle texture and a centred two-line heading,
+ * over three engagement cards. The middle "Growth Retainer" takes the dark
+ * featured style (Framer's Enterprise card); the outer two stay light.
+ */
+
+type Tone = {
+  card: string;
+  name: string;
+  line: string;
+  bestForLabel: string;
+  bestFor: string;
+  divider: string;
+  includeLabel: string;
+  bullet: string;
+  feature: string;
+  alsoLabel: string;
+  tag: string;
+  button: "dark" | "light";
+};
+
+const lightTone: Tone = {
+  card: "bg-framer-card border-black/5 text-framer-ink",
+  name: "text-framer-ink",
+  line: "text-framer-mute",
+  bestForLabel: "text-framer-mute",
+  bestFor: "text-framer-graphite",
+  divider: "border-black/10",
+  includeLabel: "text-framer-mute",
+  bullet: "bg-framer-feat",
+  feature: "text-framer-feat",
+  alsoLabel: "text-framer-mute",
+  tag: "border-black/10 text-framer-graphite",
+  button: "dark",
+};
+
+const darkTone: Tone = {
+  card: "bg-framer-graphite border-white/10 text-white",
+  name: "text-white",
+  line: "text-white/70",
+  bestForLabel: "text-white/55",
+  bestFor: "text-white/80",
+  divider: "border-white/15",
+  includeLabel: "text-white/55",
+  bullet: "bg-[#FEFAF3]",
+  feature: "text-[#FEFAF3]",
+  alsoLabel: "text-white/55",
+  tag: "border-white/20 text-white/80",
+  button: "light",
 };
 
 export function OfferBoxes() {
   return (
     <section
-      className="relative overflow-hidden bg-navy py-20 text-white md:py-28"
+      className="relative overflow-hidden bg-framer-panel py-20 md:py-28"
       aria-label="How to work with Chapeau"
     >
-      <div className="pointer-events-none absolute left-[8%] top-16 h-56 w-56 rounded-full bg-teal-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute right-[10%] bottom-16 h-64 w-64 rounded-full bg-fuchsia/10 blur-3xl" />
-      <div className="pointer-events-none absolute left-[18%] bottom-10 h-2 w-28 rounded-full bg-fuchsia" />
+      {/* Framer textures: triangle tiles + a top-down wash */}
+      <div className="pattern-triangle pointer-events-none absolute inset-0" />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-[571px]"
+        style={{
+          background:
+            "linear-gradient(180deg, #EDEDED 52%, rgba(143,205,255,0) 100%)",
+        }}
+      />
 
       <div className="shell relative">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <h2 className="text-[clamp(2.1rem,4.6vw,3.6rem)] font-semibold leading-[1.02] tracking-[-0.03em] text-white">
-            Need more than advice?
+          <p className="label text-[0.72rem] text-framer-mute">Work with Chapeau</p>
+          <h2 className="mt-5 text-[clamp(2rem,4vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-framer-ink">
+            Need more than{" "}
+            <span className="rounded-[0.1em] bg-framer-lavender px-[0.18em]">
+              advice?
+            </span>
           </h2>
-          <p className="mt-4 text-xl leading-relaxed text-white/70 md:text-2xl">
+          <p className="mt-4 text-lg leading-relaxed text-framer-mute">
             Pick your starting point and talk to us.
           </p>
         </Reveal>
 
-        <div className="mt-14 grid gap-4 md:mt-16 md:gap-6 lg:grid-cols-3">
+        <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-6 md:mt-16 lg:grid-cols-3 lg:[grid-template-rows:repeat(6,auto)]">
           {offers.map((offer, i) => (
             <OfferCard key={offer.id} offer={offer} delay={i * 0.08} />
           ))}
@@ -74,85 +96,88 @@ export function OfferBoxes() {
 }
 
 function OfferCard({ offer, delay }: { offer: Offer; delay: number }) {
-  const style = cardStyles[offer.id] ?? cardStyles["build-sprint"];
+  const tone = offer.id === "growth-retainer" ? darkTone : lightTone;
 
   return (
     <Reveal
       delay={delay}
       className={cn(
-        "card-glow group relative flex h-full flex-col rounded-2xl border p-5 transition-all duration-300 ease-calm hover:bg-white/[0.06] sm:p-6 md:p-8",
-        style.card,
-        style.glow,
+        "grid grid-rows-[repeat(6,auto)] gap-y-5 rounded-2xl border p-8 text-center shadow-[0_4px_18px_rgba(0,0,0,0.12)] backdrop-blur-[5px] lg:row-span-6 lg:grid-rows-subgrid lg:gap-y-6",
+        tone.card,
       )}
     >
-      <h3 className="text-center font-condensed text-[1.3rem] font-semibold uppercase tracking-[0.01em] text-white md:text-[1.7rem]">
+      {/* Row 1 — name */}
+      <h3 className={cn("text-[1.4rem] font-semibold", tone.name)}>
         {offer.name}
       </h3>
 
-      <p className="mt-3 min-h-[4.875rem] text-center leading-relaxed text-white/70">
-        {offer.line}
-      </p>
+      {/* Row 2 — description */}
+      <p className={cn("leading-relaxed", tone.line)}>{offer.line}</p>
 
-      <div className="mt-5 text-center">
-        <p className={cn("label text-[0.75rem] md:text-[0.66rem]", style.bestFor)}>
-          Best for
-        </p>
-        <p className="mt-2 min-h-[6.5rem] text-sm leading-relaxed text-white/55 md:text-[0.92rem]">
+      {/* Row 3 — best for */}
+      <div>
+        <p className={cn("label text-[0.62rem]", tone.bestForLabel)}>Best for</p>
+        <p className={cn("mt-2 text-[0.95rem] leading-relaxed", tone.bestFor)}>
           {offer.bestFor}
         </p>
       </div>
 
-      <ul className="mt-5 space-y-2.5">
-        {offer.checklist.map((item) => (
-          <li
-            key={item}
-            className="flex items-start justify-center gap-3 text-[0.95rem] text-white/85"
-          >
-            <Check className={style.check} />
-            {item}
-          </li>
-        ))}
-      </ul>
+      {/* Row 4 — CTA */}
+      <div>
+        <Button
+          href={offer.cta.href}
+          variant={tone.button}
+          withArrow={false}
+          className="w-full"
+        >
+          {offer.cta.label}
+        </Button>
+      </div>
 
-      <div className="mt-6 border-t border-white/10 pt-5 text-center">
-        <p className={cn("label text-[0.72rem] md:text-[0.62rem]", style.alsoLabel)}>
-          Also covers
+      {/* Row 5 — what's included */}
+      <div className={cn("border-t pt-6", tone.divider)}>
+        <p className={cn("label text-[0.62rem]", tone.includeLabel)}>
+          What&apos;s included
         </p>
-        <div className="mt-3 flex flex-wrap justify-center gap-2">
-          {offer.alsoCovers.map((tag) => (
-            <span
-              key={tag}
+        <ul className="mt-4 space-y-3">
+          {offer.checklist.map((item) => (
+            <li
+              key={item}
               className={cn(
-                "rounded-full border px-2.5 py-1 text-[0.75rem] md:text-[0.72rem]",
-                style.tag,
+                "flex items-start justify-center gap-3 text-left text-[0.95rem] leading-snug",
+                tone.feature,
               )}
             >
-              {tag}
+              <span
+                className={cn(
+                  "mt-[0.5em] h-1.5 w-1.5 shrink-0 rounded-full",
+                  tone.bullet,
+                )}
+                aria-hidden="true"
+              />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Row 6 — also covers */}
+      <div className={cn("border-t pt-6", tone.divider)}>
+        <p className={cn("label text-[0.6rem]", tone.alsoLabel)}>Also covers</p>
+        <div className="mt-3 flex flex-wrap justify-center gap-2">
+          {offer.alsoCovers.map((t) => (
+            <span
+              key={t}
+              className={cn(
+                "rounded-full border px-2.5 py-1 text-[0.72rem]",
+                tone.tag,
+              )}
+            >
+              {t}
             </span>
           ))}
         </div>
       </div>
-
-      <div className="mt-auto pt-7">
-        <Button href={offer.cta.href} variant="inverse" className="w-full">
-          {offer.cta.label}
-        </Button>
-      </div>
     </Reveal>
-  );
-}
-
-function Check({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className={cn("mt-0.5 h-4 w-4 shrink-0", className)}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      aria-hidden="true"
-    >
-      <path d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   );
 }

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "inverse" | "ghost";
+type Variant = "primary" | "inverse" | "ghost" | "dark" | "light";
 
 const base =
   "group inline-flex items-center justify-center gap-2 label text-[0.82rem] " +
@@ -17,6 +17,15 @@ const variants: Record<Variant, string> = {
   ghost:
     "text-charcoal px-1 border-b border-charcoal/25 rounded-none pb-1 " +
     "hover:border-fuchsia hover:text-fuchsia",
+
+  // Framer "Echo" buttons — solid dark / solid light pills with an 8px radius.
+  // Stack Sans 500, sentence case (override the mono uppercase `label` base).
+  dark:
+    "bg-framer-ink text-white px-5 rounded-lg border border-framer-ink " +
+    "font-sans font-medium normal-case tracking-normal text-[0.95rem] hover:bg-black",
+  light:
+    "bg-white text-framer-ink px-5 rounded-lg border border-black/5 " +
+    "font-sans font-medium normal-case tracking-normal text-[0.95rem] hover:bg-framer-card",
 };
 
 const Arrow = () => (

@@ -17,8 +17,8 @@
   }
 
   body {
-    @apply bg-white text-charcoal font-sans;
-    font-feature-settings: "ss01", "cv01";
+    @apply bg-white font-sans;
+    color: #181a1a;
   }
 
   ::selection {
@@ -36,7 +36,7 @@
   h1,
   h2,
   h3 {
-    @apply font-sans;
+    @apply font-headline;
     letter-spacing: -0.02em;
     text-wrap: balance;
   }
@@ -51,10 +51,11 @@
     padding-inline: var(--shell-x);
   }
 
-  /* Oswald condensed label — section markers, tags, ticker, button text. */
+  /* Fragment Mono eyebrow label — section markers, tags, ticker.
+     Matches Framer's "PRICING"/"FEATURES" monospace eyebrows. */
   .label {
-    @apply font-condensed uppercase tracking-label;
-    font-weight: 500;
+    @apply font-mono uppercase tracking-label;
+    font-weight: 400;
   }
 
   /* Custom select — native arrow removed, replaced with a calm teal chevron so
@@ -104,6 +105,26 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Framer pastel-panel dot texture — fine charcoal dots on the pastel hero/
+     feature panels. A repeating radial-gradient keeps it crisp at any size. */
+  .pattern-dots {
+    background-image: radial-gradient(
+      rgba(24, 26, 26, 0.12) 1px,
+      transparent 1.4px
+    );
+    background-size: 16px 16px;
+    background-position: 0 0;
+  }
+
+  /* Framer pricing-section triangle texture — diagonal half-tiles that fade
+     out from the centre via a radial mask. */
+  .pattern-triangle {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 20 20'%3E%3Cg fill='%23A9A9A9' fill-opacity='0.4'%3E%3Cpath d='M0 0h20L0 20z'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+    -webkit-mask-image: radial-gradient(circle, #fff 10%, transparent 100%);
+    mask-image: radial-gradient(circle, #fff 10%, transparent 100%);
   }
 
   /* Edge masks for marquees so terms fade rather than hard-cut. */

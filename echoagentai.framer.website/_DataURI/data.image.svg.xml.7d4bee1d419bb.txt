@@ -1,0 +1,1 @@
+data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 xmlns:xlink=%22http://www.w3.org/1999/xlink%22 viewBox=%220 0 12 10%22><path d=%22M 6.6 9.861 L 5.667 8.889 L 8.678 5.694 L 0 5.69 L 0 4.31 L 8.678 4.306 L 5.684 1.111 L 6.6 0.139 L 11.182 5 Z%22 fill=%22rgb(255, 255, 255)%22></path></svg>
