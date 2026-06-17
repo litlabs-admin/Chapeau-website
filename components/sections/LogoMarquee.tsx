@@ -17,8 +17,8 @@ export function LogoMarquee() {
       <div className="pointer-events-none absolute right-[12%] bottom-6 h-1.5 w-20 rounded-full bg-framer-sky" />
 
       <Reveal>
-        <p className="shell label mb-7 text-center text-xs text-framer-mute md:text-[0.72rem]">
-          Trusted by growing businesses and service-led teams
+        <p className="shell label mb-7 text-center text-[0.72rem] text-framer-mute">
+          Trusted by
         </p>
       </Reveal>
 

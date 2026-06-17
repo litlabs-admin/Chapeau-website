@@ -190,6 +190,7 @@ function TextBlock({
         {cs.headline}
       </h3>
       <p className="mt-5 leading-relaxed text-framer-graphite">{cs.context}</p>
+      <p className="mt-4 leading-relaxed text-framer-graphite">{cs.challenge}</p>
       <div className="mt-7 border-l-2 border-framer-ink/15 pl-5">
         <p className="label text-[0.66rem] text-framer-mute">
           What Chapeau enabled

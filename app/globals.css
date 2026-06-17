@@ -127,6 +127,14 @@
     mask-image: radial-gradient(circle, #fff 10%, transparent 100%);
   }
 
+  /* Grid texture — horizontal + vertical lines, used on the yellow testimonial panel. */
+  .pattern-grid {
+    background-image:
+      linear-gradient(rgba(24, 26, 26, 0.10) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(24, 26, 26, 0.10) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
   /* Edge masks for marquees so terms fade rather than hard-cut. */
   .mask-x {
     -webkit-mask-image: linear-gradient(

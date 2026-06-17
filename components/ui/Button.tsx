@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "inverse" | "ghost" | "dark" | "light";
+type Variant = "primary" | "inverse" | "ghost" | "dark" | "light" | "outline";
 
 const base =
   "group inline-flex items-center justify-center gap-2 label text-[0.82rem] " +
@@ -26,6 +26,12 @@ const variants: Record<Variant, string> = {
   light:
     "bg-white text-framer-ink px-5 rounded-lg border border-black/5 " +
     "font-sans font-medium normal-case tracking-normal text-[0.95rem] hover:bg-framer-card",
+
+  // Transparent outlined pill — white border + white text, for the nav over the
+  // blue hero. Subtle fill on hover.
+  outline:
+    "bg-transparent text-white px-5 rounded-full border border-white/70 " +
+    "font-sans font-medium normal-case tracking-normal text-[0.95rem] hover:bg-white/10",
 };
 
 const Arrow = () => (

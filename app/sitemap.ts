@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 const BASE = "https://chapeau.co";
 
 // Launch pages only — Knowledge Room is intentionally excluded until built.
-const routes = ["", "/examples", "/how-we-work", "/collective", "/contact"];
+const routes = ["", "/how-we-work", "/collective", "/contact"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((path) => ({

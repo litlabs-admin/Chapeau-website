@@ -1,27 +1,23 @@
 import React from "react";
-import { quoteProof, type QuoteProof as Quote } from "@/lib/content/examples";
+import Image from "next/image";
+import { quoteProof, type QuoteProof as Quote } from "@/lib/content/home";
 import { Label } from "@/components/ui/Label";
 import { Reveal } from "@/components/motion/Reveal";
 
-/**
- * Quote-led proof — simpler testimonial entries (Business · Person/role · Quote)
- * per the component rule. Set on a calm charcoal field so the words carry weight,
- * each card opening with a single gold quote glyph — the glint.
- */
 export function QuoteProof() {
   return (
-    <section className="bg-charcoal py-20 text-white md:py-28" aria-label="In their words">
+    <section className="bg-framer-ink py-20 text-white md:py-28" aria-label="Testimonials">
       <div className="shell">
-        <Reveal className="mx-auto max-w-2xl text-center">
-          <Label tone="light">In their words</Label>
-          <h2 className="mt-5 text-[clamp(1.8rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-white">
+        <Reveal>
+          <Label tone="light">Testimonials</Label>
+          <h2 className="mt-4 max-w-xl text-[clamp(2.1rem,4.2vw,2.9rem)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
             Work the people closest to it stand behind.
           </h2>
         </Reveal>
 
         <div className="mt-14 grid gap-6 md:mt-16 lg:grid-cols-3">
           {quoteProof.map((q, i) => (
-            <QuoteCard key={q.id} quote={q} delay={i * 0.08} index={i} />
+            <QuoteCard key={q.id} quote={q} delay={i * 0.08} />
           ))}
         </div>
       </div>
@@ -29,31 +25,49 @@ export function QuoteProof() {
   );
 }
 
-function QuoteCard({ quote, delay, index }: { quote: Quote; delay: number; index: number }) {
-  const isMiddle = index === 1;
+function Avatar({ src, name }: { src: string; name: string }) {
+  return (
+    <div className="relative h-[72px] w-[72px] overflow-hidden rounded-full bg-[#3a3a3a] ring-4 ring-framer-ink">
+      <Image
+        src={src}
+        alt={`Portrait of ${name}`}
+        fill
+        sizes="72px"
+        className="object-cover"
+      />
+    </div>
+  );
+}
+
+function QuoteCard({ quote, delay }: { quote: Quote; delay: number }) {
   return (
     <Reveal
       delay={delay}
-      className={`card-glow relative flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-300 ease-calm hover:border-white/30 hover:bg-white/[0.07] sm:p-6 md:p-8${isMiddle ? " card-glow-gold" : ""}`}
-      style={{ "--card-glow-bg": "#111820" } as React.CSSProperties}
+      className="flex h-full flex-col overflow-hidden rounded-2xl bg-framer-graphite"
     >
-      <span
-        className="font-condensed text-4xl leading-[0.6] text-gold md:text-5xl"
-        aria-hidden="true"
-      >
-        &ldquo;
-      </span>
-      <blockquote className="mt-5 flex-1 text-[1.02rem] leading-relaxed text-white/85">
-        {quote.quote}
-      </blockquote>
-      <footer className="mt-7 border-t border-white/10 pt-5">
-        <p className="font-condensed text-[1.15rem] font-semibold uppercase tracking-[0.01em] text-white">
-          {quote.business}
-        </p>
-        <p className="mt-1 min-h-[2.5rem] text-[0.85rem] leading-snug text-white/50">
-          {quote.role}
-        </p>
-      </footer>
+      {/* Coloured panel */}
+      <div className="relative h-36 flex-none" style={{ backgroundColor: quote.accentColor }}>
+        <div className={`absolute inset-0 ${quote.patternClass}`} />
+        {/* Avatar overlapping the panel bottom */}
+        <div className="absolute bottom-0 left-6 translate-y-1/2">
+          <Avatar src={quote.image} name={quote.person} />
+        </div>
+      </div>
+
+      {/* Card body */}
+      <div className="flex flex-1 flex-col px-6 pb-8 pt-12">
+        <blockquote className="flex-1 text-[1.05rem] leading-relaxed text-white/80 md:text-[1.1rem]">
+          &ldquo;{quote.quote}&rdquo;
+        </blockquote>
+        <footer className="mt-6">
+          <p className="font-mono text-[0.7rem] uppercase tracking-[0.12em] text-white">
+            {quote.person}
+          </p>
+          <p className="mt-0.5 font-mono text-[0.68rem] uppercase tracking-[0.1em] text-white/40">
+            {quote.title}
+          </p>
+        </footer>
+      </div>
     </Reveal>
   );
 }

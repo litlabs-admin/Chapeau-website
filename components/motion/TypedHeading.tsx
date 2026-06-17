@@ -4,17 +4,20 @@ import { motion, useReducedMotion } from "framer-motion";
 
 /**
  * Fade-in heading for inner pages. Renders all text immediately and fades in
- * on mount. Words listed in `highlight` are wrapped in the brand teal gradient.
+ * on mount. Words listed in `highlight` are wrapped in `highlightClassName`
+ * (defaults to the brand teal gradient; interior heroes pass a hot-pink pill).
  * Settles to static text when the user prefers reduced motion.
  */
 export function TypedHeading({
   text,
   highlight = [],
   className,
+  highlightClassName = "bg-teal-primary bg-clip-text text-transparent",
 }: {
   text: string;
   highlight?: string[];
   className?: string;
+  highlightClassName?: string;
 }) {
   const reduce = useReducedMotion();
 
@@ -25,12 +28,16 @@ export function TypedHeading({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      {renderSegments(text, highlight)}
+      {renderSegments(text, highlight, highlightClassName)}
     </motion.span>
   );
 }
 
-function renderSegments(text: string, highlight: string[]): React.ReactNode {
+function renderSegments(
+  text: string,
+  highlight: string[],
+  highlightClassName: string,
+): React.ReactNode {
   if (!highlight.length) return text;
 
   const segments: React.ReactNode[] = [];
@@ -59,10 +66,7 @@ function renderSegments(text: string, highlight: string[]): React.ReactNode {
     }
 
     segments.push(
-      <span
-        key={key++}
-        className="bg-teal-primary bg-clip-text text-transparent"
-      >
+      <span key={key++} className={highlightClassName}>
         {earliestWord}
       </span>,
     );

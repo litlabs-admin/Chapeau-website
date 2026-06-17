@@ -6,8 +6,8 @@ import { TypedHeading } from "@/components/motion/TypedHeading";
 /**
  * Shared page intro — a calm editorial hero for interior pages. The eyebrow,
  * title and intro ease in on load with a light stagger (subtle, unhurried), so
- * every interior page opens with the same gentle entrance. Used now; later phases
- * build out each page's full body beneath it.
+ * every interior page opens with the same gentle entrance. Used by Contact and
+ * Knowledge Room; the marketing pages use the full-screen `PageHero` instead.
  */
 export function PageIntro({
   eyebrow,
@@ -28,7 +28,7 @@ export function PageIntro({
           <Label>{eyebrow}</Label>
         </Reveal>
         <Reveal trigger="mount" delay={0.12} y={12}>
-          <h1 className="mx-auto mt-6 max-w-4xl text-center text-[clamp(2.4rem,5.4vw,4rem)] font-semibold leading-[1.02] tracking-[-0.03em]">
+          <h1 className="mx-auto mt-6 max-w-4xl text-center text-[clamp(2.6rem,6vw,4rem)] font-semibold leading-[1.02] tracking-[-0.03em]">
             <TypedHeading text={title} highlight={highlight} />
           </h1>
         </Reveal>

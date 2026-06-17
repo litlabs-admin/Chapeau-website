@@ -1,5 +1,4 @@
 import { type ProcessStep } from "@/lib/content/how-we-work";
-import { Label } from "@/components/ui/Label";
 import { Reveal } from "@/components/motion/Reveal";
 import { cn } from "@/lib/cn";
 
@@ -27,17 +26,24 @@ export function ProcessSection({
     <section
       className={cn(
         "py-20 md:py-28",
-        dark ? "bg-charcoal text-white" : "bg-white text-charcoal",
+        dark ? "bg-framer-ink text-white" : "bg-white text-framer-ink",
       )}
       aria-label={eyebrow}
     >
       <div className="shell">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <Label tone={dark ? "light" : "dark"}>{eyebrow}</Label>
+          <p
+            className={cn(
+              "label text-[0.72rem]",
+              dark ? "text-white/55" : "text-framer-mute",
+            )}
+          >
+            {eyebrow}
+          </p>
           <h2
             className={cn(
-              "mt-5 text-[clamp(1.8rem,3.4vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em]",
-              dark && "text-white",
+              "mt-5 text-[clamp(2rem,4.2vw,2.7rem)] font-semibold leading-[1.05] tracking-[-0.03em]",
+              dark ? "text-white" : "text-framer-ink",
             )}
           >
             {heading}
@@ -50,7 +56,7 @@ export function ProcessSection({
               <div
                 className={cn(
                   "grid gap-6 border-t py-9 md:grid-cols-12 md:gap-10 md:py-11",
-                  dark ? "border-white/12" : "border-charcoal/12",
+                  dark ? "border-white/12" : "border-black/10",
                 )}
               >
                 {/* Index + title */}
@@ -58,8 +64,7 @@ export function ProcessSection({
                   <div className="flex items-start justify-center gap-4 md:justify-start">
                     <span
                       className={cn(
-                        "font-condensed text-[1.3rem] font-semibold leading-none md:text-[1.5rem]",
-                        dark ? "text-teal-400" : "text-teal-600",
+                        "font-condensed text-[1.3rem] font-semibold leading-none text-[#FF2E8A] md:text-[1.5rem]",
                       )}
                     >
                       {String(startIndex + i).padStart(2, "0")}
@@ -74,8 +79,8 @@ export function ProcessSection({
                 <div className="md:col-span-7">
                   <div
                     className={cn(
-                      "space-y-3.5 text-center leading-relaxed md:text-left",
-                      dark ? "text-white/70" : "text-slate",
+                      "space-y-3.5 text-center text-[0.95rem] leading-relaxed md:text-left md:text-base",
+                      dark ? "text-white/70" : "text-framer-graphite",
                     )}
                   >
                     {step.body.map((p) => (
@@ -89,24 +94,19 @@ export function ProcessSection({
                         <div
                           key={pt.label}
                           className={cn(
-                            "rounded-xl border p-5",
+                            "rounded-2xl border p-5 shadow-[0_4px_18px_rgba(0,0,0,0.08)]",
                             dark
-                              ? "border-white/12 bg-white/[0.03]"
-                              : "border-charcoal/10 bg-charcoal/[0.02]",
+                              ? "border-white/10 bg-framer-graphite"
+                              : "border-black/5 bg-framer-card",
                           )}
                         >
-                          <p
-                            className={cn(
-                              "label text-[0.75rem] md:text-[0.66rem]",
-                              dark ? "text-teal-400" : "text-teal-700",
-                            )}
-                          >
+                          <p className="label text-[0.68rem] text-[#FF2E8A]">
                             {pt.label}
                           </p>
                           <p
                             className={cn(
-                              "mt-2 text-sm leading-relaxed md:text-[0.92rem]",
-                              dark ? "text-white/65" : "text-slate",
+                              "mt-2 text-[0.9rem] leading-relaxed md:text-[0.92rem]",
+                              dark ? "text-white/65" : "text-framer-graphite",
                             )}
                           >
                             {pt.text}
@@ -119,10 +119,8 @@ export function ProcessSection({
                   {step.pull && (
                     <p
                       className={cn(
-                        "mt-6 border-l-2 pl-5 text-[1.05rem] font-medium leading-relaxed",
-                        dark
-                          ? "border-teal-400 text-white"
-                          : "border-teal-600 text-charcoal",
+                        "mt-6 border-l-2 border-[#FF2E8A] pl-5 text-[1.05rem] font-medium leading-relaxed",
+                        dark ? "text-white" : "text-framer-ink",
                       )}
                     >
                       {step.pull}

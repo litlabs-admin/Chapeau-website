@@ -16,7 +16,7 @@ export function HeroDictionary() {
   const [primary, secondary] = hero.ctas;
 
   return (
-    <section className="pattern-dots relative overflow-hidden bg-[#06B6D4]">
+    <section className="pattern-dots relative -mt-16 overflow-hidden bg-[#08B8E8] pt-16 md:-mt-[72px] md:pt-[72px]">
       <div className="shell relative pt-8 md:pt-12">
         <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
           <Reveal trigger="mount">
@@ -30,7 +30,17 @@ export function HeroDictionary() {
           </Reveal>
 
           <Reveal trigger="mount" delay={0.06} className="mt-4 w-full">
-            <RotatingHeadline lead={hero.lead} words={hero.words} headlineColor="text-white" />
+            <RotatingHeadline
+              lead={hero.lead}
+              words={hero.words}
+              headlineColor="text-white"
+              palette={[
+                { bg: "#FF2E8A", text: "#FFFFFF" },
+                { bg: "#E1C1FF", text: "#181A1A" },
+                { bg: "#8FCDFF", text: "#181A1A" },
+                { bg: "#FFD9A8", text: "#181A1A" },
+              ]}
+            />
           </Reveal>
 
           <Reveal trigger="mount" delay={0.14} className="w-full">
@@ -38,7 +48,7 @@ export function HeroDictionary() {
           </Reveal>
 
           <Reveal trigger="mount" delay={0.18} className="mt-6 max-w-[500px]">
-            <p className="text-[1.125rem] leading-[1.5] text-white/80">
+            <p className="text-[clamp(1.05rem,3.6vw,1.2rem)] leading-[1.5] text-white/80">
               {hero.support[0]}
             </p>
           </Reveal>
@@ -48,7 +58,11 @@ export function HeroDictionary() {
             delay={0.26}
             className="mt-9 flex flex-wrap items-center justify-center gap-x-4 gap-y-3"
           >
-            <Button href={primary.href} variant="dark">
+            <Button
+              href={primary.href}
+              variant="dark"
+              className="bg-[#111111] border-[#111111] hover:bg-black"
+            >
               {primary.label}
             </Button>
             {secondary && (
@@ -82,7 +96,7 @@ export function HeroDictionary() {
                       aria-hidden="true"
                     />
                   )}
-                  <span className="text-sm font-medium text-framer-graphite md:text-[0.95rem]">
+                  <span className="text-[0.9rem] font-medium text-framer-graphite md:text-[0.95rem]">
                     {item}
                   </span>
                 </span>
@@ -170,43 +184,44 @@ function ArrowUpIcon() {
 }
 
 function StarburstIcon() {
-  // Upward sunburst matching the Echo reference.
-  // Center junction at (30,14) — bottom area. Three short rays radiate toward
-  // the top-left, top, and top-right. Horizontal dashes anchor the center.
+  // Upward "pop" burst — seven rays radiating from a centre with a small gap at
+  // the core. Upper rays stand tall; the outer side rays angle slightly down so
+  // the burst fans out like the brand-guide reference. Symmetric, round caps.
   return (
     <svg
-      viewBox="0 0 60 18"
-      width="72"
-      height="22"
+      viewBox="0 0 60 30"
+      width="76"
+      height="38"
       fill="none"
       aria-hidden="true"
       className="mt-5"
-      style={{ transform: "scaleY(-1)" }}
     >
-      {/* vertical ray — up */}
-      <line x1="30" y1="14" x2="30" y2="2"  stroke="#F5C517" strokeWidth="2.5" strokeLinecap="round" />
-      {/* left diagonal — up-left */}
-      <line x1="30" y1="14" x2="17" y2="4"  stroke="#F5C517" strokeWidth="2.5" strokeLinecap="round" />
-      {/* right diagonal — up-right */}
-      <line x1="30" y1="14" x2="43" y2="4"  stroke="#F5C517" strokeWidth="2.5" strokeLinecap="round" />
-      {/* left horizontal dash */}
-      <line x1="2"  y1="14" x2="24" y2="14" stroke="#F5C517" strokeWidth="2.5" strokeLinecap="round" />
-      {/* right horizontal dash */}
-      <line x1="36" y1="14" x2="58" y2="14" stroke="#F5C517" strokeWidth="2.5" strokeLinecap="round" />
+      {/* centre vertical */}
+      <line x1="30"   y1="12"   x2="30"   y2="2"    stroke="#E1B23C" strokeWidth="2.2" strokeLinecap="round" />
+      {/* ±35° */}
+      <line x1="31.7" y1="12.5" x2="36.9" y2="5.2"  stroke="#E1B23C" strokeWidth="2.2" strokeLinecap="round" />
+      <line x1="28.3" y1="12.5" x2="23.1" y2="5.2"  stroke="#E1B23C" strokeWidth="2.2" strokeLinecap="round" />
+      {/* ±70° */}
+      <line x1="32.8" y1="14"   x2="40.3" y2="11.2" stroke="#E1B23C" strokeWidth="2.2" strokeLinecap="round" />
+      <line x1="27.2" y1="14"   x2="19.7" y2="11.2" stroke="#E1B23C" strokeWidth="2.2" strokeLinecap="round" />
+      {/* ±105° (outer, angled slightly down) */}
+      <line x1="32.9" y1="15.8" x2="39.7" y2="17.6" stroke="#E1B23C" strokeWidth="2.2" strokeLinecap="round" />
+      <line x1="27.1" y1="15.8" x2="20.3" y2="17.6" stroke="#E1B23C" strokeWidth="2.2" strokeLinecap="round" />
     </svg>
   );
 }
 
 function SwooshLine() {
+  // Straight double underline under the highlighted word.
   return (
     <svg
-      viewBox="0 0 640 24"
-      className="mx-auto mt-2 w-full max-w-[640px]"
+      viewBox="0 0 340 16"
+      className="mx-auto mt-2 w-full max-w-[340px]"
       fill="none"
       aria-hidden="true"
     >
-      <path d="M8 6 Q 320 2, 632 6"   stroke="#F5C517" strokeWidth="3" strokeLinecap="round" />
-      <path d="M8 16 Q 320 12, 632 16" stroke="#F5C517" strokeWidth="3" strokeLinecap="round" />
+      <line x1="10" y1="5"  x2="330" y2="5"  stroke="#E1B23C" strokeWidth="3.2" strokeLinecap="round" />
+      <line x1="10" y1="12" x2="330" y2="12" stroke="#E1B23C" strokeWidth="3.2" strokeLinecap="round" />
     </svg>
   );
 }

@@ -38,6 +38,10 @@ export function Header() {
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
+  // Over the blue homepage hero (top of page, before the collapse pill kicks in)
+  // the nav sits transparent with white contents.
+  const onHero = pathname === "/" && !scrolled;
+
   return (
     <header className="sticky top-0 z-50">
       {/* Desktop — collapsing pill */}
@@ -69,7 +73,7 @@ export function Header() {
               <Link
                 href="/"
                 aria-label="Chapeau home"
-                className="text-framer-ink"
+                className={onHero ? "text-white" : "text-framer-ink"}
               >
                 <Logo className="text-[1.15rem]" />
               </Link>
@@ -89,9 +93,13 @@ export function Header() {
                     href={item.href}
                     className={cn(
                       "rounded-lg px-3 py-1.5 text-[0.92rem] tracking-[-0.01em] transition-colors duration-200",
-                      active
-                        ? "bg-black/[0.05] text-framer-ink"
-                        : "text-framer-graphite/80 hover:bg-black/[0.05] hover:text-framer-ink",
+                      onHero
+                        ? active
+                          ? "bg-white/10 text-white"
+                          : "text-white/85 hover:bg-white/10 hover:text-white"
+                        : active
+                          ? "bg-black/[0.05] text-framer-ink"
+                          : "text-framer-graphite/80 hover:bg-black/[0.05] hover:text-framer-ink",
                     )}
                   >
                     {item.label}
@@ -105,7 +113,11 @@ export function Header() {
               transition={LAYOUT_T}
               className={cn("flex justify-end", scrolled ? "" : "flex-1")}
             >
-              <Button href={site.primaryCta.href} variant="dark" withArrow={false}>
+              <Button
+                href={site.primaryCta.href}
+                variant={onHero ? "outline" : "dark"}
+                withArrow={false}
+              >
                 {site.primaryCta.label}
               </Button>
             </motion.div>
@@ -123,13 +135,20 @@ export function Header() {
         )}
       >
         <div className="shell flex h-16 items-center justify-between">
-          <Link href="/" aria-label="Chapeau home" className="text-framer-ink">
+          <Link
+            href="/"
+            aria-label="Chapeau home"
+            className={onHero ? "text-white" : "text-framer-ink"}
+          >
             <Logo className="text-[1.15rem]" />
           </Link>
 
           <button
             type="button"
-            className="flex h-11 w-11 items-center justify-center text-framer-ink"
+            className={cn(
+              "flex h-11 w-11 items-center justify-center",
+              onHero ? "text-white" : "text-framer-ink",
+            )}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
@@ -137,19 +156,22 @@ export function Header() {
             <span className="relative block h-4 w-6">
               <span
                 className={cn(
-                  "absolute left-0 h-px w-6 bg-framer-ink transition-all duration-300 ease-calm",
+                  "absolute left-0 h-px w-6 transition-all duration-300 ease-calm",
+                  onHero ? "bg-white" : "bg-framer-ink",
                   open ? "top-2 rotate-45" : "top-0.5",
                 )}
               />
               <span
                 className={cn(
-                  "absolute left-0 top-2 h-px w-6 bg-framer-ink transition-all duration-200",
+                  "absolute left-0 top-2 h-px w-6 transition-all duration-200",
+                  onHero ? "bg-white" : "bg-framer-ink",
                   open && "opacity-0",
                 )}
               />
               <span
                 className={cn(
-                  "absolute left-0 h-px w-6 bg-framer-ink transition-all duration-300 ease-calm",
+                  "absolute left-0 h-px w-6 transition-all duration-300 ease-calm",
+                  onHero ? "bg-white" : "bg-framer-ink",
                   open ? "top-2 -rotate-45" : "top-[0.875rem]",
                 )}
               />

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { collectiveHero } from "@/lib/content/collective";
-import { PageIntro } from "@/components/sections/PageIntro";
+import { PageHero } from "@/components/sections/PageHero";
 import { WhyCollective } from "@/components/sections/WhyCollective";
 import { People } from "@/components/sections/People";
 import { WorkJoins } from "@/components/sections/WorkJoins";
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 export default function CollectivePage() {
   return (
     <>
-      <PageIntro
+      <PageHero
         eyebrow={collectiveHero.eyebrow}
         title={collectiveHero.title}
         intro={collectiveHero.intro}

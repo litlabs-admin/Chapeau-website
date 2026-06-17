@@ -4,7 +4,7 @@ import {
   beforeWork,
   postSale,
 } from "@/lib/content/how-we-work";
-import { PageIntro } from "@/components/sections/PageIntro";
+import { PageHero } from "@/components/sections/PageHero";
 import { ProcessSection } from "@/components/sections/ProcessSection";
 import { WorkPrinciples } from "@/components/sections/WorkPrinciples";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function HowWeWorkPage() {
   return (
     <>
-      <PageIntro
+      <PageHero
         eyebrow={howWeWorkHero.eyebrow}
         title={howWeWorkHero.title}
         intro={howWeWorkHero.intro}

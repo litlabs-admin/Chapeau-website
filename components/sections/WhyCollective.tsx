@@ -1,5 +1,4 @@
 import { whyCollective } from "@/lib/content/collective";
-import { Label } from "@/components/ui/Label";
 import { Reveal } from "@/components/motion/Reveal";
 
 /**
@@ -12,12 +11,14 @@ export function WhyCollective() {
     <section className="py-20 md:py-28" aria-label={whyCollective.eyebrow}>
       <div className="shell flex flex-col gap-10 md:gap-12">
         <Reveal className="flex flex-col items-center text-center">
-          <Label>{whyCollective.eyebrow}</Label>
+          <p className="label text-[0.72rem] text-framer-mute">
+            {whyCollective.eyebrow}
+          </p>
           <div className="mt-5 max-w-2xl space-y-4">
             {whyCollective.lead.map((p) => (
               <p
                 key={p}
-                className="text-[1.15rem] leading-relaxed text-charcoal md:text-[1.3rem]"
+                className="text-[1.15rem] leading-relaxed text-framer-ink md:text-[1.3rem]"
               >
                 {p}
               </p>
@@ -25,7 +26,10 @@ export function WhyCollective() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1} className="rounded-2xl bg-charcoal p-8 text-white md:p-10">
+        <Reveal
+          delay={0.1}
+          className="rounded-2xl bg-framer-ink p-8 text-white shadow-[0_4px_18px_rgba(0,0,0,0.12)] md:p-10"
+        >
           <ul className="divide-y divide-white/10 border-y border-white/10">
             {whyCollective.examples.map((ex) => (
               <li
@@ -33,7 +37,7 @@ export function WhyCollective() {
                 className="flex items-start gap-4 py-4 text-white/70"
               >
                 <span
-                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-teal-400"
+                  className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF2E8A]"
                   aria-hidden="true"
                 />
                 <span className="leading-relaxed">{ex}</span>
@@ -41,7 +45,7 @@ export function WhyCollective() {
             ))}
           </ul>
           <p className="mt-7 leading-relaxed text-white/65">{whyCollective.close}</p>
-          <p className="mt-6 font-condensed text-[1.1rem] font-semibold uppercase leading-snug tracking-[0.01em] text-teal-400 md:text-[1.25rem]">
+          <p className="mt-8 border-t border-white/10 pt-7 text-center font-condensed text-[1.1rem] font-semibold uppercase leading-snug tracking-[0.01em] text-[#FF2E8A] md:text-[1.25rem]">
             {whyCollective.signature}
           </p>
         </Reveal>

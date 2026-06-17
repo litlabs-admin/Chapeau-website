@@ -7,7 +7,13 @@ import { cn } from "@/lib/cn";
 const CALM = [0.22, 1, 0.36, 1] as const;
 const HOLD = 2600; // ms the word rests before changing
 // Framer pastel family — the highlight cycles through these per word change.
-const HIGHLIGHTS = ["#E1C1FF", "#8FCDFF", "#FFD9A8"];
+// `bg` fills the block, `text` keeps the word readable on it.
+type Swatch = { bg: string; text: string };
+const HIGHLIGHTS: Swatch[] = [
+  { bg: "#E1C1FF", text: "#181A1A" },
+  { bg: "#8FCDFF", text: "#181A1A" },
+  { bg: "#FFD9A8", text: "#181A1A" },
+];
 
 /**
  * Hero headline — Framer "Echo" treatment, three lines.
@@ -21,10 +27,13 @@ export function RotatingHeadline({
   lead,
   words,
   headlineColor = "text-framer-ink",
+  palette = HIGHLIGHTS,
 }: {
   lead: string;
   words: string[];
   headlineColor?: string;
+  /** Highlight swatches cycled per word change — bg fills the block, text colours the word. */
+  palette?: Swatch[];
 }) {
   const reduce = useReducedMotion();
   const [i, setI] = useState(0);
@@ -84,7 +93,7 @@ export function RotatingHeadline({
   }, [reduce, words.length, hi, wc]);
 
   return (
-    <h1 className={cn("text-center font-display text-[clamp(3.1rem,8.4vw,6.25rem)] font-extrabold uppercase leading-[0.9] tracking-display", headlineColor)}>
+    <h1 className={cn("text-center font-display text-[clamp(3.4rem,9vw,6.25rem)] font-extrabold uppercase leading-[0.9] tracking-display", headlineColor)}>
       <span className="block">{first}</span>
       <span className="block">{rest}</span>
       <span className="mt-[0.12em] flex justify-center">
@@ -94,13 +103,14 @@ export function RotatingHeadline({
             className="absolute inset-0 rounded-[0.08em]"
             style={{
               transformOrigin: origin,
-              backgroundColor: HIGHLIGHTS[i % HIGHLIGHTS.length],
+              backgroundColor: palette[i % palette.length].bg,
             }}
             initial={{ scaleX: 1 }}
             animate={hi}
           />
           <motion.span
-            className="relative text-framer-ink"
+            className="relative"
+            style={{ color: palette[i % palette.length].text }}
             initial={{ opacity: 1 }}
             animate={wc}
           >

@@ -9,6 +9,8 @@ export type Person = {
   role: string;
   bio: string[];
   brings: string[];
+  /** Mock portrait until a real team photo is supplied. */
+  image: string;
 };
 
 export const collectiveHero = {
@@ -55,6 +57,7 @@ export const people: Person[] = [
       "Mentoring",
       "Growth leadership",
     ],
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
     id: "gordon-ross",
@@ -71,6 +74,7 @@ export const people: Person[] = [
       "Campaigns",
       "Acquisition",
     ],
+    image: "https://randomuser.me/api/portraits/men/52.jpg",
   },
   {
     id: "vandan-mandloi",
@@ -88,6 +92,7 @@ export const people: Person[] = [
       "Workflow design",
       "Implementation",
     ],
+    image: "https://randomuser.me/api/portraits/men/45.jpg",
   },
   {
     id: "jessica-burke",
@@ -104,6 +109,7 @@ export const people: Person[] = [
       "Content",
       "Delivery support",
     ],
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
   },
 ];
 
