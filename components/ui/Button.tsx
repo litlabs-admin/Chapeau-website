@@ -22,10 +22,14 @@ const variants: Record<Variant, string> = {
   // Stack Sans 500, sentence case (override the mono uppercase `label` base).
   dark:
     "bg-framer-ink text-white px-5 rounded-lg border border-framer-ink " +
-    "font-sans font-medium normal-case tracking-normal text-[0.95rem] hover:bg-black",
+    "font-sans font-medium normal-case tracking-normal text-[0.95rem] " +
+    "hover:bg-black hover:-translate-y-px hover:shadow-[0_4px_14px_rgba(0,0,0,0.22)] " +
+    "active:translate-y-0 active:shadow-none active:scale-[0.98]",
   light:
     "bg-white text-framer-ink px-5 rounded-lg border border-black/5 " +
-    "font-sans font-medium normal-case tracking-normal text-[0.95rem] hover:bg-framer-card",
+    "font-sans font-medium normal-case tracking-normal text-[0.95rem] " +
+    "hover:bg-framer-card hover:-translate-y-px hover:shadow-[0_4px_14px_rgba(0,0,0,0.10)] " +
+    "active:translate-y-0 active:shadow-none active:scale-[0.98]",
 
   // Transparent outlined pill — white border + white text, for the nav over the
   // blue hero. Subtle fill on hover.

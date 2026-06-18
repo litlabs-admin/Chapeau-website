@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { contactHero, whatNext } from "@/lib/content/contact";
+import { contactHero } from "@/lib/content/contact";
 import { site } from "@/lib/content/site";
-import { PageIntro } from "@/components/sections/PageIntro";
+import { PageHero } from "@/components/sections/PageHero";
 import { Container } from "@/components/ui/Container";
-import { Label } from "@/components/ui/Label";
 import { ContactForm } from "@/components/sections/ContactForm";
+import { StepCards } from "@/components/sections/StepCards";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
@@ -15,31 +15,17 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <PageIntro
+      <PageHero
         eyebrow={contactHero.eyebrow}
         title={contactHero.title}
         intro={contactHero.intro}
+        highlight={["advice"]}
+        cta={{ label: "Send a message", href: "#contact-form" }}
       />
 
-      <section className="pb-24 pt-12 md:pb-32 md:pt-16">
+      <section id="contact-form" className="pb-24 pt-12 md:pb-32 md:pt-16">
         <Container>
-          {/* Steps — horizontal 3-column strip, centered */}
-          <Reveal className="text-center">
-            <Label>{whatNext.eyebrow}</Label>
-            <ol className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3">
-              {whatNext.steps.map((step, i) => (
-                <li
-                  key={step}
-                  className="flex flex-col items-center gap-3 rounded-xl border border-charcoal/10 bg-charcoal/[0.02] p-6 text-center"
-                >
-                  <span className="label text-[0.9rem] text-teal-600">
-                    0{i + 1}
-                  </span>
-                  <span className="leading-relaxed text-charcoal">{step}</span>
-                </li>
-              ))}
-            </ol>
-          </Reveal>
+          <StepCards />
 
           {/* Foil-line separator */}
           <div className="foil-line my-12 h-px w-full" />

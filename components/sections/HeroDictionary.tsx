@@ -1,4 +1,4 @@
-import { hero, valueStrip } from "@/lib/content/home";
+import { hero } from "@/lib/content/home";
 import { Button } from "@/components/ui/Button";
 import { Label } from "@/components/ui/Label";
 import { RotatingHeadline } from "@/components/motion/RotatingHeadline";
@@ -16,7 +16,7 @@ export function HeroDictionary() {
   const [primary, secondary] = hero.ctas;
 
   return (
-    <section className="pattern-dots relative -mt-16 overflow-hidden bg-[#08B8E8] pt-16 md:-mt-[72px] md:pt-[72px]">
+    <section className="pattern-dots relative -mt-20 overflow-hidden bg-[#08B8E8] pb-16 pt-20 md:-mt-24 md:pb-24 md:pt-24">
       <div className="shell relative pt-8 md:pt-12">
         <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
           <Reveal trigger="mount">
@@ -80,31 +80,6 @@ export function HeroDictionary() {
           <AskCard />
         </div>
       </Reveal>
-
-      {/* Capability value strip */}
-      <div className="relative mt-16 border-y border-black/[0.06] bg-white md:mt-24">
-        <div className="shell flex flex-col items-center gap-4 py-6 text-center md:py-8">
-          <p className="label text-[0.72rem] text-framer-mute">{valueStrip.lead}</p>
-
-          <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3">
-            {valueStrip.items.map((item, i) => (
-              <Reveal as="li" key={item} delay={i * 0.06} y={8}>
-                <span className="flex items-center gap-7">
-                  {i > 0 && (
-                    <span
-                      className="h-1.5 w-1.5 rounded-full bg-framer-ink/40"
-                      aria-hidden="true"
-                    />
-                  )}
-                  <span className="text-[0.9rem] font-medium text-framer-graphite md:text-[0.95rem]">
-                    {item}
-                  </span>
-                </span>
-              </Reveal>
-            ))}
-          </ul>
-        </div>
-      </div>
     </section>
   );
 }

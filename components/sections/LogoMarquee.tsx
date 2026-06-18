@@ -11,13 +11,12 @@ export function LogoMarquee() {
   return (
     <section
       aria-label="Selected clients"
-      className="relative overflow-hidden border-b border-charcoal/10 bg-white py-9 md:py-11"
+      className="relative overflow-hidden border-b border-charcoal/10 bg-white py-12 md:py-16"
     >
       <div className="pointer-events-none absolute left-[6%] top-5 h-2 w-2 rounded-full bg-framer-lavender" />
-      <div className="pointer-events-none absolute right-[12%] bottom-6 h-1.5 w-20 rounded-full bg-framer-sky" />
 
       <Reveal>
-        <p className="shell label mb-7 text-center text-[0.72rem] text-framer-mute">
+        <p className="shell label mb-12 text-center text-[0.72rem] text-framer-mute md:mb-16">
           Trusted by
         </p>
       </Reveal>
@@ -32,7 +31,7 @@ export function LogoMarquee() {
               aria-hidden={rep === 0 ? undefined : true}
               width={logo.width}
               height={logo.height}
-              className="mx-7 h-7 w-auto md:mx-10 md:h-9"
+              className="mx-7 h-11 w-auto md:mx-10 md:h-14"
             />
           )),
         )}

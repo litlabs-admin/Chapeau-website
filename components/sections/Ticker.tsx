@@ -4,6 +4,23 @@ import { Reveal } from "@/components/motion/Reveal";
 
 const dotColor = ["text-framer-lavender", "text-framer-sky", "text-framer-lavender"];
 
+const highlightedTerms = new Set([
+  // Row 1 — Strategy and growth
+  "Revenue strategy",
+  "Pipeline acceleration",
+  "Growth engineering",
+  "Account-based marketing",
+  // Row 2 — Marketing and content
+  "AI SEO",
+  "Performance marketing",
+  "Brand & positioning",
+  // Row 3 — AI, systems and infrastructure
+  "AI agents",
+  "Voice agents",
+  "Agentic workflows",
+  "Lead infrastructure",
+]);
+
 export function Ticker() {
   return (
     <section
@@ -23,7 +40,7 @@ export function Ticker() {
             direction={i % 2 === 0 ? "left" : "right"}
             speed={70 + i * 14}
           >
-            <Lane terms={lane.terms} dot={dotColor[i % dotColor.length]} />
+            <Lane terms={lane.terms} dot={dotColor[i % dotColor.length]} highlighted={highlightedTerms} />
           </Marquee>
         ))}
       </div>
@@ -31,12 +48,12 @@ export function Ticker() {
   );
 }
 
-function Lane({ terms, dot }: { terms: string[]; dot: string }) {
+function Lane({ terms, dot, highlighted }: { terms: string[]; dot: string; highlighted: Set<string> }) {
   return (
     <div className="flex flex-nowrap items-center">
       {terms.map((term) => (
         <span key={term} className="flex items-center">
-          <span className="label whitespace-nowrap px-3 text-[1rem] text-white/80 md:px-6 md:text-[1.15rem]">
+          <span className={`label whitespace-nowrap px-3 text-[1rem] md:px-6 md:text-[1.15rem] ${highlighted.has(term) ? "text-magenta" : "text-white/80"}`}>
             {term}
           </span>
           <span className={`${dot} text-3xl leading-none`} aria-hidden="true">
