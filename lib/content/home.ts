@@ -140,8 +140,8 @@ export const caseStudies: CaseStudy[] = [
       "User acquisition, PR, GTM strategy, campaign planning and automation support.",
     outcome: "[Outcome copy — to be supplied by client]",
     cta: { label: "View case study", href: "/contact" },
-    image: "/media/case-data.jpg",
-    imageAlt: "Reflective product and data surface detail",
+    image: "/media/openbook-case.png",
+    imageAlt: "Openbook Analytics stock analytics platform",
     overlay: "gold",
   },
 ];

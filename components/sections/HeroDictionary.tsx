@@ -75,10 +75,23 @@ export function HeroDictionary() {
         </div>
       </div>
 
-      {/* Charcoal inset panel — the CHAPEAU dictionary entry types out, centred */}
+      {/* Charcoal inset panel — video backdrop with the CHAPEAU entry on top */}
       <Reveal trigger="mount" delay={0.34} className="shell mt-16 md:mt-24">
         <div className="relative overflow-hidden rounded-lg bg-charcoal px-5 py-16 md:px-10 md:py-24">
-          <ChapeauDefinition />
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            src="/media/hero-backdrop.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+          />
+          {/* Darkening overlay so the white/grey text stays legible over the video */}
+          <div className="absolute inset-0 bg-charcoal/55" aria-hidden="true" />
+          <div className="relative">
+            <ChapeauDefinition />
+          </div>
         </div>
       </Reveal>
     </section>
