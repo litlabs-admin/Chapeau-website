@@ -239,38 +239,35 @@ export const quoteProof: QuoteProof[] = [
   {
     id: "roswell-it",
     business: "Roswell IT",
-    // TODO: client to supply the named spokesperson and title.
-    person: "[Name — to be supplied]",
-    title: "Roswell IT",
+    person: "Jim Craig",
+    title: "Founder & Managing Director, Roswell IT",
     quote:
       "Chapeau helped us make the strength of the business easier to see. What we needed was clearer commercial direction, better visibility and support turning that reputation into new growth. They created a strategy and now support us in executing it. They helped us spot opportunity, sharpened commercial thinking, helped shape new service offers and brought structure to our digital marketing. Chapeau are now supporting Roswell with a new website and SEO direction, AI-enabled service agents, recruitment support and done-for-you marketing activity. This has helped us take what Roswell was already good at and turn it into something clearer, more fun, more visible and easier for new clients to choose.",
     accentColor: "#C8B4F0",
     patternClass: "pattern-dots",
-    image: "https://randomuser.me/api/portraits/men/76.jpg",
+    image: "/media/testimonial-jim-craig.png",
   },
   {
     id: "racam",
     business: "RACAM",
-    // TODO: client to supply the named spokesperson and title.
-    person: "[Name — to be supplied]",
-    title: "RACAM",
+    person: "Calum Maguire",
+    title: "Director, RACAM",
     quote:
       "We have worked with other providers in the past who have offered us different packages and services which never quite suited us, but what we get with Chapeau is a fully done-for-you marketing service, social content, CRM setup, automation, Meta ads management and campaign delivery. Chapeau manages our website, our lead generation and helps us set and achieve our goals. It's not an agency doing off-the-shelf work, they live our success and challenges as if they were part of the team.",
     accentColor: "#7FE5A0",
     patternClass: "pattern-triangle",
-    image: "https://randomuser.me/api/portraits/men/85.jpg",
+    image: "/media/testimonial-calum-maguire.png",
   },
   {
     id: "openbook-analytics",
     business: "Openbook Analytics",
-    // TODO: client to supply the named spokesperson and title.
-    person: "[Name — to be supplied]",
-    title: "Openbook Analytics",
+    person: "Andrew Menzies",
+    title: "Co-Founder, Openbook Analytics",
     quote:
       "My brother Richard and I have been working on our product for over a year, trying to perfect the features and make it ready to ship. Chapeau supported Openbook to get over that final hurdle and launch it, they helped us design our user journey to make sure it was as smooth as it needed to be, with user acquisition, PR, GTM strategy, campaign planning and automation support. Chapeau helps with our SEO, Brand and are always there to advise us on every step of our growth.",
     accentColor: "#F7C948",
     patternClass: "pattern-grid",
-    image: "https://randomuser.me/api/portraits/men/64.jpg",
+    image: "/media/testimonial-andrew-menzies.png",
   },
 ];
 

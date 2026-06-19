@@ -57,7 +57,7 @@ export const people: Person[] = [
       "Mentoring",
       "Growth leadership",
     ],
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    image: "/media/team-will-sinclair.png",
   },
   {
     id: "gordon-ross",
@@ -74,7 +74,7 @@ export const people: Person[] = [
       "Campaigns",
       "Acquisition",
     ],
-    image: "https://randomuser.me/api/portraits/men/52.jpg",
+    image: "/media/team-gordon-ross.png",
   },
   {
     id: "vandan-mandloi",
@@ -92,7 +92,7 @@ export const people: Person[] = [
       "Workflow design",
       "Implementation",
     ],
-    image: "https://randomuser.me/api/portraits/men/45.jpg",
+    image: "/media/team-vandan-mandloi.png",
   },
   {
     id: "jessica-burke",
@@ -109,7 +109,7 @@ export const people: Person[] = [
       "Content",
       "Delivery support",
     ],
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    image: "/media/team-jessica-burke.png",
   },
 ];
 

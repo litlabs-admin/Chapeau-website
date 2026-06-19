@@ -19,7 +19,7 @@ export function People() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:mt-16 lg:grid-cols-2">
+        <div className="mt-14 grid items-stretch gap-6 md:mt-16 lg:grid-cols-2">
           {people.map((p, i) => (
             <PersonCard key={p.id} person={p} index={i} delay={(i % 2) * 0.08} />
           ))}
@@ -44,7 +44,7 @@ function PersonCard({
   return (
     <Reveal
       delay={delay}
-      className="flex h-full flex-col overflow-hidden rounded-2xl bg-framer-graphite shadow-[0_4px_18px_rgba(0,0,0,0.12)]"
+      className="flex flex-col overflow-hidden rounded-2xl bg-framer-graphite shadow-[0_4px_18px_rgba(0,0,0,0.12)]"
     >
       {/* Coloured top panel + overlapping monogram avatar */}
       <div
@@ -74,13 +74,15 @@ function PersonCard({
           <p className="label mt-1 text-[0.7rem] text-[#FF2E8A]">{person.role}</p>
         </div>
 
-        <div className="mt-5 flex-1 space-y-3.5 leading-relaxed text-white/65">
+        <div className="mt-5 space-y-3.5 leading-relaxed text-white/65">
           {person.bio.map((p) => (
             <p key={p}>{p}</p>
           ))}
         </div>
 
-        <div className="mt-6 border-t border-white/10 pt-5">
+        <div className="min-h-10 flex-1" />
+
+        <div className="border-t border-white/10 pt-5">
           <p className="label text-[0.66rem] text-white/40">Brings</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {person.brings.map((tag) => (
