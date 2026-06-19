@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/Button";
 import { Label } from "@/components/ui/Label";
 import { RotatingHeadline } from "@/components/motion/RotatingHeadline";
 import { Reveal } from "@/components/motion/Reveal";
+import { ChapeauDefinition } from "@/components/motion/ChapeauDefinition";
 
 /**
  * Hero — Framer "Echo" treatment.
@@ -74,87 +75,13 @@ export function HeroDictionary() {
         </div>
       </div>
 
-      {/* Charcoal inset panel with the Chapeau "ask" card */}
+      {/* Charcoal inset panel — the CHAPEAU dictionary entry types out, centred */}
       <Reveal trigger="mount" delay={0.34} className="shell mt-16 md:mt-24">
         <div className="relative overflow-hidden rounded-lg bg-charcoal px-5 py-16 md:px-10 md:py-24">
-          <AskCard />
+          <ChapeauDefinition />
         </div>
       </Reveal>
     </section>
-  );
-}
-
-/**
- * Chapeau-flavoured "ask" composer — mirrors Framer's prompt card (search icon,
- * prompt line, "Add files", send button) but speaks to what Chapeau does.
- */
-function AskCard() {
-  return (
-    <div className="mx-auto w-full max-w-[640px] rounded-[18px] bg-white p-5 shadow-[0_2.53px_80px_rgba(0,0,0,0.08)] md:p-6">
-      <div className="flex items-center gap-3">
-        <SearchIcon />
-        <p className="text-[1.05rem] text-framer-graphite md:text-[1.15rem]">
-          Draft a GTM plan for our launch
-          <span className="ml-0.5 inline-block h-[1.05em] w-[2px] translate-y-[0.15em] bg-framer-ink motion-safe:animate-[caret_1.05s_steps(1)_infinite]" />
-        </p>
-      </div>
-
-      <div className="mt-8 flex items-center justify-between">
-        <span className="inline-flex items-center gap-2 text-[0.95rem] text-framer-mute">
-          <PlusIcon />
-          Add files
-        </span>
-        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-framer-ink text-white">
-          <ArrowUpIcon />
-        </span>
-      </div>
-    </div>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-5 w-5 shrink-0 text-framer-mute"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden="true"
-    >
-      <circle cx="11" cy="11" r="7" />
-      <path d="M21 21l-4.3-4.3" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function PlusIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden="true"
-    >
-      <path d="M12 5v14M5 12h14" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function ArrowUpIcon() {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      aria-hidden="true"
-    >
-      <path d="M12 19V5M6 11l6-6 6 6" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
   );
 }
 

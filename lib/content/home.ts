@@ -51,6 +51,17 @@ export const hero = {
   imageAlt: "Abstract glass and light texture",
 };
 
+/**
+ * CHAPEAU dictionary entry — the definition types out on the hero's charcoal
+ * panel. Copy lives here, never inside components.
+ */
+export const dictionary = {
+  word: "CHAPEAU",
+  pronunciation: "[sha-POH]",
+  partOfSpeech: "noun",
+  definition: "A tip of the hat. Recognition and respect for what you've built.",
+};
+
 export const valueStrip = {
   lead: "Enabling businesses with",
   items: [
