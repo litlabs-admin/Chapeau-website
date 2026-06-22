@@ -21,7 +21,7 @@ export function HeroDictionary() {
       <div className="shell relative pt-8 md:pt-12">
         <div className="mx-auto flex max-w-[760px] flex-col items-center text-center">
           <Reveal trigger="mount">
-            <Label dot={false} className="text-white/60">
+            <Label dot={false} className="font-bold text-white/60">
               The Chapeau Collective
             </Label>
           </Reveal>

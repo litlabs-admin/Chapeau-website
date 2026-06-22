@@ -17,7 +17,7 @@ export function StepCards() {
         viewport={{ once: true, margin: "0px 0px -14% 0px" }}
         transition={enter}
       >
-        <Label>{whatNext.eyebrow}</Label>
+        <Label className="text-[#FF2E8A]" dotClassName="bg-[#FF2E8A]">{whatNext.eyebrow}</Label>
       </motion.div>
 
       <ol className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-3">

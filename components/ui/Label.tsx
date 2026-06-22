@@ -8,11 +8,13 @@ export function Label({
   children,
   dot = true,
   className,
+  dotClassName,
   tone = "dark",
 }: {
   children: React.ReactNode;
   dot?: boolean;
   className?: string;
+  dotClassName?: string;
   tone?: "dark" | "light";
 }) {
   return (
@@ -24,7 +26,7 @@ export function Label({
       )}
     >
       {dot && (
-        <span className="h-1.5 w-1.5 rounded-full bg-teal-500" aria-hidden="true" />
+        <span className={cn("h-1.5 w-1.5 rounded-full bg-teal-500", dotClassName)} aria-hidden="true" />
       )}
       {children}
     </span>
