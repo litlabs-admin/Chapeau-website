@@ -75,8 +75,8 @@ export function ChapeauDefinition() {
 
       <Reveal trigger="mount" delay={0.12}>
         <p className="mt-3 flex items-center justify-center gap-3 font-mono text-[0.95rem]">
-          <span style={{ color: "#FF2E8A" }}>{pronunciation}</span>
-          <span className="italic text-framer-mute">{partOfSpeech}</span>
+          <span className="font-bold" style={{ color: "#FF2E8A" }}>{pronunciation}</span>
+          <span className="font-bold italic text-framer-mute">{partOfSpeech}</span>
         </p>
       </Reveal>
 
