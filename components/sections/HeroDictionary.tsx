@@ -37,9 +37,9 @@ export function HeroDictionary() {
               headlineColor="text-white"
               palette={[
                 { bg: "#FF2E8A", text: "#FFFFFF" },
-                { bg: "#E1C1FF", text: "#181A1A" },
-                { bg: "#8FCDFF", text: "#181A1A" },
-                { bg: "#FFD9A8", text: "#181A1A" },
+                { bg: "#E1B23C", text: "#181A1A" },
+                { bg: "#2563EB", text: "#FFFFFF" },
+                { bg: "#7FFF5C", text: "#181A1A" },
               ]}
             />
           </Reveal>

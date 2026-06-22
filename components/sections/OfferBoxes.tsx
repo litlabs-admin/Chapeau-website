@@ -76,7 +76,7 @@ export function OfferBoxes() {
           <p className="label text-[0.72rem] text-framer-mute">Work with Chapeau</p>
           <h2 className="mt-5 text-[clamp(2rem,4vw,2.6rem)] font-semibold leading-[1.15] tracking-[-0.02em] text-framer-ink">
             Need more than{" "}
-            <span className="rounded-[0.1em] bg-framer-lavender px-[0.18em]">
+            <span className="rounded-[0.1em] bg-[#FF2E8A] px-[0.18em] text-white">
               advice?
             </span>
           </h2>
@@ -128,6 +128,7 @@ function OfferCard({ offer, delay }: { offer: Offer; delay: number }) {
           href={offer.cta.href}
           variant={tone.button}
           withArrow={false}
+          glowBorder
           className="w-full"
         >
           {offer.cta.label}

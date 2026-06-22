@@ -40,7 +40,7 @@ export default function ContactPage() {
             <p className="label text-[0.66rem] text-slate">Prefer email?</p>
             <a
               href={`mailto:${site.email}`}
-              className="mt-2 inline-block text-lg text-teal-700 underline-offset-4 transition-colors hover:underline"
+              className="mt-2 inline-block text-lg text-[#FF2E8A] underline-offset-4 transition-colors hover:underline"
             >
               {site.email}
             </a>

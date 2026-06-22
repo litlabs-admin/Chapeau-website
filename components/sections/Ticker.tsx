@@ -2,7 +2,7 @@ import { tickerLanes } from "@/lib/content/home";
 import { Marquee } from "@/components/motion/Marquee";
 import { Reveal } from "@/components/motion/Reveal";
 
-const dotColor = ["text-framer-lavender", "text-framer-sky", "text-framer-lavender"];
+const dotColor = ["text-[#FF2E8A]", "text-[#08B8E8]", "text-[#FF2E8A]"];
 
 export function Ticker() {
   return (

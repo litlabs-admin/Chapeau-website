@@ -18,7 +18,7 @@ export function FinalCTA() {
   return (
     <section className="py-20 md:py-28" aria-label="Get in touch">
       <div className="shell">
-        <Reveal className="pattern-dots relative isolate overflow-hidden rounded-3xl bg-framer-ink px-7 py-16 md:px-16 md:py-24">
+        <Reveal className="relative isolate overflow-hidden rounded-3xl bg-framer-ink px-7 py-16 md:px-16 md:py-24">
           <Pattern opacity={0.12} />
           <div className="foil-line absolute inset-x-0 top-0 h-px opacity-60" />
 

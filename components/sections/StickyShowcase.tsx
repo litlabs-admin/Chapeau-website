@@ -16,7 +16,7 @@ import { cn } from "@/lib/cn";
  * `kind` picks the left-column copy: "work" (home Selected Work teaser) or
  * "examples" (the full portfolio entry with Work delivered + Outcome).
  */
-const panelTones = ["bg-framer-lavender", "bg-framer-sky"];
+const panelTones = ["bg-[#FF2E8A]", "bg-[#08B8E8]"];
 
 export function StickyShowcase({ kind }: { kind: "work" | "examples" }) {
   const items = caseStudies;
@@ -167,6 +167,9 @@ function TextBlock({
           {cs.headline}
         </h2>
         <p className="mt-5 leading-relaxed text-framer-graphite">{cs.context}</p>
+        {cs.challenge && cs.challenge.split("\n\n").map((para, i) => (
+          <p key={i} className="mt-4 leading-relaxed text-framer-graphite">{para}</p>
+        ))}
         <div className="mt-7 border-l-2 border-framer-ink/40 pl-5">
           <p className="label text-[0.66rem] text-framer-mute">Work delivered</p>
           <p className="mt-2 font-medium leading-relaxed text-framer-ink">
@@ -190,7 +193,9 @@ function TextBlock({
         {cs.headline}
       </h3>
       <p className="mt-5 leading-relaxed text-framer-graphite">{cs.context}</p>
-      <p className="mt-4 leading-relaxed text-framer-graphite">{cs.challenge}</p>
+      {cs.challenge && cs.challenge.split("\n\n").map((para, i) => (
+        <p key={i} className="mt-4 leading-relaxed text-framer-graphite">{para}</p>
+      ))}
       <div className="mt-7 border-l-2 border-framer-ink/15 pl-5">
         <p className="label text-[0.66rem] text-framer-mute">
           What Chapeau enabled

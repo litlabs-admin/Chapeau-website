@@ -25,32 +25,34 @@ export function QuoteProof() {
   );
 }
 
-function Avatar({ src, name }: { src: string; name: string }) {
-  return (
-    <div className="relative h-[72px] w-[72px] overflow-hidden rounded-full bg-[#3a3a3a] ring-4 ring-framer-ink">
-      <Image
-        src={src}
-        alt={`Portrait of ${name}`}
-        fill
-        sizes="72px"
-        className="object-cover"
-      />
-    </div>
-  );
-}
-
 function QuoteCard({ quote, delay }: { quote: Quote; delay: number }) {
   return (
     <Reveal
       delay={delay}
-      className="flex h-full flex-col overflow-hidden rounded-2xl bg-framer-graphite"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl bg-framer-graphite shadow-[0_4px_18px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_48px_rgba(0,0,0,0.32)]"
     >
       {/* Coloured panel */}
-      <div className="relative h-36 flex-none" style={{ backgroundColor: quote.accentColor }}>
-        <div className={`absolute inset-0 ${quote.patternClass}`} />
+      <div
+        className="relative h-36 flex-none transition-[filter] duration-300 ease-out group-hover:brightness-110"
+        style={{ backgroundColor: quote.accentColor }}
+      >
+        {/* Pattern clipped independently so avatar can overflow */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div
+            className={`absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-110 ${quote.patternClass}`}
+          />
+        </div>
         {/* Avatar overlapping the panel bottom */}
-        <div className="absolute bottom-0 left-6 translate-y-1/2">
-          <Avatar src={quote.image} name={quote.person} />
+        <div className="absolute bottom-0 left-6 z-10 translate-y-1/2">
+          <div className="relative h-[72px] w-[72px] overflow-hidden rounded-full bg-[#3a3a3a] ring-4 ring-framer-ink transition-transform duration-300 ease-out group-hover:scale-110">
+            <Image
+              src={quote.image}
+              alt={`Portrait of ${quote.person}`}
+              fill
+              sizes="72px"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+            />
+          </div>
         </div>
       </div>
 

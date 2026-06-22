@@ -13,7 +13,7 @@ export function LogoMarquee() {
       aria-label="Selected clients"
       className="relative overflow-hidden border-b border-charcoal/10 bg-white py-12 md:py-16"
     >
-      <div className="pointer-events-none absolute left-[6%] top-5 h-2 w-2 rounded-full bg-framer-lavender" />
+      <div className="pointer-events-none absolute left-[6%] top-5 h-2 w-2 rounded-full bg-[#FF2E8A]" />
 
       <Reveal>
         <p className="shell label mb-12 text-center text-[0.72rem] text-framer-mute md:mb-16">

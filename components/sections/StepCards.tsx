@@ -33,12 +33,12 @@ export function StepCards() {
                 ? {}
                 : {
                     y: -5,
-                    boxShadow: "0 12px 32px -8px rgba(0,199,199,0.18)",
+                    boxShadow: "0 12px 32px -8px rgba(255,46,138,0.18)",
                   }
             }
-            className="group flex cursor-default flex-col items-center gap-3 rounded-xl border border-charcoal/10 bg-charcoal/[0.02] p-6 text-center transition-colors duration-300 hover:border-teal-600/25 hover:bg-white"
+            className="group flex cursor-default flex-col items-center gap-3 rounded-xl border border-charcoal/10 bg-charcoal/[0.02] p-6 text-center transition-colors duration-300 hover:border-[#FF2E8A]/25 hover:bg-white"
           >
-            <span className="label text-[0.9rem] text-teal-600 transition-all duration-200 group-hover:scale-110 group-hover:text-teal-500">
+            <span className="label text-[0.9rem] text-[#FF2E8A] transition-all duration-200 group-hover:scale-110 group-hover:text-[#FF2E8A]">
               0{i + 1}
             </span>
             <span className="leading-relaxed text-charcoal">{step}</span>

@@ -57,13 +57,34 @@ export function Button({
   variant = "primary",
   withArrow = true,
   className,
+  glowBorder,
 }: {
   href: string;
   children: React.ReactNode;
   variant?: Variant;
   withArrow?: boolean;
   className?: string;
+  glowBorder?: boolean;
 }) {
+  if (glowBorder) {
+    return (
+      <div
+        className={cn("btn-glow rounded-lg", className)}
+        style={{
+          "--btn-bg": variant === "dark" ? "#181A1A" : "#FFFFFF",
+        } as React.CSSProperties}
+      >
+        <Link
+          href={href}
+          className={cn(base, variants[variant], "w-full border-0 bg-transparent")}
+        >
+          {children}
+          {withArrow && <Arrow />}
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <Link href={href} className={cn(base, variants[variant], className)}>
       {children}

@@ -93,9 +93,9 @@ export const caseStudies: CaseStudy[] = [
     type: "Managed IT provider / MSP",
     headline: "Making IT less alien.",
     context:
-      "Roswell is an East Kilbride based MSP who have been providing outstanding IT support for 30 years, with a strong technical team and a loyal client base.",
+      "Roswell is an East Kilbride based MSP who have been providing outstanding IT support for 30 years with a strong technical team and a loyal client base.",
     challenge:
-      "They had a great technical team but no sales or marketing function, no new services and an unclear commercial direction. The reputation was strong but quiet — they weren't telling anyone, and after 30 years innovation had started to slow. The first step was making that strength easier to see: training staff to spot opportunity, sharpening commercial thinking and supporting digital marketing, so new clients could choose Roswell again.",
+      "Chapeau helped us make the strength of the business easier to see. What we needed was clearer commercial direction, better visibility and support turning that reputation into new growth. They created a strategy and now support us in executing it. They helped us spot opportunity, sharpened commercial thinking, helped shape new service offers and brought structure to our digital marketing.\n\nChapeau are now supporting Roswell with a new website and SEO direction, AI-enabled service agents, recruitment support and done-for-you marketing activity. This has helped us take what Roswell was already good at and turn it into something clearer, more fun, more visible and easier for new clients to choose.",
     enabled:
       "GTM strategy, Web & SEO, AI service development, new service offers, hiring support and campaign delivery.",
     workDelivered:
@@ -112,9 +112,9 @@ export const caseStudies: CaseStudy[] = [
     type: "Security systems and communications provider",
     headline: "Opening the door to commercial growth.",
     context:
-      "RACAM are a Hillington based CCTV installer who provide security systems and communications support for homes, businesses and commercial sites. As the business moved further into commercial work, the next step was building the marketing activity to support that shift.",
+      "RACAM are a Hillington based CCTV installer who provides security systems and communications support for homes, businesses and commercial sites.",
     challenge:
-      "The technical knowledge was strong, the supplier relationships were trusted and the service offering was clear. What was missing was the marketing activity to match the move into commercial work.",
+      "As the business moved further into commercial work, we needed marketing activity to support that shift. We have worked with other providers in the past who have offered us different packages and services which never quite suited us, but what we get with Chapeau is a fully done-for-you marketing service, social content, CRM setup, automation, Meta ads management and campaign delivery. Chapeau manages our website, our lead generation and helps us set and achieve our goals. It's not an agency doing off the shelf work, they live our success and challenges as if they were part of the team.",
     enabled:
       "Digital marketing, CRM setup, automation, Meta ads, social content and campaign delivery.",
     workDelivered:
@@ -131,9 +131,9 @@ export const caseStudies: CaseStudy[] = [
     type: "Stock analytics platform",
     headline: "Helping investors read the market.",
     context:
-      "Openbook Analytics is a platform that helps users understand stocks, portfolios and investment opportunities. A startup with a growing reputation — winning Young Scottish Edge 2026, the product has a cool origin story and early traction, with a clear market opportunity.",
+      "Openbook Analytics is a platform that helps users understand stocks, portfolios and investment opportunities. A startup with a growing reputation! Winning Young Scottish Edge 2026, the product has a cool origin story and early traction, with a clear market opportunity.",
     challenge:
-      "The product had a strong story, early traction and a clear market opportunity. The next step was making the route to users easier to define, easier to test and easier to grow.",
+      "My brother Richard and I have been working on our product for over a year, trying to perfect the features and make it ready to ship. Chapeau supported Openbook to get over that final hurdle and launch it, they helped us design our user journey to make sure it was as smooth as it needed to be, with user acquisition, PR, GTM strategy, campaign planning and automation support. Chapeau helps with our SEO, Brand and are always there to advise us on every step of our growth.",
     enabled:
       "User acquisition, PR, GTM strategy, automation, campaign planning and growth support.",
     workDelivered:
@@ -254,7 +254,7 @@ export const quoteProof: QuoteProof[] = [
     title: "Founder & Managing Director, Roswell IT",
     quote:
       "Chapeau helped us make the strength of the business easier to see. What we needed was clearer commercial direction, better visibility and support turning that reputation into new growth. They created a strategy and now support us in executing it. They helped us spot opportunity, sharpened commercial thinking, helped shape new service offers and brought structure to our digital marketing. Chapeau are now supporting Roswell with a new website and SEO direction, AI-enabled service agents, recruitment support and done-for-you marketing activity. This has helped us take what Roswell was already good at and turn it into something clearer, more fun, more visible and easier for new clients to choose.",
-    accentColor: "#C8B4F0",
+    accentColor: "#FF2E8A",
     patternClass: "pattern-dots",
     image: "/media/testimonial-jim-craig.png",
   },
@@ -264,8 +264,8 @@ export const quoteProof: QuoteProof[] = [
     person: "Calum Maguire",
     title: "Director, RACAM",
     quote:
-      "We have worked with other providers in the past who have offered us different packages and services which never quite suited us, but what we get with Chapeau is a fully done-for-you marketing service, social content, CRM setup, automation, Meta ads management and campaign delivery. Chapeau manages our website, our lead generation and helps us set and achieve our goals. It's not an agency doing off-the-shelf work, they live our success and challenges as if they were part of the team.",
-    accentColor: "#7FE5A0",
+      "As the business moved further into commercial work, we needed marketing activity to support that shift. We have worked with other providers in the past who have offered us different packages and services which never quite suited us, but what we get with Chapeau is a fully done-for-you marketing service, social content, CRM setup, automation, Meta ads management and campaign delivery. Chapeau manages our website, our lead generation and helps us set and achieve our goals. It's not an agency doing off the shelf work, they live our success and challenges as if they were part of the team.",
+    accentColor: "#7FFF5C",
     patternClass: "pattern-triangle",
     image: "/media/testimonial-calum-maguire.png",
   },
@@ -276,7 +276,7 @@ export const quoteProof: QuoteProof[] = [
     title: "Co-Founder, Openbook Analytics",
     quote:
       "My brother Richard and I have been working on our product for over a year, trying to perfect the features and make it ready to ship. Chapeau supported Openbook to get over that final hurdle and launch it, they helped us design our user journey to make sure it was as smooth as it needed to be, with user acquisition, PR, GTM strategy, campaign planning and automation support. Chapeau helps with our SEO, Brand and are always there to advise us on every step of our growth.",
-    accentColor: "#F7C948",
+    accentColor: "#E1B23C",
     patternClass: "pattern-grid",
     image: "/media/testimonial-andrew-menzies.png",
   },

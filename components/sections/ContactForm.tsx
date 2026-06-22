@@ -13,7 +13,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const fieldBase =
   "w-full rounded-lg border bg-white px-4 py-3 text-[0.97rem] text-charcoal " +
   "placeholder:text-slate/50 transition-all duration-200 outline-none " +
-  "focus:border-teal-600 focus:shadow-[0_0_0_3px_rgba(0,199,199,0.10)]";
+  "focus:border-[#FF2E8A] focus:shadow-[0_0_0_3px_rgba(255,46,138,0.10)]";
 
 /**
  * Contact form — the conversion surface. Client validation mirrors the API
@@ -74,9 +74,9 @@ export function ContactForm() {
         initial={{ opacity: 0, scale: 0.97, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className="rounded-2xl border border-teal-600/30 bg-charcoal/[0.02] p-8 md:p-10"
+        className="rounded-2xl border border-[#FF2E8A]/30 bg-charcoal/[0.02] p-8 md:p-10"
       >
-        <span className="label text-[0.72rem] text-teal-700">Message sent</span>
+        <span className="label text-[0.72rem] text-[#FF2E8A]">Message sent</span>
         <h3 className="mt-3 text-[1.6rem] font-semibold tracking-[-0.02em]">
           Thanks — we have it.
         </h3>
@@ -89,7 +89,7 @@ export function ContactForm() {
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: 0.15 + i * 0.08 }}
               className="flex items-start gap-3 text-slate"
             >
-              <span className="label mt-0.5 text-teal-600">0{i + 1}</span>
+              <span className="label mt-0.5 text-[#FF2E8A]">0{i + 1}</span>
               <span className="leading-relaxed">{step}</span>
             </motion.li>
           ))}
@@ -148,7 +148,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="label inline-flex min-h-[48px] items-center justify-center rounded-full bg-charcoal px-8 text-[0.82rem] text-white transition-all duration-200 hover:-translate-y-px hover:bg-teal-800 hover:shadow-[0_4px_14px_rgba(0,0,0,0.22)] active:translate-y-0 active:scale-[0.98] active:shadow-none disabled:pointer-events-none disabled:opacity-60"
+          className="label inline-flex min-h-[48px] items-center justify-center rounded-full bg-charcoal px-8 text-[0.82rem] text-white transition-all duration-200 hover:-translate-y-px hover:bg-[#C01872] hover:shadow-[0_4px_14px_rgba(0,0,0,0.22)] active:translate-y-0 active:scale-[0.98] active:shadow-none disabled:pointer-events-none disabled:opacity-60"
         >
           {status === "submitting" ? "Sending…" : "Let's talk"}
         </button>
@@ -174,7 +174,7 @@ function FieldLabel({
   return (
     <label htmlFor={htmlFor} className="label text-[0.75rem] text-slate md:text-[0.66rem]">
       {children}
-      {required && <span className="ml-1 text-teal-600">*</span>}
+      {required && <span className="ml-1 text-[#FF2E8A]">*</span>}
     </label>
   );
 }
@@ -269,7 +269,7 @@ function CustomSelect({
         className={cn(
           "mt-2 flex w-full items-center justify-between rounded-lg border bg-white px-4 py-3 text-[0.97rem] text-charcoal transition-all duration-200 outline-none",
           open
-            ? "border-teal-600 shadow-[0_0_0_3px_rgba(0,199,199,0.10)]"
+            ? "border-[#FF2E8A] shadow-[0_0_0_3px_rgba(255,46,138,0.10)]"
             : "border-charcoal/15 hover:border-charcoal/30",
         )}
       >
@@ -280,7 +280,7 @@ function CustomSelect({
           width="16" height="16" viewBox="0 0 24 24"
           fill="none" stroke="currentColor" strokeWidth="2"
           strokeLinecap="round" strokeLinejoin="round"
-          className="shrink-0 text-teal-600"
+          className="shrink-0 text-[#FF2E8A]"
         >
           <path d="M6 9l6 6 6-6" />
         </motion.svg>
@@ -310,7 +310,7 @@ function CustomSelect({
                   className={cn(
                     "flex cursor-pointer items-center justify-between px-4 py-2.5 text-[0.95rem] transition-colors duration-150",
                     active
-                      ? "bg-charcoal/[0.04] text-teal-700"
+                      ? "bg-charcoal/[0.04] text-[#FF2E8A]"
                       : "text-charcoal hover:bg-charcoal/[0.03] hover:text-charcoal",
                   )}
                 >
@@ -319,7 +319,7 @@ function CustomSelect({
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
                       stroke="currentColor" strokeWidth="2.5"
                       strokeLinecap="round" strokeLinejoin="round"
-                      className="text-teal-600"
+                      className="text-[#FF2E8A]"
                     >
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
