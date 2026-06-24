@@ -107,42 +107,27 @@
     text-wrap: balance;
   }
 
-  /* Patterns tint to the panel's brand colour via --accent (defaults white,
-     so they stay legible on vivid panels too). Kept faint for subtle texture. */
-
-  /* Dot texture. */
+  /* Dot texture — white dots, legible on both vivid and pastel panels. */
   .pattern-dots {
     background-image: radial-gradient(
-      color-mix(in srgb, var(--accent, #fff) 16%, transparent) 1px,
+      rgba(255, 255, 255, 0.35) 1px,
       transparent 1.4px
     );
     background-size: 16px 16px;
     background-position: 0 0;
   }
 
-  /* Diagonal stripe texture. */
+  /* Triangle texture — white half-tiles, full coverage. */
   .pattern-triangle {
-    background-image: repeating-linear-gradient(
-      45deg,
-      color-mix(in srgb, var(--accent, #fff) 12%, transparent) 0,
-      color-mix(in srgb, var(--accent, #fff) 12%, transparent) 1px,
-      transparent 1px,
-      transparent 10px
-    );
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 20 20'%3E%3Cg fill='%23ffffff' fill-opacity='0.22'%3E%3Cpath d='M0 0h20L0 20z'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
   }
 
-  /* Grid texture. */
+  /* Grid texture — white lines, legible on vivid panels. */
   .pattern-grid {
     background-image:
-      linear-gradient(
-        color-mix(in srgb, var(--accent, #fff) 12%, transparent) 1px,
-        transparent 1px
-      ),
-      linear-gradient(
-        90deg,
-        color-mix(in srgb, var(--accent, #fff) 12%, transparent) 1px,
-        transparent 1px
-      );
+      linear-gradient(rgba(255, 255, 255, 0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.25) 1px, transparent 1px);
     background-size: 20px 20px;
   }
 
