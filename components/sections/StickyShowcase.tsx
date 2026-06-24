@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { caseStudies, type CaseStudy } from "@/lib/content/home";
 import { Reveal } from "@/components/motion/Reveal";
+import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/cn";
 
 /**
@@ -124,7 +124,14 @@ function CardInner({
           />
         </div>
         {kind === "work" && (
-          <div className="flex items-center justify-between px-1 pb-1 pt-3">
+          <div
+            className={cn(
+              "flex items-center px-1 pb-1 pt-3",
+              cs.id === "racam"
+                ? "justify-center gap-3 text-center"
+                : "justify-between",
+            )}
+          >
             <span className="text-[0.9rem] font-medium text-framer-ink">
               {cs.business}
             </span>
@@ -205,29 +212,10 @@ function TextBlock({
         </p>
       </div>
       <div className="mt-7">
-        <CaseLink href={cs.cta.href} label={cs.cta.label} />
+        <Button href={cs.cta.href} variant="dark">
+          {cs.cta.label}
+        </Button>
       </div>
     </div>
-  );
-}
-
-function CaseLink({ href, label }: { href: string; label: string }) {
-  return (
-    <Link
-      href={href}
-      className="group inline-flex items-center gap-2 border-b border-framer-ink/25 pb-1 text-[0.95rem] font-medium text-framer-ink transition-colors duration-300 ease-calm hover:border-framer-ink"
-    >
-      {label}
-      <svg
-        viewBox="0 0 24 24"
-        className="h-3.5 w-3.5 transition-transform duration-300 ease-calm group-hover:translate-x-1"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        aria-hidden="true"
-      >
-        <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    </Link>
   );
 }

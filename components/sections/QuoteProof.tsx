@@ -11,7 +11,7 @@ export function QuoteProof() {
         <Reveal>
           <Label tone="light">Testimonials</Label>
           <h2 className="mt-4 max-w-xl text-[clamp(2.1rem,4.2vw,2.9rem)] font-bold leading-[1.1] tracking-[-0.03em] text-white">
-            Work the people closest to it stand behind.
+            What people say about working with Chapeau Collective.
           </h2>
         </Reveal>
 
@@ -31,20 +31,32 @@ function QuoteCard({ quote, delay }: { quote: Quote; delay: number }) {
       delay={delay}
       className="group flex h-full flex-col overflow-hidden rounded-2xl bg-framer-graphite shadow-[0_4px_18px_rgba(0,0,0,0.12)] transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-[0_20px_48px_rgba(0,0,0,0.32)]"
     >
-      {/* Coloured panel */}
+      {/* Solid brand-colour panel */}
       <div
-        className="relative h-36 flex-none transition-[filter] duration-300 ease-out group-hover:brightness-110"
+        className="relative h-36 flex-none"
         style={{ backgroundColor: quote.accentColor }}
       >
         {/* Pattern clipped independently so avatar can overflow */}
         <div className="absolute inset-0 overflow-hidden">
           <div
-            className={`absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-110 ${quote.patternClass}`}
+            className={`absolute inset-0 transition-transform duration-500 ease-out group-hover:scale-105 ${quote.patternClass}`}
           />
         </div>
+        {/* Brand logo on a white chip, centred */}
+        <div className="absolute inset-0 z-10 flex items-center justify-center">
+          <div className="flex h-16 items-center rounded-xl bg-white px-5 shadow-[0_4px_14px_rgba(0,0,0,0.12)] transition-transform duration-300 ease-out group-hover:-translate-y-0.5">
+            <Image
+              src={quote.logo}
+              alt={quote.logoAlt}
+              width={quote.logoWidth}
+              height={quote.logoHeight}
+              className={`w-auto object-contain ${quote.logoClass ?? "h-9"}`}
+            />
+          </div>
+        </div>
         {/* Avatar overlapping the panel bottom */}
-        <div className="absolute bottom-0 left-6 z-10 translate-y-1/2">
-          <div className="relative h-[72px] w-[72px] overflow-hidden rounded-full bg-[#3a3a3a] ring-4 ring-framer-ink transition-transform duration-300 ease-out group-hover:scale-110">
+        <div className="absolute bottom-0 left-6 z-20 translate-y-1/2">
+          <div className="relative h-[72px] w-[72px] overflow-hidden rounded-full bg-[#3a3a3a] ring-4 ring-white transition-transform duration-300 ease-out group-hover:scale-110">
             <Image
               src={quote.image}
               alt={`Portrait of ${quote.person}`}

@@ -23,7 +23,7 @@ export function People() {
   );
 }
 
-const accents = ["#FF2E8A", "#7FFF5C", "#E1B23C", "#08B8E8"];
+const accents = ["#FF2E8A", "#08B8E8", "#E1B23C", "#7FFF5C"];
 const patterns = ["pattern-dots", "pattern-triangle", "pattern-grid", "pattern-dots"];
 
 function PersonCard({

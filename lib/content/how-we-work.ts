@@ -15,9 +15,9 @@ export type ProcessStep = {
 
 export const howWeWorkHero = {
   eyebrow: "How We Work",
-  title: "Our Sales Process",
+  title: "Our Process",
   intro:
-    "We work with growing businesses that need more than advice. The shape of the work can change, but the way we work stays clear: understand the problem, set the direction, build what is needed and keep the work moving.",
+    "So you want to grow your business? Maybe you need more than advice? Whether that’s a GTM strategy, performance marketing or custom-built automations, the deliverables may change, but the Chapeau approach stays the same: we get to the root of your problem, set a clear direction with you, and deliver exactly what your business needs to achieve the growth you’re seeking.",
 };
 
 export const beforeWork = {
@@ -67,7 +67,7 @@ export const postSale = {
     {
       title: "Full discovery and account manager assigned",
       body: [
-        "Before we look at what needs to change, we tip our hat to the work already done, the progress already made and the parts of the business that are already working. 🎩",
+        "Before we look at what needs to change, we tip our hat to the work already done, the progress already made and the parts of the business that are already working.",
         "Then we get into the detail. What is working. What is not. Where growth is being blocked. Where the process is unclear. Where activity is being guessed instead of guided.",
         "This is the first proper working session after the agreement is in place. Your account manager is assigned, and the senior people involved in strategy and delivery are in the room.",
         "We ask the right questions, challenge assumptions and build a clear picture of what needs to be solved.",

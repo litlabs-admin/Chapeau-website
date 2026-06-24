@@ -101,7 +101,7 @@ export const caseStudies: CaseStudy[] = [
     workDelivered:
       "GTM strategy, web and SEO direction, AI-enabled service agents, new service offers, hiring support and done-for-you commercial activity.",
     outcome: "[Outcome copy — to be supplied by client]",
-    cta: { label: "View case study", href: "/contact" },
+    cta: { label: "Let's talk", href: "/contact" },
     image: "/media/roswell-case.jpeg",
     imageAlt: "The Roswell IT team",
     overlay: "teal",
@@ -120,7 +120,7 @@ export const caseStudies: CaseStudy[] = [
     workDelivered:
       "Done-for-you marketing services, social content, CRM installation, automation, Meta ads management and campaign activity.",
     outcome: "[Outcome copy — to be supplied by client]",
-    cta: { label: "View case study", href: "/contact" },
+    cta: { label: "Let's talk", href: "/contact" },
     image: "/media/racam-case.jpeg",
     imageAlt: "RACAM Security & Communications branded van",
     overlay: "charcoal",
@@ -139,7 +139,7 @@ export const caseStudies: CaseStudy[] = [
     workDelivered:
       "User acquisition, PR, GTM strategy, campaign planning and automation support.",
     outcome: "[Outcome copy — to be supplied by client]",
-    cta: { label: "View case study", href: "/contact" },
+    cta: { label: "Let's talk", href: "/contact" },
     image: "/media/openbook-case.png",
     imageAlt: "Openbook Analytics stock analytics platform",
     overlay: "gold",
@@ -240,8 +240,18 @@ export type QuoteProof = {
   person: string;
   title: string;
   quote: string;
+  /** Full brand colour — tints the panel texture and the role accent. */
   accentColor: string;
+  /** Pale brand tint used as the top panel background. */
+  panelColor: string;
   patternClass: string;
+  /** Client brand logo, shown on a white chip at the panel centre. */
+  logo: string;
+  logoAlt: string;
+  logoWidth: number;
+  logoHeight: number;
+  /** Optional Tailwind height override for the logo (defaults to h-7). */
+  logoClass?: string;
   /** Mock portrait until a real client photo is supplied. */
   image: string;
 };
@@ -254,8 +264,13 @@ export const quoteProof: QuoteProof[] = [
     title: "Founder & Managing Director, Roswell IT",
     quote:
       "Chapeau helped us make the strength of the business easier to see. What we needed was clearer commercial direction, better visibility and support turning that reputation into new growth. They created a strategy and now support us in executing it. They helped us spot opportunity, sharpened commercial thinking, helped shape new service offers and brought structure to our digital marketing. Chapeau are now supporting Roswell with a new website and SEO direction, AI-enabled service agents, recruitment support and done-for-you marketing activity. This has helped us take what Roswell was already good at and turn it into something clearer, more fun, more visible and easier for new clients to choose.",
-    accentColor: "#FF2E8A",
+    accentColor: "#D81F26",
+    panelColor: "#FBEAE9",
     patternClass: "pattern-dots",
+    logo: "/media/logos/roswell.png",
+    logoAlt: "Roswell IT Services logo",
+    logoWidth: 284,
+    logoHeight: 75,
     image: "/media/testimonial-jim-craig.png",
   },
   {
@@ -265,8 +280,13 @@ export const quoteProof: QuoteProof[] = [
     title: "Director, RACAM",
     quote:
       "As the business moved further into commercial work, we needed marketing activity to support that shift. We have worked with other providers in the past who have offered us different packages and services which never quite suited us, but what we get with Chapeau is a fully done-for-you marketing service, social content, CRM setup, automation, Meta ads management and campaign delivery. Chapeau manages our website, our lead generation and helps us set and achieve our goals. It's not an agency doing off the shelf work, they live our success and challenges as if they were part of the team.",
-    accentColor: "#7FFF5C",
+    accentColor: "#1B3D6B",
+    panelColor: "#EAEFF6",
     patternClass: "pattern-triangle",
+    logo: "/media/logos/racam.png",
+    logoAlt: "RACAM Security & Communications logo",
+    logoWidth: 255,
+    logoHeight: 91,
     image: "/media/testimonial-calum-maguire.png",
   },
   {
@@ -276,8 +296,14 @@ export const quoteProof: QuoteProof[] = [
     title: "Co-Founder, Openbook Analytics",
     quote:
       "My brother Richard and I have been working on our product for over a year, trying to perfect the features and make it ready to ship. Chapeau supported Openbook to get over that final hurdle and launch it, they helped us design our user journey to make sure it was as smooth as it needed to be, with user acquisition, PR, GTM strategy, campaign planning and automation support. Chapeau helps with our SEO, Brand and are always there to advise us on every step of our growth.",
-    accentColor: "#E1B23C",
+    accentColor: "#3888E8",
+    panelColor: "#E8F1FC",
     patternClass: "pattern-grid",
+    logo: "/media/logos/openbook.png",
+    logoAlt: "Openbook Analytics logo",
+    logoWidth: 500,
+    logoHeight: 500,
+    logoClass: "h-14",
     image: "/media/testimonial-andrew-menzies.png",
   },
 ];
