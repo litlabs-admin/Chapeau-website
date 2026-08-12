@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
-/**
- * Contact endpoint — validates the enquiry and acknowledges it. Wiring to email
- * or a CRM is a one-line follow-up: read an env var (e.g. CONTACT_WEBHOOK_URL or
- * a Resend key) and forward `data` here. Until then it validates and logs, so the
- * form is fully functional end-to-end without a third-party account.
- */
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const CONTACT_DESTINATION = "litlabs@chapeaucollective.com";
+/**
+ * Resend's shared test sender — swap for a verified sending domain
+ * (e.g. enquiries@chapeaucollective.com) once one is set up in Resend.
+ */
+const CONTACT_FROM = "Chapeau Collective <onboarding@resend.dev>";
 
 type Payload = {
   name?: string;
@@ -37,15 +38,41 @@ export async function POST(request: Request) {
     return NextResponse.json({ errors }, { status: 422 });
   }
 
-  // TODO: forward to email/CRM via env-configured destination.
-  console.log("[contact] new enquiry:", {
-    name: data.name,
-    business: data.business,
-    email: data.email,
-    website: data.website,
-    option: data.option,
-    contactMethod: data.contactMethod,
-  });
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    console.error("[contact] RESEND_API_KEY is not set — enquiry not delivered.");
+    return NextResponse.json(
+      { error: "Something went wrong on our end. Please email us directly." },
+      { status: 500 },
+    );
+  }
+
+  try {
+    const resend = new Resend(apiKey);
+    await resend.emails.send({
+      from: CONTACT_FROM,
+      to: CONTACT_DESTINATION,
+      replyTo: data.email,
+      subject: `New enquiry from ${data.name}${data.business ? ` (${data.business})` : ""}`,
+      text: [
+        `Name: ${data.name}`,
+        `Business: ${data.business ?? "—"}`,
+        `Email: ${data.email}`,
+        `Website: ${data.website ?? "—"}`,
+        `Option: ${data.option ?? "—"}`,
+        `Preferred contact method: ${data.contactMethod ?? "—"}`,
+        "",
+        "Message:",
+        data.message ?? "",
+      ].join("\n"),
+    });
+  } catch (err) {
+    console.error("[contact] Resend delivery failed:", err);
+    return NextResponse.json(
+      { error: "Something went wrong sending your message. Please email us directly." },
+      { status: 502 },
+    );
+  }
 
   return NextResponse.json({ ok: true });
 }

@@ -66,13 +66,21 @@ export function Footer() {
       </div>
 
       <div className="border-t border-black/[0.06]">
-        <div className="shell flex flex-col gap-2 py-6 text-[0.8rem] text-framer-mute sm:flex-row sm:items-center sm:justify-between">
+        <div className="shell flex flex-col gap-3 py-6 text-[0.8rem] text-framer-mute sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <p className="label text-[0.7rem] tracking-label text-framer-mute">
-            Senior direction · Practical delivery
-          </p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link
+              href="/privacy-policy"
+              className="transition-colors hover:text-framer-ink"
+            >
+              Privacy &amp; Cookie Policy
+            </Link>
+            <p className="label text-[0.7rem] tracking-label text-framer-mute">
+              Senior direction · Practical delivery
+            </p>
+          </div>
         </div>
       </div>
     </footer>
