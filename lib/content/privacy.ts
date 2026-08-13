@@ -9,7 +9,7 @@
 export const privacyHero = {
   eyebrow: "Legal",
   title: "Privacy & Cookie Policy",
-  lastUpdated: "12 August 2026",
+  lastUpdated: "13 August 2026",
   intro:
     "How Chapeau Collective handles your personal information, and the rights you have over it.",
 };
@@ -34,7 +34,7 @@ export const companyDetails = {
   jurisdiction: "Registered in Scotland",
   companyNumber: "SC885108",
   icoReference: "pending",
-  email: "litlabs@chapeaucollective.com",
+  email: "vandan.mandloi@chapeaucollective.com",
 };
 
 export const policySections: PolicySection[] = [
@@ -74,7 +74,7 @@ export const policySections: PolicySection[] = [
       },
       {
         type: "p",
-        text: "Information collected automatically. Our hosting provider processes standard server logs — including IP address, browser type and requested pages — to operate, secure and troubleshoot the site. We do not run analytics, advertising technology or any tracking scripts on this site, so nothing beyond these baseline hosting logs is collected as you browse.",
+        text: "Information collected automatically. Our hosting provider processes standard server logs — including IP address, browser type and requested pages — to operate, secure and troubleshoot the site. We do not run analytics or advertising technology on this site, so nothing beyond these baseline hosting logs is collected as you browse. The one exception is the contact form, which uses Google reCAPTCHA to prevent spam — see section 08 for what that involves.",
       },
       {
         type: "p",
@@ -116,6 +116,7 @@ export const policySections: PolicySection[] = [
         items: [
           "Resend — delivers contact-form enquiries to our inbox by email",
           "Vercel — hosts this website and processes the server logs described above",
+          "Google (reCAPTCHA) — checks that contact-form submissions come from a person, not a bot",
         ],
       },
       {
@@ -131,7 +132,7 @@ export const policySections: PolicySection[] = [
     blocks: [
       {
         type: "p",
-        text: "Some of our suppliers, including Resend and Vercel, may process data outside the UK, primarily in the United States. Where this happens, we rely on UK Government adequacy regulations or an Information Commissioner–approved International Data Transfer Agreement (or the UK Addendum to the EU Standard Contractual Clauses), which require appropriate safeguards to protect your information. Details are available on request.",
+        text: "Some of our suppliers, including Resend, Vercel and Google, may process data outside the UK, primarily in the United States. Where this happens, we rely on UK Government adequacy regulations or an Information Commissioner–approved International Data Transfer Agreement (or the UK Addendum to the EU Standard Contractual Clauses), which require appropriate safeguards to protect your information. Details are available on request.",
       },
     ],
   },
@@ -172,11 +173,11 @@ export const policySections: PolicySection[] = [
     blocks: [
       {
         type: "p",
-        text: "This website does not use cookies, analytics or any tracking technologies. Because nothing non-essential is set, we don’t show a cookie banner — there is nothing to ask your consent for.",
+        text: "We don’t run analytics, advertising technology or marketing trackers on this site. The one exception is the contact form, which is protected by Google reCAPTCHA to keep spam and automated abuse out of our inbox. To do this, reCAPTCHA sets cookies and reads device and browser signals when you use the form.",
       },
       {
         type: "p",
-        text: "If that changes in future — for example, if we add analytics — we will update this policy and, where the law requires it, ask for your consent before anything non-essential is set.",
+        text: "Because of this, we show a short cookie notice when you first visit the site. If that changes in future — for example, if we add analytics — we will update this policy and, where the law requires it, ask for your consent before anything further is set.",
       },
     ],
   },

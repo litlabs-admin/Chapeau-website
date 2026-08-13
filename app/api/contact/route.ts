@@ -2,12 +2,8 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const CONTACT_DESTINATION = "litlabs@chapeaucollective.com";
-/**
- * Resend's shared test sender — swap for a verified sending domain
- * (e.g. enquiries@chapeaucollective.com) once one is set up in Resend.
- */
-const CONTACT_FROM = "Chapeau Collective <onboarding@resend.dev>";
+const CONTACT_DESTINATION = "vandan.mandloi@chapeaucollective.com";
+const CONTACT_FROM = "Chapeau Collective <enquiries@chapeaucollective.com>";
 
 type Payload = {
   name?: string;
@@ -17,7 +13,23 @@ type Payload = {
   message?: string;
   option?: string;
   contactMethod?: string;
+  captchaToken?: string;
 };
+
+async function verifyCaptcha(token: string): Promise<boolean> {
+  const secret = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secret) {
+    console.error("[contact] RECAPTCHA_SECRET_KEY is not set — rejecting submission.");
+    return false;
+  }
+  const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ secret, response: token }),
+  });
+  const result = await res.json().catch(() => ({ success: false }));
+  return result.success === true;
+}
 
 export async function POST(request: Request) {
   let data: Payload;
@@ -36,6 +48,13 @@ export async function POST(request: Request) {
 
   if (Object.keys(errors).length) {
     return NextResponse.json({ errors }, { status: 422 });
+  }
+
+  if (!data.captchaToken || !(await verifyCaptcha(data.captchaToken))) {
+    return NextResponse.json(
+      { errors: { captcha: "Captcha verification failed. Please try again." } },
+      { status: 422 },
+    );
   }
 
   const apiKey = process.env.RESEND_API_KEY;

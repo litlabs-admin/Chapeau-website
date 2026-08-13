@@ -6,7 +6,7 @@ export const site = {
   name: "Chapeau",
   positioning:
     "Senior marketing expertise and practical AI support for growing businesses.",
-  email: "litlabs@chapeaucollective.com",
+  email: "vandan.mandloi@chapeaucollective.com",
   social: {
     linkedin: "https://www.linkedin.com/",
   },

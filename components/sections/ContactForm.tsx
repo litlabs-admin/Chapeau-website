@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useId, useRef, useEffect } from "react";
+import Script from "next/script";
 import { motion, AnimatePresence } from "framer-motion";
 import { optionChoices, contactMethods, whatNext } from "@/lib/content/contact";
 import { cn } from "@/lib/cn";
@@ -9,6 +10,16 @@ type Status = "idle" | "submitting" | "success" | "error";
 type Errors = Record<string, string>;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+declare global {
+  interface Window {
+    grecaptcha?: {
+      getResponse: (widgetId?: number) => string;
+      reset: (widgetId?: number) => void;
+    };
+  }
+}
 
 const fieldBase =
   "w-full rounded-lg border bg-white px-4 py-3 text-[0.97rem] text-charcoal " +
@@ -42,6 +53,8 @@ export function ContactForm() {
     ) as Record<string, string>;
 
     const clientErrors = validate(data);
+    const captchaToken = window.grecaptcha?.getResponse();
+    if (!captchaToken) clientErrors.captcha = "Please verify you're not a robot.";
     if (Object.keys(clientErrors).length) {
       setErrors(clientErrors);
       return;
@@ -53,7 +66,7 @@ export function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({ ...data, captchaToken }),
       });
       if (res.ok) {
         setStatus("success");
@@ -65,6 +78,8 @@ export function ContactForm() {
       }
     } catch {
       setStatus("error");
+    } finally {
+      window.grecaptcha?.reset();
     }
   }
 
@@ -104,6 +119,7 @@ export function ContactForm() {
       noValidate
       className="rounded-2xl border border-charcoal/12 bg-white p-7 shadow-[0_1px_40px_-24px_rgba(17,24,32,0.5)] transition-shadow duration-300 hover:shadow-[0_4px_50px_-18px_rgba(17,24,32,0.16)] md:p-9"
     >
+      <Script src="https://www.google.com/recaptcha/api.js" strategy="afterInteractive" />
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Name" name="name" error={errors.name} required />
         <Field label="Business" name="business" />
@@ -144,7 +160,12 @@ export function ContactForm() {
         />
       </div>
 
-      <div className="mt-7 flex flex-wrap items-center justify-center gap-4">
+      <div className="mt-7 flex flex-col items-center gap-2">
+        <div className="g-recaptcha" data-sitekey={RECAPTCHA_SITE_KEY} />
+        {errors.captcha && <ErrorText>{errors.captcha}</ErrorText>}
+      </div>
+
+      <div className="mt-5 flex flex-wrap items-center justify-center gap-4">
         <button
           type="submit"
           disabled={status === "submitting"}
