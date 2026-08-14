@@ -94,23 +94,6 @@ export const people: Person[] = [
     ],
     image: "/media/team-vandan-mandloi.png",
   },
-  {
-    id: "jessica-burke",
-    name: "Jessica Burke",
-    role: "Marketing and Strategy",
-    bio: [
-      "Jessica brings marketing and strategy experience into the collective, supporting the direction, planning and delivery of growth work. She helps connect the message, the audience and the activity, making sure campaigns are built with clarity and commercial purpose.",
-      "She supports the work across brand, content, campaign planning and practical marketing delivery.",
-    ],
-    brings: [
-      "Marketing strategy",
-      "Campaign planning",
-      "Brand thinking",
-      "Content",
-      "Delivery support",
-    ],
-    image: "/media/team-jessica-burke.png",
-  },
 ];
 
 export const workJoins = {
