@@ -94,6 +94,26 @@ export const people: Person[] = [
     ],
     image: "/media/team-vandan-mandloi.png",
   },
+  {
+    id: "sen-hatharasinghe",
+    name: "Sen Hatharasinghe",
+    role: "Operations, Analysis and Project Management",
+    bio: [
+      "Sen brings structure and clarity to projects, helping turn plans into coordinated, practical action. He supports the team through operational planning, analysis and project management, keeping priorities clear and work moving in the right direction.",
+      "He helps connect the detail with the bigger picture, making sure decisions are informed, responsibilities are understood and projects remain focused on what needs to be delivered.",
+    ],
+    brings: [
+      "Operations",
+      "Project management",
+      "Business analysis",
+      "Planning",
+      "Process improvement",
+      "Coordination",
+      "Delivery support",
+      "Reporting",
+    ],
+    image: "/media/team-sen-hatharasinghe.png",
+  },
 ];
 
 export const workJoins = {
