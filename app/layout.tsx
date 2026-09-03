@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CookieBanner } from "@/components/layout/CookieBanner";
 import { site } from "@/lib/content/site";
+import { Analytics } from "@vercel/analytics/next";
 
 /**
  * Framer "Echo" type system, self-hosted.
@@ -81,6 +82,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <CookieBanner />
+        <Analytics />
       </body>
     </html>
   );
