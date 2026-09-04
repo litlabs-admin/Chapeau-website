@@ -51,7 +51,7 @@ export function Header() {
             layout
             transition={LAYOUT_T}
             className={cn(
-              "relative mx-auto flex items-center justify-between gap-6 border transition-[background-color,box-shadow,border-color,border-radius] duration-[550ms] ease-calm",
+              "relative mx-auto flex items-center justify-between gap-3 border transition-[background-color,box-shadow,border-color,border-radius] duration-[550ms] ease-calm xl:gap-6",
               scrolled
                 ? "w-fit rounded-2xl border-white/60 bg-[#F7F7F7]/85 px-3 py-2 shadow-[0_4px_18px_rgba(0,0,0,0.12)] backdrop-blur-[5px]"
                 : "w-full rounded-none border-transparent bg-transparent px-0 py-2 shadow-none",
@@ -92,7 +92,7 @@ export function Header() {
                     key={item.href}
                     href={item.href}
                     className={cn(
-                      "rounded-lg px-3 py-1.5 text-[0.92rem] tracking-[-0.01em] transition-colors duration-200",
+                      "whitespace-nowrap rounded-lg px-2 py-1.5 text-[0.82rem] tracking-[-0.01em] transition-colors duration-200 xl:px-3 xl:text-[0.92rem]",
                       onHero
                         ? active
                           ? "bg-white/10 text-white"

@@ -61,25 +61,31 @@ export function RotatingHeadline({
         await wait(HOLD);
         if (cancelled) break;
 
-        // Clear the current highlight in the sweep direction, fade the word out.
-        setOrigin(ltr ? "right center" : "left center");
-        await Promise.all([
-          hi.start({ scaleX: 0, transition: { duration: 0.42, ease: CALM } }),
-          wc.start({ opacity: 0, transition: { duration: 0.28, ease: CALM } }),
-        ]);
-        if (cancelled) break;
+        try {
+          // Clear the current highlight in the sweep direction, fade the word out.
+          setOrigin(ltr ? "right center" : "left center");
+          await Promise.all([
+            hi.start({ scaleX: 0, transition: { duration: 0.42, ease: CALM } }),
+            wc.start({ opacity: 0, transition: { duration: 0.28, ease: CALM } }),
+          ]);
+          if (cancelled) break;
 
-        // Swap the word while the highlight is collapsed, then fill it back in.
-        setI((n) => (n + 1) % words.length);
-        setOrigin(ltr ? "left center" : "right center");
-        hi.set({ scaleX: 0 });
-        await Promise.all([
-          hi.start({ scaleX: 1, transition: { duration: 0.55, ease: CALM } }),
-          wc.start({
-            opacity: 1,
-            transition: { duration: 0.4, ease: CALM, delay: 0.08 },
-          }),
-        ]);
+          // Swap the word while the highlight is collapsed, then fill it back in.
+          setI((n) => (n + 1) % words.length);
+          setOrigin(ltr ? "left center" : "right center");
+          hi.set({ scaleX: 0 });
+          await Promise.all([
+            hi.start({ scaleX: 1, transition: { duration: 0.55, ease: CALM } }),
+            wc.start({
+              opacity: 1,
+              transition: { duration: 0.4, ease: CALM, delay: 0.08 },
+            }),
+          ]);
+        } catch {
+          // Controls detached from their component (e.g. a fast-refresh/unmount
+          // race) — nothing left to animate, so stop the loop rather than crash.
+          break;
+        }
 
         ltr = !ltr;
       }

@@ -7,5 +7,6 @@ export type NavItem = { label: string; href: string };
 export const nav: NavItem[] = [
   { label: "How We Work", href: "/how-we-work" },
   { label: "The Collective", href: "/collective" },
+  { label: "Insights", href: "/insights" },
   { label: "Contact Us", href: "/contact" },
 ];

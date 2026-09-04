@@ -40,13 +40,13 @@ export function Footer() {
           </ul>
         </nav>
 
-        <div className="md:col-span-3">
+        <div className="min-w-0 md:col-span-3">
           <p className="label text-[0.72rem] text-framer-mute">Get in touch</p>
           <ul className="mt-5 space-y-3">
             <li>
               <a
                 href={`mailto:${site.email}`}
-                className="text-[0.95rem] text-framer-graphite/80 transition-colors hover:text-framer-ink"
+                className="break-words text-[0.95rem] text-framer-graphite/80 transition-colors hover:text-framer-ink"
               >
                 {site.email}
               </a>

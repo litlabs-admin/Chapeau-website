@@ -38,7 +38,7 @@ export function FinalCTA() {
               </Button>
               <a
                 href={`mailto:${site.email}`}
-                className="label text-[0.8rem] text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline md:text-sm"
+                className="label min-w-0 max-w-full break-words text-center text-[0.8rem] text-white/60 underline-offset-4 transition-colors hover:text-white hover:underline md:text-sm"
               >
                 {site.email}
               </a>

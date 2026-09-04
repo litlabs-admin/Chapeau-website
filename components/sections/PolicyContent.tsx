@@ -63,7 +63,7 @@ export function PolicyContent() {
               </p>
               <a
                 href={`mailto:${companyDetails.email}`}
-                className="mt-2 inline-block text-lg text-[#FF2E8A] underline-offset-4 transition-colors hover:underline"
+                className="mt-2 inline-block max-w-full break-words text-lg text-[#FF2E8A] underline-offset-4 transition-colors hover:underline"
               >
                 {companyDetails.email}
               </a>
@@ -139,7 +139,7 @@ function PolicyBlockView({ block }: { block: PolicyBlock }) {
             Email:{" "}
             <Link
               href={`mailto:${companyDetails.email}`}
-              className="text-[#FF2E8A] underline-offset-4 hover:underline"
+              className="break-words text-[#FF2E8A] underline-offset-4 hover:underline"
             >
               {companyDetails.email}
             </Link>
