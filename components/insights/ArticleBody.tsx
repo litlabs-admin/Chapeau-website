@@ -19,7 +19,7 @@ function renderInline(text: string): ReactNode {
         href={match[2]}
         target="_blank"
         rel="noopener noreferrer"
-        className="underline decoration-[#FF2E8A]/40 underline-offset-2 hover:decoration-[#FF2E8A]"
+        className="underline decoration-framer-ink decoration-2 underline-offset-2 hover:decoration-[#FF2E8A]"
       >
         {match[1]}
       </a>,
