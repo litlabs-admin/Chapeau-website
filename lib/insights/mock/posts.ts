@@ -9,7 +9,7 @@ import type { RawPost } from "@/lib/insights/repository";
 export const mockPosts: RawPost[] = [
   {
     slug: "commercial-cctv-for-scottish-businesses",
-    title: "Commercial CCTV for Scottish Businesses: What to Check Before You Invest",
+    title: "Commercial CCTV Providers in Glasgow and Edinburgh",
     excerpt:
       "Planning commercial CCTV for your Scottish business? Learn what to assess, which features matter and how to compare CCTV providers properly.",
     categoryLabel: "Security & Compliance",
@@ -20,7 +20,7 @@ export const mockPosts: RawPost[] = [
     authorName: "Vandan Mandloi",
     authorRole: "Founder, Chapeau",
     status: "Published",
-    seoTitle: "Commercial CCTV for Scottish Businesses: What to Check Before You Invest",
+    seoTitle: "Commercial CCTV Providers in Glasgow and Edinburgh",
     seoDescription:
       "Planning commercial CCTV for your Scottish business? Learn what to assess, which features matter and how to compare CCTV providers properly.",
     body: [
