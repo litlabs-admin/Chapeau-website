@@ -1,6 +1,34 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 import type { PostBlock } from "@/lib/insights/types";
 import { Button } from "@/components/ui/Button";
+
+const LINK_PATTERN = /\[([^\]]+)\]\(([^)]+)\)/g;
+
+/** Renders `[text](url)` inside block text as an external link; everything else passes through as plain text. */
+function renderInline(text: string): ReactNode {
+  const parts: ReactNode[] = [];
+  let lastIndex = 0;
+  LINK_PATTERN.lastIndex = 0;
+  let match: RegExpExecArray | null;
+  while ((match = LINK_PATTERN.exec(text))) {
+    if (match.index > lastIndex) parts.push(text.slice(lastIndex, match.index));
+    parts.push(
+      <a
+        key={match.index}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="underline decoration-[#FF2E8A]/40 underline-offset-2 hover:decoration-[#FF2E8A]"
+      >
+        {match[1]}
+      </a>,
+    );
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) parts.push(text.slice(lastIndex));
+  return parts;
+}
 
 export function ArticleBody({ blocks }: { blocks: PostBlock[] }) {
   return (
@@ -25,13 +53,13 @@ function ArticleBlock({ block }: { block: PostBlock }) {
       );
 
     case "p":
-      return <p>{block.text}</p>;
+      return <p>{renderInline(block.text)}</p>;
 
     case "list":
       return block.ordered ? (
         <ol className="list-decimal space-y-2.5 pl-5 marker:text-[#FF2E8A]">
           {block.items.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item}>{renderInline(item)}</li>
           ))}
         </ol>
       ) : (
@@ -42,7 +70,7 @@ function ArticleBlock({ block }: { block: PostBlock }) {
                 className="mt-[0.5em] h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF2E8A]"
                 aria-hidden="true"
               />
-              <span>{item}</span>
+              <span>{renderInline(item)}</span>
             </li>
           ))}
         </ul>

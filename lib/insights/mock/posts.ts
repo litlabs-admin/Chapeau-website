@@ -39,7 +39,7 @@ export const mockPosts: RawPost[] = [
       },
       {
         type: "p",
-        text: "If you are currently comparing suppliers, RACAM has published a useful guide to the commercial CCTV providers in Glasgow and Edinburgh. It compares five established companies based on their commercial CCTV capabilities, monitoring services, wider security integration and suitability for different types of organisations.",
+        text: "If you are currently comparing suppliers, RACAM has published a useful guide to the [commercial CCTV providers in Glasgow and Edinburgh](https://racam.co.uk/news/top-5-commercial-cctv-providers-in-glasgow-edinburgh/). It compares five established companies based on their commercial CCTV capabilities, monitoring services, wider security integration and suitability for different types of organisations.",
       },
       {
         type: "p",
@@ -417,7 +417,7 @@ export const mockPosts: RawPost[] = [
       },
       {
         type: "p",
-        text: "For businesses ready to build a shortlist, RACAM’s comparison of commercial CCTV providers in Glasgow and Edinburgh provides a practical overview of five companies, their services and the types of organisations they may be best suited to.",
+        text: "For businesses ready to build a shortlist, RACAM’s comparison of [commercial CCTV providers in Glasgow and Edinburgh](https://racam.co.uk/news/top-5-commercial-cctv-providers-in-glasgow-edinburgh/) provides a practical overview of five companies, their services and the types of organisations they may be best suited to.",
       },
       {
         type: "cta",

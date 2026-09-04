@@ -59,6 +59,9 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "Chapeau",
   },
+  verification: {
+    google: "IDkv7zzlOWszZOM4ohUhnT0kjNvtRNPp2LcRyXkR2J0",
+  },
 };
 
 export default function RootLayout({
