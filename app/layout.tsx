@@ -74,6 +74,13 @@ export default function RootLayout({
       lang="en"
       className={`${stackSansText.variable} ${stackSansHeadline.variable} ${barlowCondensed.variable} ${fragmentMono.variable}`}
     >
+      <head>
+        {/* Goji Website visitors */}
+        <script
+          async
+          src="https://visitor.wv.gojiberry.ai/wv.js?uid=2728&aid=23546"
+        />
+      </head>
       <body className="min-h-screen overflow-x-hidden bg-white">
         <a
           href="#main"
